@@ -2,14 +2,13 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +20,7 @@ public class Usuario implements Serializable {
 	private Long usuario_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "ubicacion_fk")
 	private Ubicacion ubicacion_fk;
 	@Column(length = 10)

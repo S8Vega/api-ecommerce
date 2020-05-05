@@ -1,6 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +25,18 @@ public class Ubicacion implements Serializable {
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
+	@OneToMany
+	@JoinColumn(name = "ubicacion_fk")
+	private List<Usuario> usuario;
 	private static final long serialVersionUID = 1L;
+
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getUbicacion_pk() {
 		return ubicacion_pk;

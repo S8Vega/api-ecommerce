@@ -1,2 +1,2 @@
-INSERT INTO `ciudad` (`ciudad_pk`, `nombre`) VALUES ('1', 'Cucuta');
-INSERT INTO `ciudad` (`ciudad_pk`, `nombre`) VALUES ('2', 'Bucaramanga');
+INSERT INTO `ciudad` (`nombre`) VALUES ('Cucuta');
+INSERT INTO `ciudad` (`nombre`) VALUES ('Bucaramanga');
