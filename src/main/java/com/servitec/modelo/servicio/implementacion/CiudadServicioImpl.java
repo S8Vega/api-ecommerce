@@ -15,11 +15,29 @@ public class CiudadServicioImpl implements ICiudadServicio {
 
 	@Autowired
 	private ICiudadDao ciudadDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Ciudad> listar() {
-		return this.ciudadDao.buscarTodo();
+		return this.ciudadDao.listar();
+	}
+
+	@Override
+	@Transactional
+	public void guardar(Ciudad Ciudad) {
+		this.ciudadDao.guardar(Ciudad);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Ciudad buscarId(Long id) {
+		return this.ciudadDao.buscarId(id);
+	}
+
+	@Override
+	public void eliminar(Long id) {
+		this.ciudadDao.eliminar(id);
+
 	}
 
 }

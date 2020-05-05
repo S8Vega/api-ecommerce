@@ -20,8 +20,31 @@ public class CiudadDaoImpl implements ICiudadDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	@Override
-	public List<Ciudad> buscarTodo() {
+	public List<Ciudad> listar() {
 		return em.createQuery("from Ciudad").getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void guardar(Ciudad ciudad) {
+		if (ciudad.getCiudad_pk() != null)
+			em.merge(ciudad);
+		else
+			em.persist(ciudad);
+
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Ciudad buscarId(Long id) {
+		return em.find(Ciudad.class, id);
+	}
+
+	@Override
+	@Transactional
+	public void eliminar(Long id) {
+		em.remove(buscarId(id));
+
 	}
 
 }

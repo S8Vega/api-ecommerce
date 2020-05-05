@@ -28,6 +28,15 @@ public class Ciudad implements Serializable {
 	private List<Ubicacion> ubicacion;
 	private static final long serialVersionUID = 1L;
 
+	public Ciudad() {
+		this.ubicacion = new ArrayList<Ubicacion>();
+	}
+
+	public Ciudad(String nombre, List<Ubicacion> ubicacion) {
+		this.nombre = nombre;
+		this.ubicacion = ubicacion;
+	}
+
 	public List<Ubicacion> getUbicacion() {
 		return ubicacion;
 	}
