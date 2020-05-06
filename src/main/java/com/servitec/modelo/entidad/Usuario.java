@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -22,6 +24,7 @@ public class Usuario implements Serializable {
 	private String nombre;
 	@ManyToOne
 	@JoinColumn(name = "ubicacion_fk")
+	@JsonIgnoreProperties("usuario")
 	private Ubicacion ubicacion_fk;
 	@Column(length = 10)
 	private String telefono;

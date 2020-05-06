@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "ubicacion")
 public class Ubicacion implements Serializable {
@@ -24,11 +26,12 @@ public class Ubicacion implements Serializable {
 	private Long ubicacion_pk;
 	@ManyToOne
 	@JoinColumn(name = "ciudad_fk")
+	@JsonIgnoreProperties("ubicacion")
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ubicacion_fk")
-	private List<Usuario> usuarios;
+	private List<Usuario> usuario;
 	private static final long serialVersionUID = 1L;
 
 	public Ubicacion() {
@@ -37,15 +40,15 @@ public class Ubicacion implements Serializable {
 	public Ubicacion(Ciudad ciudad_fk, String direccion, List<Usuario> usuarios) {
 		this.ciudad_fk = ciudad_fk;
 		this.direccion = direccion;
-		this.usuarios = usuarios;
+		this.usuario = usuarios;
 	}
 
 	public List<Usuario> getUsuario() {
-		return usuarios;
+		return usuario;
 	}
 
 	public void setUsuario(List<Usuario> usuario) {
-		this.usuarios = usuario;
+		this.usuario = usuario;
 	}
 
 	public Long getUbicacion_pk() {
