@@ -18,25 +18,25 @@ public class CiudadServicioImpl implements ICiudadServicio {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Ciudad> listar() {
-		return this.ciudadDao.listar();
+	public List<Ciudad> findAll() {
+		return (List<Ciudad>) this.ciudadDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void guardar(Ciudad Ciudad) {
-		this.ciudadDao.guardar(Ciudad);
+	public void save(Ciudad Ciudad) {
+		this.ciudadDao.save(Ciudad);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Ciudad buscarId(Long id) {
-		return this.ciudadDao.buscarId(id);
+	public Ciudad findById(Long id) {
+		return this.ciudadDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public void eliminar(Long id) {
-		this.ciudadDao.eliminar(id);
+	public void delete(Ciudad ciudad) {
+		this.ciudadDao.delete(ciudad);
 
 	}
 

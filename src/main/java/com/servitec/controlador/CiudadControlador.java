@@ -21,35 +21,35 @@ public class CiudadControlador {
 
 	@RequestMapping
 	public List<Ciudad> listar() {
-		return this.ciudadServicio.listar();
+		return this.ciudadServicio.findAll();
 	}
 
 	@RequestMapping("/{id}")
 	public Ciudad buscar(@PathVariable Long id) {
-		return this.ciudadServicio.buscarId(id);
+		return this.ciudadServicio.findById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Ciudad crear(@RequestBody Ciudad ciudad) {
-		this.ciudadServicio.guardar(ciudad);
+		this.ciudadServicio.save(ciudad);
 		return ciudad;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Ciudad actualizar(@PathVariable Long id, @RequestBody Ciudad ciudad) {
-		Ciudad ciudadActual = this.ciudadServicio.buscarId(id);
+		Ciudad ciudadActual = this.ciudadServicio.findById(id);
 		ciudadActual.setNombre(ciudad.getNombre());
 		ciudadActual.setUbicacion(ciudad.getUbicacion());
-		this.ciudadServicio.guardar(ciudadActual);
+		this.ciudadServicio.save(ciudadActual);
 		return ciudadActual;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Ciudad eliminar(@PathVariable Long id) {
-		Ciudad ciudad = this.ciudadServicio.buscarId(id);
-		this.ciudadServicio.eliminar(id);
+		Ciudad ciudad = this.ciudadServicio.findById(id);
+		this.ciudadServicio.delete(ciudad);
 		return ciudad;
 	}
 

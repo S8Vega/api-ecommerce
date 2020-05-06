@@ -5,11 +5,11 @@ import java.util.List;
 import com.servitec.modelo.entidad.Ciudad;
 
 public interface ICiudadServicio {
-	public List<Ciudad> listar();
-
-	public void guardar(Ciudad Ciudad);
-
-	public Ciudad buscarId(Long id);
-
-	public void eliminar(Long id);
+	public List<Ciudad> findAll();
+	
+	public void save(Ciudad ciudad);
+	
+	public Ciudad findById(Long id);
+	
+	public void delete(Ciudad ciudad);
 }

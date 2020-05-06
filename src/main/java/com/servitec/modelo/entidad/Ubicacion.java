@@ -15,9 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 @Entity
 @Table(name = "ubicacion")
 public class Ubicacion implements Serializable {
@@ -27,7 +24,6 @@ public class Ubicacion implements Serializable {
 	private Long ubicacion_pk;
 	@ManyToOne
 	@JoinColumn(name = "ciudad_fk")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ciudad_pk")
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
