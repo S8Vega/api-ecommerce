@@ -13,30 +13,30 @@ import com.servitec.modelo.entidad.Ciudad;
 import com.servitec.modelo.servicio.interfaz.ICiudadServicio;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ciudad")
 public class CiudadControlador {
 
 	@Autowired
 	private ICiudadServicio ciudadServicio;
 
-	@RequestMapping("/ciudad")
+	@RequestMapping
 	public List<Ciudad> listar() {
 		return this.ciudadServicio.listar();
 	}
 
-	@RequestMapping("/ciudad/{id}")
+	@RequestMapping("/{id}")
 	public Ciudad buscar(@PathVariable Long id) {
 		return this.ciudadServicio.buscarId(id);
 	}
 
-	@RequestMapping(value = "/ciudad", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Ciudad crear(@RequestBody Ciudad ciudad) {
 		this.ciudadServicio.guardar(ciudad);
 		return ciudad;
 	}
 
-	@RequestMapping(value = "/ciudad/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Ciudad actualizar(@PathVariable Long id, @RequestBody Ciudad ciudad) {
 		Ciudad ciudadActual = this.ciudadServicio.buscarId(id);
@@ -46,7 +46,7 @@ public class CiudadControlador {
 		return ciudadActual;
 	}
 
-	@RequestMapping(value = "/ciudad/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Ciudad eliminar(@PathVariable Long id) {
 		Ciudad ciudad = this.ciudadServicio.buscarId(id);
 		this.ciudadServicio.eliminar(id);
