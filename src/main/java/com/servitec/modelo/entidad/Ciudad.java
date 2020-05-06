@@ -7,12 +7,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "ciudad")
@@ -23,8 +25,8 @@ public class Ciudad implements Serializable {
 	private Long ciudad_pk;
 	@Column(length = 80, nullable = false)
 	private String nombre;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ciudad_fk")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ciudad_fk")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ubicacion_pk")
 	private List<Ubicacion> ubicacion;
 	private static final long serialVersionUID = 1L;
 

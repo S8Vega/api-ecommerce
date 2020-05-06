@@ -3,8 +3,10 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "ubicacion")
@@ -22,20 +27,29 @@ public class Ubicacion implements Serializable {
 	private Long ubicacion_pk;
 	@ManyToOne
 	@JoinColumn(name = "ciudad_fk")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ciudad_pk")
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
-	@OneToMany
-	@JoinColumn(name = "ubicacion_fk")
-	private List<Usuario> usuario;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ubicacion_fk")
+	private List<Usuario> usuarios;
 	private static final long serialVersionUID = 1L;
 
+	public Ubicacion() {
+	}
+
+	public Ubicacion(Ciudad ciudad_fk, String direccion, List<Usuario> usuarios) {
+		this.ciudad_fk = ciudad_fk;
+		this.direccion = direccion;
+		this.usuarios = usuarios;
+	}
+
 	public List<Usuario> getUsuario() {
-		return usuario;
+		return usuarios;
 	}
 
 	public void setUsuario(List<Usuario> usuario) {
-		this.usuario = usuario;
+		this.usuarios = usuario;
 	}
 
 	public Long getUbicacion_pk() {

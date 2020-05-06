@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Usuario implements Serializable {
 	private Long usuario_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ubicacion_fk")
 	private Ubicacion ubicacion_fk;
 	@Column(length = 10)
@@ -28,6 +29,17 @@ public class Usuario implements Serializable {
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
 	private static final long serialVersionUID = 1L;
+
+	public Usuario() {
+	}
+
+	public Usuario(String nombre, Ubicacion ubicacion_fk, String telefono, String correo) {
+		super();
+		this.nombre = nombre;
+		this.ubicacion_fk = ubicacion_fk;
+		this.telefono = telefono;
+		this.correo = correo;
+	}
 
 	public Long getUsuario_pk() {
 		return usuario_pk;
