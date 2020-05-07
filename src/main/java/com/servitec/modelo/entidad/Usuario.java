@@ -9,12 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.web.bind.annotation.Mapping;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario")
+
 public class Usuario implements Serializable {
 
 	@Id
@@ -30,6 +34,11 @@ public class Usuario implements Serializable {
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
+	@OneToOne(mappedBy = "administrador_fk")
+	private Administrador administrador_fk;
+	@OneToOne(mappedBy = "empleado_fk")
+	private Empleado empleado_fk;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
@@ -81,8 +90,28 @@ public class Usuario implements Serializable {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+	
+	
+
+	public Administrador getAdministrador_fk() {
+		return administrador_fk;
+	}
+
+	public void setAdministrador_fk(Administrador administrador_fk) {
+		this.administrador_fk = administrador_fk;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Empleado getEmpleado_fk() {
+		return empleado_fk;
+	}
+
+	public void setEmpleado_fk(Empleado empleado_fk) {
+		this.empleado_fk = empleado_fk;
+	}
+	
+	
 }
