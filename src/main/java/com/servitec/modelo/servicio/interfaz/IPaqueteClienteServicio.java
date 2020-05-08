@@ -4,12 +4,6 @@ import java.util.List;
 
 import com.servitec.modelo.entidad.PaqueteCliente;
 
-public interface IPaqueteClienteServicio {
-	public List<PaqueteCliente> findAll();
-	
-	public void save(PaqueteCliente paqueteCliente);
-	
-	public PaqueteCliente findById(Long id);
-	
-	public void delete(PaqueteCliente paqueteCliente);
+public interface IPaqueteClienteServicio extends ServicioInterfaz<PaqueteCliente, Long> {
+
 }
