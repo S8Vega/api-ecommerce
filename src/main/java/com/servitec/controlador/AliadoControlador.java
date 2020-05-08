@@ -2,6 +2,7 @@ package com.servitec.controlador;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.servitec.modelo.entidad.Aliado;
-import com.servitec.modelo.servicio.interfaz.IAliadoServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/aliado")
 public class AliadoControlador {
 
 	@Autowired
-	private IAliadoServicio aliadoServicio;
+	@Qualifier("AliadoServicioImpl")
+	private IServicio<Aliado, Long> aliadoServicio;
 
 	@RequestMapping
 	public List<Aliado> listar() {

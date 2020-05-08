@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IUsuarioDao;
 import com.servitec.modelo.entidad.Usuario;
-import com.servitec.modelo.servicio.interfaz.IUsuarioServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class UsuarioServicioImpl implements IUsuarioServicio {
+@Service("UsuarioServicioImpl")
+public class UsuarioServicioImpl implements IServicio<Usuario, Long> {
 
 	@Autowired
 	private IUsuarioDao usuarioDao;

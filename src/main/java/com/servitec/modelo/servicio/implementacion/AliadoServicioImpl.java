@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IAliadoDao;
 import com.servitec.modelo.entidad.Aliado;
-import com.servitec.modelo.servicio.interfaz.IAliadoServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class AliadoServicioImpl implements IAliadoServicio {
+@Service("AliadoServicioImpl")
+public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 
 	@Autowired
 	private IAliadoDao aliadoDao;

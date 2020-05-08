@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.ICiudadDao;
 import com.servitec.modelo.entidad.Ciudad;
-import com.servitec.modelo.servicio.interfaz.ICiudadServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class CiudadServicioImpl implements ICiudadServicio {
+@Service("CiudadServicioImpl")
+public class CiudadServicioImpl implements IServicio<Ciudad, Long> {
 
 	@Autowired
 	private ICiudadDao ciudadDao;
