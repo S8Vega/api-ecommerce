@@ -15,4 +15,14 @@ INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('
 INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('julian@navarro.com', 'Julian Navarro', '1253625454', '3');
 INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('lina@outlook.com', 'Lina perez', '3102563636', '5');
 INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('karen@ufps.edu.co', 'Karen Beltran', '2530214578', '1');
+--tipoDoc
+INSERT INTO `tipo_doc` (`nombre`) VALUES ('Cedula');
+INSERT INTO `tipo_doc` (`nombre`) VALUES ('RUT');
+INSERT INTO `tipo_doc` (`nombre`) VALUES ('NIT');
+--aliado
+INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '1', '1');
+INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '2', '2');
+INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '1', '3');
+INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '3', '4');
+INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '2', '5');
 
