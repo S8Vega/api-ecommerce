@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +22,11 @@ public class PaqueteProveedor implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paqueteProveedor;
-	@Column
-	private	Long pedidoProveedor_fk;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "pedidoProveedor_fk")
+	private	PedidoProveedor pedidoProveedor_fk;
 
 	@OneToOne
 	@JoinColumn(name = "paqueteProveedor_fk")
@@ -31,7 +35,7 @@ public class PaqueteProveedor implements Serializable {
 	public PaqueteProveedor() {
 	}
 
-	public PaqueteProveedor(Long paqueteProveedor, Long pedidoProveedor_fk, Paquete paqueteProveedor_fk) {
+	public PaqueteProveedor(Long paqueteProveedor, PedidoProveedor pedidoProveedor_fk, Paquete paqueteProveedor_fk) {
 		this.paqueteProveedor = paqueteProveedor;
 		this.pedidoProveedor_fk = pedidoProveedor_fk;
 		this.paqueteProveedor_fk = paqueteProveedor_fk;
@@ -45,11 +49,11 @@ public class PaqueteProveedor implements Serializable {
 		this.paqueteProveedor = paqueteProveedor;
 	}
 
-	public Long getPedidoProveedor_fk() {
+	public PedidoProveedor getPedidoProveedor_fk() {
 		return pedidoProveedor_fk;
 	}
 
-	public void setPedidoProveedor_fk(Long pedidoProveedor_fk) {
+	public void setPedidoProveedor_fk(PedidoProveedor pedidoProveedor_fk) {
 		this.pedidoProveedor_fk = pedidoProveedor_fk;
 	}
 

@@ -1,10 +1,12 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -16,6 +18,9 @@ public class PedidoProveedor implements Serializable {
 	private Long pedidoProveedor;
 	@Column
 	private Long proveedor_fk;
+	
+	@OneToMany(mappedBy = "pedidoProveedor_fk")
+	private List<PaqueteProveedor> paqueteProveedores;
 	
 	
 	/**

@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name="paqueteCliente")
@@ -21,8 +24,10 @@ public class PaqueteCliente implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long paqueteCliente_pk;
-	@Column
-	private Long pedidoCliente;
+	
+	@ManyToOne
+	@JoinColumn(name="pedidoCliente_fk")
+	private PedidoCliente pedidoCliente_fk;
 	
 	@OneToOne
 	@JoinColumn(name = "paqueteCliente_fk")
@@ -33,7 +38,7 @@ public class PaqueteCliente implements Serializable{
 
 	public PaqueteCliente(Long paqueteCliente_pk, Long pedidoCliente, Paquete paquete_fk) {
 		this.paqueteCliente_pk = paqueteCliente_pk;
-		this.pedidoCliente = pedidoCliente;
+		this.pedidoCliente_fk = pedidoCliente_fk;
 		this.paqueteCliente_fk = paquete_fk;
 	}
 
@@ -41,16 +46,24 @@ public class PaqueteCliente implements Serializable{
 		return paqueteCliente_pk;
 	}
 
+	public PedidoCliente getPedidoCliente_fk() {
+		return pedidoCliente_fk;
+	}
+
+	public void setPedidoCliente_fk(PedidoCliente pedidoCliente_fk) {
+		this.pedidoCliente_fk = pedidoCliente_fk;
+	}
+
 	public void setPaqueteCliente_pk(Long paqueteCliente_pk) {
 		this.paqueteCliente_pk = paqueteCliente_pk;
 	}
 
-	public Long getPedidoCliente() {
-		return pedidoCliente;
+	public PedidoCliente getPedidoCliente() {
+		return pedidoCliente_fk;
 	}
 
-	public void setPedidoCliente(Long pedidoCliente) {
-		this.pedidoCliente = pedidoCliente;
+	public void setPedidoCliente(PedidoCliente pedidoCliente) {
+		this.pedidoCliente_fk = pedidoCliente_fk;
 	}
 
 	public Paquete getPaquete_fk() {
