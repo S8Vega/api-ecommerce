@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class Funcion implements Serializable{
 	private Long funcion_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
-	@ManyToMany(mappedBy = "funciones")
+	@ManyToMany(mappedBy = "funciones", fetch = FetchType.EAGER)
     private List<Producto> productos;
 	
 	private static final long serialVersionUID = 1L;

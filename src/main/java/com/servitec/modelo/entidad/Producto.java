@@ -36,10 +36,10 @@ public class Producto implements Serializable{
 	//private List<Paquete> paquete;
 	@JoinTable(
 	        name = "producto_funcion",
-	        joinColumns = @JoinColumn(name = "producto_pfk", nullable = false),
-	        inverseJoinColumns = @JoinColumn(name = "funcion_pfk", nullable = false)
+	        joinColumns = @JoinColumn(name = "producto_pfk"),
+	        inverseJoinColumns = @JoinColumn(name = "funcion_pfk")
 	    )
-	    @ManyToMany
+	    @ManyToMany(fetch = FetchType.EAGER)
 	    private List<Funcion> funciones;
 	
 	private static final long serialVersionUID = 1L;
