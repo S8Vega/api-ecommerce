@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -18,6 +20,9 @@ public class Administrador implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long administrador_pk;
+	
 	@OneToOne
 	@JoinColumn(name = "administrador_fk")
 	private Usuario administrador_fk;
@@ -35,6 +40,20 @@ public class Administrador implements Serializable{
 		this.administrador_fk = administrador_fk;
 		this.alias = alias;
 		this.contrasena = contrasena;
+	}
+	
+	
+
+	public Long getAdministrador_pk() {
+		return administrador_pk;
+	}
+
+	public void setAdministrador_pk(Long administrador_pk) {
+		this.administrador_pk = administrador_pk;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public Usuario getAdministrador_fk() {

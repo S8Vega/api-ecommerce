@@ -16,3 +16,12 @@ INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('
 INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('lina@outlook.com', 'Lina perez', '3102563636', '5');
 INSERT INTO `usuario` (`correo`, `nombre`, `telefono`, `ubicacion_fk`) VALUES ('karen@ufps.edu.co', 'Karen Beltran', '2530214578', '1');
 
+--cargo
+INSERT INTO `cargo`(`nombre`) VALUES ('tecnico')
+INSERT INTO `cargo`(`nombre`) VALUES ('secretaria')
+INSERT INTO `cargo`(`nombre`) VALUES ('portero')
+
+--empleado
+INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`empleado_fk`) VALUES ('veg8','vega','1','1');
+INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`empleado_fk`) VALUES ('amondrag','dis','1','2');
+
