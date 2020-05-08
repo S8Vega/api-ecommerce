@@ -5,9 +5,9 @@ import java.util.List;
 import com.servitec.modelo.entidad.Paquete;
 
 public interface IPaqueteServicio {
-	public List<Paquete> finAll();
+	public List<Paquete> findAll();
 	
-	public void savr(Paquete paquete);
+	public void save(Paquete paquete);
 	
 	public Paquete findById(Long id);
 	
