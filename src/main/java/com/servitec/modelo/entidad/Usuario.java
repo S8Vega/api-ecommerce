@@ -33,7 +33,7 @@ public class Usuario implements Serializable {
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario_fk")
 	private Aliado aliado;
 	private static final long serialVersionUID = 1L;
 

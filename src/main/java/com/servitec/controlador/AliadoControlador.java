@@ -43,7 +43,10 @@ public class AliadoControlador {
 	public Aliado actualizar(@PathVariable Long id, @RequestBody Aliado aliado) {
 		Aliado aliadoActual = this.aliadoServicio.findById(id);
 		aliadoActual.setDocumento(aliado.getDocumento());
-		aliadoActual.setTipoDoc(aliado.getTipoDoc());
+		aliadoActual.setPedidoCliente(aliado.getPedidoCliente());
+		aliadoActual.setPedidoProveedor(aliado.getPedidoProveedor());
+		aliadoActual.setTipoDoc_fk(aliado.getTipoDoc_fk());
+		aliadoActual.setUsuario_fk(aliado.getUsuario_fk());
 		this.aliadoServicio.save(aliadoActual);
 		return aliadoActual;
 	}

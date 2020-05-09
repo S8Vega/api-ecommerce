@@ -43,11 +43,12 @@ public class PedidoProveedorControlador {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public PedidoProveedor actualizar(@PathVariable Long id, @RequestBody PedidoProveedor pedidoProveedor) {
-		PedidoProveedor pedAct = this.pedServicio.findById(id);
-		pedAct.setPedidoProveedor(pedidoProveedor.getPedidoProveedor());
-		pedAct.setProveedor_fk(pedidoProveedor.getProveedor_fk());
-		this.pedServicio.save(pedAct);
-		return pedAct;
+		PedidoProveedor pedidoProveedorActual = this.pedServicio.findById(id);
+		pedidoProveedorActual.setAliado_fk(pedidoProveedor.getAliado_fk());
+		pedidoProveedorActual.setPaqueteProveedores(pedidoProveedor.getPaqueteProveedores());
+		pedidoProveedorActual.setPedido_fk(pedidoProveedor.getPedido_fk());
+		this.pedServicio.save(pedidoProveedorActual);
+		return pedidoProveedorActual;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

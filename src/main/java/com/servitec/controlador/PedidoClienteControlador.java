@@ -43,11 +43,12 @@ public class PedidoClienteControlador {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public PedidoCliente actualizar(@PathVariable Long id, @RequestBody PedidoCliente pedidoCliente) {
-		PedidoCliente pedAct = this.pedidoServicio.findById(id);
-		pedAct.setCliente_fk(pedidoCliente.getCliente_fk());
-		pedAct.setPedidoCliente_pk(pedidoCliente.getPedidoCliente_pk());
-		this.pedidoServicio.save(pedAct);
-		return pedAct;
+		PedidoCliente pedidoClienteActual = this.pedidoServicio.findById(id);
+		pedidoClienteActual.setAliado_fk(pedidoCliente.getAliado_fk());
+		pedidoClienteActual.setPaqueteClientes(pedidoCliente.getPaqueteClientes());
+		pedidoClienteActual.setPedido_fk(pedidoCliente.getPedido_fk());
+		this.pedidoServicio.save(pedidoClienteActual);
+		return pedidoClienteActual;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
