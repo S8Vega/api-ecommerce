@@ -12,6 +12,7 @@ import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("TrabajaServicioImpl")
 public class TrabajaServicioImpl implements IServicio<Trabaja, Long> {
+	
 	@Autowired
 	private ITrabajaDao trabajaDao;
 

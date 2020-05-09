@@ -19,25 +19,22 @@ public class PrestamoServicioImpl implements IServicio<Prestamo, Long> {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Prestamo> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Prestamo>) this.prestamoDao.findAll();
 	}
 
 	@Override
 	public void save(Prestamo t) {
-		// TODO Auto-generated method stub
 		this.prestamoDao.save(t);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Prestamo findById(Long id) {
-		// TODO Auto-generated method stub
 		return this.prestamoDao.findById(id).orElse(null);
 	}
 
 	@Override
 	public void delete(Prestamo t) {
-		// TODO Auto-generated method stub
 		this.prestamoDao.delete(t);
 	}
 }

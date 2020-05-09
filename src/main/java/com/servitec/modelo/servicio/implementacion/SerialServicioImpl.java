@@ -17,25 +17,21 @@ public class SerialServicioImpl implements IServicio<Serial, Long> {
 
 	@Override
 	public List<Serial> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Serial>) this.serialDao.findAll();
 	}
 
 	@Override
 	public void save(Serial t) {
-		// TODO Auto-generated method stub
 		this.serialDao.save(t);
 	}
 
 	@Override
 	public Serial findById(Long id) {
-		// TODO Auto-generated method stub
 		return this.serialDao.findById(id).orElse(null);
 	}
 
 	@Override
 	public void delete(Serial t) {
-		// TODO Auto-generated method stub
 		this.serialDao.delete(t);
 	}
 }

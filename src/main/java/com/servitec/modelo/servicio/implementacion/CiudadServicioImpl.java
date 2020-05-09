@@ -37,7 +37,6 @@ public class CiudadServicioImpl implements IServicio<Ciudad, Long> {
 	@Override
 	public void delete(Ciudad ciudad) {
 		this.ciudadDao.delete(ciudad);
-
 	}
 
 }

@@ -17,9 +17,8 @@ public class AdministradorServicioImpl implements IServicio<Administrador, Long>
 	private IAdministradorDao administradorDao;
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Administrador> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Administrador>) this.administradorDao.findAll();
 	}
 

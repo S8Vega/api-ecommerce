@@ -19,7 +19,6 @@ public class EmpleadoServicioImpl implements IServicio<Empleado, Long> {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Empleado> findAll() {
-
 		return (List<Empleado>) this.empleadoDao.findAll();
 	}
 
@@ -36,7 +35,6 @@ public class EmpleadoServicioImpl implements IServicio<Empleado, Long> {
 	}
 
 	@Override
-	@Transactional
 	public void delete(Empleado t) {
 		this.empleadoDao.delete(t);
 	}

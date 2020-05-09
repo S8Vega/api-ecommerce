@@ -17,25 +17,21 @@ public class SalidaServicioImpl implements IServicio<Salida, Long> {
 
 	@Override
 	public List<Salida> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Salida>) this.salidaDao.findAll();
 	}
 
 	@Override
 	public void save(Salida t) {
-		// TODO Auto-generated method stub
 		this.salidaDao.save(t);
 	}
 
 	@Override
 	public Salida findById(Long id) {
-		// TODO Auto-generated method stub
 		return this.salidaDao.findById(id).orElse(null);
 	}
 
 	@Override
 	public void delete(Salida t) {
-		// TODO Auto-generated method stub
 		this.salidaDao.delete(t);
 	}
 

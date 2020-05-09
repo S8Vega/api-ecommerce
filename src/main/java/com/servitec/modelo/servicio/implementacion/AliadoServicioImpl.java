@@ -37,7 +37,6 @@ public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 	@Override
 	public void delete(Aliado aliado) {
 		this.aliadoDao.delete(aliado);
-
 	}
 
 }
