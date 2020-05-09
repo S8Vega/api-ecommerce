@@ -10,5 +10,4 @@ public interface IServicio<T, Id> {
 	public T findById(Id id);
 
 	public void delete(T t);
-
 }

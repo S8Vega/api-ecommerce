@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+.gitignore.txt
 
 ### STS ###
 .apt_generated
@@ -29,3 +30,5 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/java/com/servitec/modelo/entidad/Ciudad.java
+

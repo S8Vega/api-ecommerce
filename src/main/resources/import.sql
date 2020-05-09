@@ -25,4 +25,12 @@ INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346',
 INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '1', '3');
 INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '3', '4');
 INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '2', '5');
+--producto
+INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`) VALUES ('10', 'Apple', 'TG4', 'UDP', 'estanteria3');
+INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`) VALUES ('20', 'Microsoft', 'TG4', 'Cable TX', 'estanteria2');
+INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`) VALUES ('15', 'Ford', 'TG4', 'Router', 'estanteria1');
+--funcion
+INSERT INTO `funcion` (`nombre`) VALUES ('Herramienta');
+INSERT INTO `funcion` (`nombre`) VALUES ('Cable');
+INSERT INTO `funcion` (`nombre`) VALUES ('Maquina');
 
