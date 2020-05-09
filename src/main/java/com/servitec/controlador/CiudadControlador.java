@@ -2,6 +2,7 @@ package com.servitec.controlador;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.servitec.modelo.entidad.Ciudad;
-import com.servitec.modelo.servicio.interfaz.ICiudadServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/ciudad")
 public class CiudadControlador {
 
 	@Autowired
-	private ICiudadServicio ciudadServicio;
+	@Qualifier("CiudadServicioImpl")
+	private IServicio<Ciudad, Long> ciudadServicio;
 
 	@RequestMapping
 	public List<Ciudad> listar() {

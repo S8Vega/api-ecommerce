@@ -3,6 +3,7 @@ package com.servitec.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +13,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Funcion;
-import com.servitec.modelo.servicio.interfaz.IFuncionServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/funcion")
 public class FuncionControlador {
 
 	@Autowired
-	IFuncionServicio funcionServicio;
+	@Qualifier("FuncionServicioImpl")
+	IServicio<Funcion, Long> funcionServicio;
 	
 	@RequestMapping
 	public List<Funcion> listar() {

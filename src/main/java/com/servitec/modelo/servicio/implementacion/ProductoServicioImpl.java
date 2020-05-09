@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IProductoDao;
 import com.servitec.modelo.entidad.Producto;
-import com.servitec.modelo.servicio.interfaz.IProductoServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class ProductoServicioImpl implements IProductoServicio{
+@Service("ProductoServicioImpl")
+public class ProductoServicioImpl implements IServicio<Producto, Long>{
 
 	@Autowired
 	private IProductoDao productoDao;

@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IUbicacionDao;
 import com.servitec.modelo.entidad.Ubicacion;
-import com.servitec.modelo.servicio.interfaz.IUbicacionServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class UbicacionServicioImpl implements IUbicacionServicio {
+@Service("UbicacionServicioImpl")
+public class UbicacionServicioImpl implements IServicio<Ubicacion, Long> {
 
 	@Autowired
 	private IUbicacionDao ubicacionDao;

@@ -2,14 +2,12 @@ package com.servitec.modelo.servicio.interfaz;
 
 import java.util.List;
 
-import com.servitec.modelo.entidad.Usuario;
+public interface IServicio <T,Id> {
+	public List<T> findAll();
 
-public interface IUsuarioServicio {
-	public List<Usuario> findAll();
+	public void save(T t);
 
-	public void save(Usuario usuario);
+	public T findById(Id id);
 
-	public Usuario findById(Long id);
-
-	public void delete(Usuario usuario);
+	public void delete(T t);
 }

@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IFuncionDao;
 import com.servitec.modelo.entidad.Funcion;
-import com.servitec.modelo.servicio.interfaz.IFuncionServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class FuncionServicioImpl implements IFuncionServicio{
+@Service("FuncionServicioImpl")
+public class FuncionServicioImpl implements IServicio<Funcion, Long>{
 	
 	@Autowired
 	private IFuncionDao funcionDao;

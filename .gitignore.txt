@@ -1,3 +1,0 @@
-src/main/java/com/servitec/modelo/entidad/Ciudad.java
-
-
