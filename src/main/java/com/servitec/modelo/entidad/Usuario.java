@@ -14,8 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.web.bind.annotation.Mapping;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -41,7 +39,7 @@ public class Usuario implements Serializable {
 	@OneToOne(mappedBy = "administrador_fk")
 	private Administrador administrador_fk;
 	@OneToOne(mappedBy = "empleado_fk")
-	
+	private Empleado empleado_fk;
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
@@ -93,8 +91,6 @@ public class Usuario implements Serializable {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
-	
 
 	public Administrador getAdministrador_fk() {
 		return administrador_fk;
@@ -115,6 +111,5 @@ public class Usuario implements Serializable {
 	public void setEmpleado_fk(Empleado empleado_fk) {
 		this.empleado_fk = empleado_fk;
 	}
-	
-	
+
 }
