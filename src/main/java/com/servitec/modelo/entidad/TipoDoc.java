@@ -3,7 +3,7 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +19,9 @@ public class TipoDoc implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long tipoDoc_pk;
+	@Column(nullable = false)
 	private String nombre;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tipoDoc")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoDoc")
 	private List<Aliado> aliado;
 	private static final long serialVersionUID = -8432865656283609942L;
 
@@ -28,7 +29,6 @@ public class TipoDoc implements Serializable {
 	}
 
 	public TipoDoc(String nombre, List<Aliado> aliado) {
-		super();
 		this.nombre = nombre;
 		this.aliado = aliado;
 	}

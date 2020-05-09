@@ -38,27 +38,21 @@ public class UsuarioControlador {
 		return usuario;
 	}
 
-	@RequestMapping(value = "/{id}", method =
-			RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Usuario actualizar(@PathVariable Long id, 
-			@RequestBody Usuario usuario) {
-		Usuario usuarioActual = 
-				this.usuarioServicio.findById(id);
+	public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+		Usuario usuarioActual = this.usuarioServicio.findById(id);
 		usuarioActual.setCorreo(usuario.getCorreo());
 		usuarioActual.setNombre(usuario.getNombre());
 		usuarioActual.setTelefono(usuario.getTelefono());
-		usuarioActual.setUbicacion_fk(usuario.
-				getUbicacion_fk());
+		usuarioActual.setUbicacion_fk(usuario.getUbicacion_fk());
 		this.usuarioServicio.save(usuarioActual);
 		return usuarioActual;
 	}
 
-	@RequestMapping(value = "/{id}", method = 
-			RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Usuario eliminar(@PathVariable Long id) {
-		Usuario usuario = this.usuarioServicio.
-				findById(id);
+		Usuario usuario = this.usuarioServicio.findById(id);
 		this.usuarioServicio.delete(usuario);
 		return usuario;
 	}

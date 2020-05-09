@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.servitec.modelo.entidad.PedidoProveedor;
 
-public interface IPedidoProveedorDao extends CrudRepository<PedidoProveedor, Long>{
+public interface IPedidoProveedorDao extends CrudRepository<PedidoProveedor, Long> {
 
 }

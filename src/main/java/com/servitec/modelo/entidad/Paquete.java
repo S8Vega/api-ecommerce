@@ -10,15 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="paquete")
-public class Paquete implements Serializable{
+@Table(name = "paquete")
+public class Paquete implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paquete_pk;
@@ -28,16 +23,16 @@ public class Paquete implements Serializable{
 	private Long cantidadInicial;
 	@Column(nullable = false)
 	private Long producto_fk;
+	private static final long serialVersionUID = 1L;
 
 	@OneToOne(mappedBy = "paqueteCliente_fk")
 	private PaqueteCliente paqueteCliente;
-	
 
 	@OneToOne(mappedBy = "paqueteProveedor_fk")
 	private PaqueteProveedor paqueteProveedor;
-	
+
 	public Paquete() {
-		
+
 	}
 
 	public Paquete(Long paquete_pk, String medida, Long cantidadInicial, Long producto_fk) {
@@ -78,8 +73,6 @@ public class Paquete implements Serializable{
 	public void setProducto_fk(Long producto_fk) {
 		this.producto_fk = producto_fk;
 	}
-	
-	
 
 	public PaqueteCliente getPaqueteCliente() {
 		return paqueteCliente;
@@ -101,6 +94,4 @@ public class Paquete implements Serializable{
 		return serialVersionUID;
 	}
 
-	
-	
 }

@@ -3,6 +3,7 @@ package com.servitec.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,33 +13,33 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Paquete;
-import com.servitec.modelo.servicio.interfaz.IPaqueteServicio;
-
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/paquete")
 public class PaqueteControlador {
-	
+
 	@Autowired
-	private IPaqueteServicio paqueteServicio;
-	
+	@Qualifier("PaqueteServicioImpl")
+	private IServicio<Paquete, Long> paqueteServicio;
+
 	@RequestMapping
-	public List<Paquete> listar(){
+	public List<Paquete> listar() {
 		return this.paqueteServicio.findAll();
 	}
-	
+
 	@RequestMapping("/{id}")
 	public Paquete buscar(@PathVariable long id) {
 		return this.paqueteServicio.findById(id);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Paquete crear(@RequestBody Paquete paquete) {
 		this.paqueteServicio.save(paquete);
 		return paquete;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Paquete actualizar(@PathVariable Long id, @RequestBody Paquete paquete) {
@@ -50,7 +51,7 @@ public class PaqueteControlador {
 		this.paqueteServicio.save(paqueteActual);
 		return paqueteActual;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Paquete eliminar(@PathVariable Long id) {
 		Paquete paquete = this.paqueteServicio.findById(id);

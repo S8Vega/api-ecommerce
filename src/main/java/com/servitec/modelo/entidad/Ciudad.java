@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +21,7 @@ public class Ciudad implements Serializable {
 	private Long ciudad_pk;
 	@Column(length = 80, nullable = false)
 	private String nombre;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ciudad_fk")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad_fk")
 	private List<Ubicacion> ubicacion;
 	private static final long serialVersionUID = 1L;
 

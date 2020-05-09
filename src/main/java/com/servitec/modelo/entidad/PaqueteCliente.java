@@ -2,7 +2,6 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,33 +11,26 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
-
 @Entity
-@Table(name="paqueteCliente")
-public class PaqueteCliente implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "paqueteCliente")
+public class PaqueteCliente implements Serializable {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long paqueteCliente_pk;
-	
 	@ManyToOne
-	@JoinColumn(name="pedidoCliente_fk")
+	@JoinColumn(name = "pedidoCliente_fk")
 	private PedidoCliente pedidoCliente_fk;
-	
 	@OneToOne
 	@JoinColumn(name = "paqueteCliente_fk")
 	private Paquete paqueteCliente_fk;
-	
-	public PaqueteCliente() { 
+	private static final long serialVersionUID = 1L;
+
+	public PaqueteCliente() {
 	}
 
-	public PaqueteCliente(Long paqueteCliente_pk, Long pedidoCliente, Paquete paquete_fk) {
+	public PaqueteCliente(Long paqueteCliente_pk, Paquete paquete_fk) {
 		this.paqueteCliente_pk = paqueteCliente_pk;
-		this.pedidoCliente_fk = pedidoCliente_fk;
 		this.paqueteCliente_fk = paquete_fk;
 	}
 
@@ -62,10 +54,6 @@ public class PaqueteCliente implements Serializable{
 		return pedidoCliente_fk;
 	}
 
-	public void setPedidoCliente(PedidoCliente pedidoCliente) {
-		this.pedidoCliente_fk = pedidoCliente_fk;
-	}
-
 	public Paquete getPaquete_fk() {
 		return paqueteCliente_fk;
 	}
@@ -74,8 +62,6 @@ public class PaqueteCliente implements Serializable{
 		this.paqueteCliente_fk = paquete_fk;
 	}
 
-	
-	
 	public Paquete getPaqueteCliente_fk() {
 		return paqueteCliente_fk;
 	}
@@ -87,10 +73,5 @@ public class PaqueteCliente implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
-	
-	
+
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,29 +24,21 @@ public class Ubicacion implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ubicacion_pk;
 	@ManyToOne
-	@JoinColumn(name = "ciudad_fk")
+	@JoinColumn(name = "ciudad_fk", nullable = false)
 	@JsonIgnoreProperties("ubicacion")
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "ubicacion_fk")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion_fk")
 	private List<Usuario> usuario;
 	private static final long serialVersionUID = 1L;
 
 	public Ubicacion() {
 	}
 
-	public Ubicacion(Ciudad ciudad_fk, String direccion, List<Usuario> usuarios) {
+	public Ubicacion(Ciudad ciudad_fk, String direccion, List<Usuario> usuario) {
 		this.ciudad_fk = ciudad_fk;
 		this.direccion = direccion;
-		this.usuario = usuarios;
-	}
-
-	public List<Usuario> getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(List<Usuario> usuario) {
 		this.usuario = usuario;
 	}
 
@@ -75,7 +66,16 @@ public class Ubicacion implements Serializable {
 		this.direccion = direccion;
 	}
 
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 }

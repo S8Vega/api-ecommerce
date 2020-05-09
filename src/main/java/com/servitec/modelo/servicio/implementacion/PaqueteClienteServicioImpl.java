@@ -8,18 +8,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IPaqueteClienteDao;
 import com.servitec.modelo.entidad.PaqueteCliente;
-import com.servitec.modelo.servicio.interfaz.IPaqueteClienteServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class PaqueteClienteServicioImpl implements IPaqueteClienteServicio{
-	
+@Service("PaqueteClienteServicioImpl")
+public class PaqueteClienteServicioImpl implements IServicio<PaqueteCliente, Long> {
+
 	@Autowired
 	private IPaqueteClienteDao paqueteClienteDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
-	public List<PaqueteCliente> findAll(){
-		return(List<PaqueteCliente>) this.paqueteClienteDao.findAll();
+	public List<PaqueteCliente> findAll() {
+		return (List<PaqueteCliente>) this.paqueteClienteDao.findAll();
 	}
 
 	@Override
@@ -38,6 +38,5 @@ public class PaqueteClienteServicioImpl implements IPaqueteClienteServicio{
 	public void delete(PaqueteCliente paqueteCliente) {
 		this.paqueteClienteDao.delete(paqueteCliente);
 	}
-	
-	
+
 }

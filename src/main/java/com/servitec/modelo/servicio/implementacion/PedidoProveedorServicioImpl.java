@@ -8,11 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IPedidoProveedorDao;
 import com.servitec.modelo.entidad.PedidoProveedor;
-import com.servitec.modelo.servicio.interfaz.IPedidoProveedorServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class PedidoProveedorImpl implements IPedidoProveedorServicio {
-	
+@Service("PedidoProveedorServicioImpl")
+public class PedidoProveedorServicioImpl implements IServicio<PedidoProveedor, Long> {
+
 	@Autowired
 	private IPedidoProveedorDao pedDao;
 

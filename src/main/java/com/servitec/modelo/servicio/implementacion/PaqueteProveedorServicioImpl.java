@@ -7,20 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.servitec.modelo.dao.interfaz.IPaqueteProveedorDao;
-import com.servitec.modelo.entidad.PaqueteCliente;
 import com.servitec.modelo.entidad.PaqueteProveedor;
-import com.servitec.modelo.servicio.interfaz.IPaqueteClienteServicio;
-import com.servitec.modelo.servicio.interfaz.IPaqueteProveedorServicio;
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
-@Service
-public class PaqueteProveedorImpl implements IPaqueteProveedorServicio{
-	
+@Service("PaqueteProveedorServicioImpl")
+public class PaqueteProveedorServicioImpl implements IServicio<PaqueteProveedor, Long> {
+
 	@Autowired
 	private IPaqueteProveedorDao paqueteProveedorDao;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<PaqueteProveedor> findAll(){
+	public List<PaqueteProveedor> findAll() {
 		return (List<PaqueteProveedor>) this.paqueteProveedorDao.findAll();
 	}
 

@@ -9,27 +9,25 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="pedidoProveedor")
+@Table(name = "pedidoProveedor")
 public class PedidoProveedor implements Serializable {
-	
+
 	@Id
 	private Long pedidoProveedor;
 	@Column
 	private Long proveedor_fk;
-	
+
 	@OneToMany(mappedBy = "pedidoProveedor_fk")
 	private List<PaqueteProveedor> paqueteProveedores;
-	
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public PedidoProveedor() {
-		}
+	}
 
 	public PedidoProveedor(Long pedidoProveedor, Long proveedor_fk) {
 		this.pedidoProveedor = pedidoProveedor;
@@ -55,6 +53,5 @@ public class PedidoProveedor implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
 
 }

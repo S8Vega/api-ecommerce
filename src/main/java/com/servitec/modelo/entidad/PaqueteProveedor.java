@@ -2,7 +2,6 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,25 +12,20 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="paqueteProveedor")
+@Table(name = "paqueteProveedor")
 public class PaqueteProveedor implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paqueteProveedor;
-	
-	
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name = "pedidoProveedor_fk")
-	private	PedidoProveedor pedidoProveedor_fk;
-
+	private PedidoProveedor pedidoProveedor_fk;
 	@OneToOne
 	@JoinColumn(name = "paqueteProveedor_fk")
 	private Paquete paqueteProveedor_fk;
-	
+
 	public PaqueteProveedor() {
 	}
 
@@ -65,13 +59,8 @@ public class PaqueteProveedor implements Serializable {
 		this.paqueteProveedor_fk = paquete_fk;
 	}
 
-	
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
+
 }
