@@ -14,7 +14,7 @@ public class SalidaServicioImpl implements IServicio<Salida, Long> {
 
 	@Autowired
 	private ISalidaDao salidaDao;
-	
+
 	@Override
 	public List<Salida> findAll() {
 		// TODO Auto-generated method stub

@@ -10,8 +10,8 @@ import com.servitec.modelo.entidad.Obra;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("ObraServicioImpl")
-public class ObraServicioImpl implements IServicio<Obra,Long> {
-	
+public class ObraServicioImpl implements IServicio<Obra, Long> {
+
 	private IObraDao obraDao;
 
 	@Override

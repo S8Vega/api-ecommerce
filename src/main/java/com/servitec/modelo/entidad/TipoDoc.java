@@ -19,11 +19,11 @@ public class TipoDoc implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long tipoDoc_pk;
-	@Column(nullable = false)
+	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoDoc_fk")
 	private List<Aliado> aliado;
-	private static final long serialVersionUID = -8432865656283609942L;
+	private static final long serialVersionUID = 1L;
 
 	public TipoDoc() {
 	}

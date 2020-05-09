@@ -2,7 +2,11 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,8 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class PedidoCliente implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedidoCliente_pk;
-	@OneToMany(mappedBy = "pedidoCliente_fk")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCliente_fk")
 	private List<PaqueteCliente> paqueteClientes;
 	@ManyToOne
 	@JoinColumn(name = "aliado_fk")

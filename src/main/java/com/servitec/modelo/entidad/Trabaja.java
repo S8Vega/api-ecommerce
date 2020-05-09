@@ -12,39 +12,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "trabaja")
-public class Trabaja implements Serializable{
+public class Trabaja implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long trabaja_pk;
-	
 	@ManyToOne
 	@JoinColumn(name = "obra_fk")
+	@JsonIgnoreProperties("trabaja")
 	private Obra obra_fk;
-	
 	@ManyToOne
 	@JoinColumn(name = "empleado_fk")
+	@JsonIgnoreProperties("trabaja")
 	private Empleado empleado_fk;
-	
 	@Column(name = "fecha_inicio", nullable = false)
 	private LocalDate fechaInicio;
-	
-	@Column(name = "fecha_fin", nullable = false)
+	@Column(name = "fecha_fin")
 	private LocalDate fechaFin;
+	private static final long serialVersionUID = 1L;
 
 	public Trabaja() {
-		super();
 	}
 
-	public Trabaja(Long trabaja_pk, Obra obra_fk, Empleado empleado_fk, LocalDate fechaInicio, LocalDate fechaFin) {
-		this.trabaja_pk = trabaja_pk;
+	public Trabaja(Obra obra_fk, Empleado empleado_fk, LocalDate fechaInicio, LocalDate fechaFin) {
+		super();
 		this.obra_fk = obra_fk;
 		this.empleado_fk = empleado_fk;
 		this.fechaInicio = fechaInicio;
@@ -94,7 +89,5 @@ public class Trabaja implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 
 }

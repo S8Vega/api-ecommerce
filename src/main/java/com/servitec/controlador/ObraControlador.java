@@ -38,7 +38,7 @@ public class ObraControlador {
 		this.obraServicio.save(obra);
 		return obra;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Obra actualizar(@PathVariable Long id, @RequestBody Obra obra) {
@@ -46,8 +46,8 @@ public class ObraControlador {
 		actual.setNombre(obra.getNombre());
 		return actual;
 	}
-	
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Obra eliminar(@PathVariable Long id) {
 		Obra obra = this.obraServicio.findById(id);
 		this.obraServicio.delete(obra);

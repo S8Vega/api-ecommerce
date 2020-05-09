@@ -12,46 +12,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "salida")
-public class Salida implements Serializable{
+public class Salida implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long salida;
-	
+	private Long salida_pk;
 	@OneToOne
 	@JoinColumn(name = "serial_fk")
+	@JsonIgnoreProperties("salida")
 	private Serial serial_fk;
-	
 	@Column(name = "fecha_salida", nullable = false)
 	private LocalDate fechaSalida;
-	
 	@Column(name = "motivo_salida", length = 20)
 	private String motivoSalida;
+	private static final long serialVersionUID = 1L;
 
 	public Salida() {
-		super();
 	}
 
 	public Salida(Serial serial_fk, LocalDate fechaSalida, String motivoSalida) {
 		this.serial_fk = serial_fk;
 		this.fechaSalida = fechaSalida;
 		this.motivoSalida = motivoSalida;
-	}
-	
-	
-
-	public Long getSalida() {
-		return salida;
-	}
-
-	public void setSalida(Long salida) {
-		this.salida = salida;
 	}
 
 	public Serial getSerial_fk() {
@@ -70,6 +56,14 @@ public class Salida implements Serializable{
 		this.fechaSalida = fechaSalida;
 	}
 
+	public Long getSalida_pk() {
+		return salida_pk;
+	}
+
+	public void setSalida_pk(Long salida_pk) {
+		this.salida_pk = salida_pk;
+	}
+
 	public String getMotivoSalida() {
 		return motivoSalida;
 	}
@@ -81,7 +75,5 @@ public class Salida implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 
 }

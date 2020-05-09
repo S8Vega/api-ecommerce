@@ -38,6 +38,5 @@ public class TrabajaServicioImpl implements IServicio<Trabaja, Long> {
 	public void delete(Trabaja t) {
 		this.trabajaDao.delete(t);
 	}
-	
-	
+
 }

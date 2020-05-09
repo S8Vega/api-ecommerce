@@ -11,12 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "producto")
-public class Producto implements Serializable{
+public class Producto implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long producto_pk;
@@ -28,30 +30,35 @@ public class Producto implements Serializable{
 	private String modelo;
 	@Column(length = 100, nullable = false)
 	private String ubicacion;
-	@Column (name = "cantidad_minima", nullable = false)
-	private int cantidadMinima;
-	//@OneToMany(cascade = CascadeType.UPDATE, fetch = FetchType.LAZY, mappedBy = "producto_fk")
-	//private List<Paquete> paquete;
-	@JoinTable(
-	        name = "producto_funcion",
-	        joinColumns = @JoinColumn(name = "producto_pfk"),
-	        inverseJoinColumns = @JoinColumn(name = "funcion_pfk")
-	    )
-	    @ManyToMany(fetch = FetchType.EAGER)
-	    private List<Funcion> funciones;
-	
+	@Column(name = "cantidad_minima", nullable = false)
+	private Long cantidadMinima;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
+	private List<Funcion> funciones;
+	@OneToMany(mappedBy = "producto_fk")
+	private List<Paquete> paquete;
 	private static final long serialVersionUID = 1L;
-	
+
 	public Producto() {
 	}
-	
-	public Producto(String nombre, String marca, String modelo, String ubicacion, int cantidadMinima, List<Funcion> funciones) {
+
+	public Producto(String nombre, String marca, String modelo, String ubicacion, Long cantidadMinima,
+			List<Funcion> funciones, List<Paquete> paquete) {
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ubicacion = ubicacion;
 		this.cantidadMinima = cantidadMinima;
 		this.funciones = funciones;
+		this.paquete = paquete;
+	}
+
+	public List<Paquete> getPaquete() {
+		return paquete;
+	}
+
+	public void setPaquete(List<Paquete> paquete) {
+		this.paquete = paquete;
 	}
 
 	public Long getProducto_pk() {
@@ -94,26 +101,12 @@ public class Producto implements Serializable{
 		this.ubicacion = ubicacion;
 	}
 
-	public int getCantidadMinima() {
+	public Long getCantidadMinima() {
 		return cantidadMinima;
 	}
 
-	public void setCantidadMinima(int cantidadMinima) {
+	public void setCantidadMinima(Long cantidadMinima) {
 		this.cantidadMinima = cantidadMinima;
-	}
-
-	/*public List<Paquete> getPaquete() {
-		return paquete;
-	}
-
-	public void setPaquete(List<Paquete> paquete) {
-		this.paquete = paquete;
-	}*/
-	
-	
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public List<Funcion> getFunciones() {
@@ -123,6 +116,9 @@ public class Producto implements Serializable{
 	public void setFunciones(List<Funcion> funciones) {
 		this.funciones = funciones;
 	}
-	
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

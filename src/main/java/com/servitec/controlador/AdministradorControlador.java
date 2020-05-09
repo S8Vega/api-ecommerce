@@ -18,27 +18,28 @@ import com.servitec.modelo.servicio.interfaz.IServicio;
 @RestController
 @RequestMapping("/administrador")
 public class AdministradorControlador {
-   
+
 	@Autowired
 	@Qualifier("AdministradorServicioImpl")
-	private IServicio<Administrador,Long> administradorServicio;
-	
+	private IServicio<Administrador, Long> administradorServicio;
+
 	@RequestMapping
-	public List<Administrador> listar(){
+	public List<Administrador> listar() {
 		return this.administradorServicio.findAll();
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Administrador crear(@RequestBody Administrador administrador) {
-        this.administradorServicio.save(administrador);
-        return administrador;
+		this.administradorServicio.save(administrador);
+		return administrador;
 	}
+
 	@RequestMapping("/{id}")
 	public Administrador buscar(@PathVariable Long id) {
 		return this.administradorServicio.findById(id);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Administrador actualizar(@PathVariable Long id, @RequestBody Administrador administrador) {
@@ -46,16 +47,14 @@ public class AdministradorControlador {
 		admin.setAlias(administrador.getAlias());
 		admin.setContrasena(administrador.getContrasena());
 		this.administradorServicio.save(admin);
-	    return admin;
+		return admin;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Administrador eliminar(@PathVariable Long id) {
 		Administrador administrador = this.administradorServicio.findById(id);
 		this.administradorServicio.delete(administrador);
 		return administrador;
 	}
-	
-	
-	
+
 }

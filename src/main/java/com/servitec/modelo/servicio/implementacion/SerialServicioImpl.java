@@ -10,8 +10,8 @@ import com.servitec.modelo.entidad.Serial;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("SerialServicioImpl")
-public class SerialServicioImpl implements IServicio<Serial,Long>{
-  
+public class SerialServicioImpl implements IServicio<Serial, Long> {
+
 	@Autowired
 	private ISerialDao serialDao;
 

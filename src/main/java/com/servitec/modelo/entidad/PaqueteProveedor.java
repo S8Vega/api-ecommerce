@@ -11,36 +11,59 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-@Table(name = "paqueteProveedor")
+@Table(name = "paquete_proveedor")
 public class PaqueteProveedor implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long paqueteProveedor;
-	private static final long serialVersionUID = 1L;
+	private Long paqueteProveedor_pk;
 	@ManyToOne
 	@JoinColumn(name = "pedidoProveedor_fk")
+	@JsonIgnoreProperties("paqueteProveedor")
 	private PedidoProveedor pedidoProveedor_fk;
 	@OneToOne
-	@JoinColumn(name = "paqueteProveedor_fk")
-	private Paquete paqueteProveedor_fk;
+	@JoinColumn(name = "paquete_fk")
+	@JsonIgnoreProperties("paqueteProveedor")
+	private Paquete paquete_fk;
+	@OneToOne(mappedBy = "paqueteProveedor_fk")
+	private PaqueteProveedorSerial paqueteProveedorSerial;
+	private static final long serialVersionUID = 1L;
 
 	public PaqueteProveedor() {
 	}
 
-	public PaqueteProveedor(Long paqueteProveedor, PedidoProveedor pedidoProveedor_fk, Paquete paqueteProveedor_fk) {
-		this.paqueteProveedor = paqueteProveedor;
+	public PaqueteProveedor(PedidoProveedor pedidoProveedor_fk, Paquete paquete_fk,
+			PaqueteProveedorSerial paqueteProveedorSerial) {
 		this.pedidoProveedor_fk = pedidoProveedor_fk;
-		this.paqueteProveedor_fk = paqueteProveedor_fk;
+		this.paquete_fk = paquete_fk;
+		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
 
-	public Long getPaqueteProveedor() {
-		return paqueteProveedor;
+	public PaqueteProveedorSerial getPaqueteProveedorSerial() {
+		return paqueteProveedorSerial;
 	}
 
-	public void setPaqueteProveedor(Long paqueteProveedor) {
-		this.paqueteProveedor = paqueteProveedor;
+	public void setPaqueteProveedorSerial(PaqueteProveedorSerial paqueteProveedorSerial) {
+		this.paqueteProveedorSerial = paqueteProveedorSerial;
+	}
+
+	public Paquete getPaquete_fk() {
+		return paquete_fk;
+	}
+
+	public void setPaquete_fk(Paquete paquete_fk) {
+		this.paquete_fk = paquete_fk;
+	}
+
+	public Long getPaqueteProveedor_pk() {
+		return paqueteProveedor_pk;
+	}
+
+	public void setPaqueteProveedor_pk(Long paqueteProveedor_pk) {
+		this.paqueteProveedor_pk = paqueteProveedor_pk;
 	}
 
 	public PedidoProveedor getPedidoProveedor_fk() {
@@ -49,14 +72,6 @@ public class PaqueteProveedor implements Serializable {
 
 	public void setPedidoProveedor_fk(PedidoProveedor pedidoProveedor_fk) {
 		this.pedidoProveedor_fk = pedidoProveedor_fk;
-	}
-
-	public Paquete getPaqueteProveedor_fk() {
-		return paqueteProveedor_fk;
-	}
-
-	public void setPaqueteProveedor_fk(Paquete paquete_fk) {
-		this.paqueteProveedor_fk = paquete_fk;
 	}
 
 	public static long getSerialversionuid() {

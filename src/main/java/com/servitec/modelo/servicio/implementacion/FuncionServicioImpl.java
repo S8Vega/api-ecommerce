@@ -11,8 +11,8 @@ import com.servitec.modelo.entidad.Funcion;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("FuncionServicioImpl")
-public class FuncionServicioImpl implements IServicio<Funcion, Long>{
-	
+public class FuncionServicioImpl implements IServicio<Funcion, Long> {
+
 	@Autowired
 	private IFuncionDao funcionDao;
 

@@ -22,24 +22,24 @@ public class FuncionControlador {
 	@Autowired
 	@Qualifier("FuncionServicioImpl")
 	IServicio<Funcion, Long> funcionServicio;
-	
+
 	@RequestMapping
 	public List<Funcion> listar() {
 		return this.funcionServicio.findAll();
 	}
-	
+
 	@RequestMapping("/{id}")
 	public Funcion buscar(@PathVariable Long id) {
 		return this.funcionServicio.findById(id);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Funcion crear(@RequestBody Funcion funcion) {
 		this.funcionServicio.save(funcion);
 		return funcion;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Funcion actualizar(@PathVariable Long id, @RequestBody Funcion funcion) {
@@ -49,12 +49,12 @@ public class FuncionControlador {
 		this.funcionServicio.save(funcionActual);
 		return funcionActual;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Funcion eliminar(@PathVariable Long id) {
 		Funcion funcion = this.funcionServicio.findById(id);
 		this.funcionServicio.delete(funcion);
 		return funcion;
 	}
-	
+
 }

@@ -24,7 +24,7 @@ public class Ubicacion implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ubicacion_pk;
 	@ManyToOne
-	@JoinColumn(name = "ciudad_fk", nullable = false)
+	@JoinColumn(name = "ciudad_fk")
 	@JsonIgnoreProperties("ubicacion")
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)

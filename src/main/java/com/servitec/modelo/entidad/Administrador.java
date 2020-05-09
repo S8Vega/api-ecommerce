@@ -11,38 +11,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "administrador")
-public class Administrador implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Administrador implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long administrador_pk;
-	
 	@OneToOne
-	@JoinColumn(name = "administrador_fk")
-	private Usuario administrador_fk;
-	
+	@JoinColumn(name = "usuario_fk")
+	@JsonIgnoreProperties("administrador")
+	private Usuario usuario_fk;
 	@Column(name = "alias", length = 50, nullable = false, unique = true)
 	private String alias;
-	
-	@Column(name = "contrasena", length = 25, nullable = false)
+	@Column(name = "contrasena", length = 250, nullable = false)
 	private String contrasena;
+	private static final long serialVersionUID = 1L;
 
 	public Administrador() {
 	}
 
-	public Administrador(Usuario administrador_fk, String alias, String contrasena) {
-		this.administrador_fk = administrador_fk;
+	public Administrador(Usuario usuario_fk, String alias, String contrasena) {
+		this.usuario_fk = usuario_fk;
 		this.alias = alias;
 		this.contrasena = contrasena;
 	}
-	
-	
 
 	public Long getAdministrador_pk() {
 		return administrador_pk;
@@ -52,16 +47,12 @@ public class Administrador implements Serializable{
 		this.administrador_pk = administrador_pk;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Usuario getUsuario_fk() {
+		return usuario_fk;
 	}
 
-	public Usuario getAdministrador_fk() {
-		return administrador_fk;
-	}
-
-	public void setAdministrador_fk(Usuario administrador_fk) {
-		this.administrador_fk = administrador_fk;
+	public void setUsuario_fk(Usuario usuario_fk) {
+		this.usuario_fk = usuario_fk;
 	}
 
 	public String getAlias() {
@@ -79,6 +70,9 @@ public class Administrador implements Serializable{
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-	
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

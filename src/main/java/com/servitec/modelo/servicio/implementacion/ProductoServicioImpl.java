@@ -11,15 +11,15 @@ import com.servitec.modelo.entidad.Producto;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("ProductoServicioImpl")
-public class ProductoServicioImpl implements IServicio<Producto, Long>{
+public class ProductoServicioImpl implements IServicio<Producto, Long> {
 
 	@Autowired
 	private IProductoDao productoDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Producto> findAll() {
-		return (List<Producto>)this.productoDao.findAll();
+		return (List<Producto>) this.productoDao.findAll();
 	}
 
 	@Override

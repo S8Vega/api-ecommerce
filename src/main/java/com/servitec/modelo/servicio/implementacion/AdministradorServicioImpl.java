@@ -11,7 +11,7 @@ import com.servitec.modelo.entidad.Administrador;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @Service("AdministradorServicioImpl")
-public class AdministradorServicioImpl implements IServicio<Administrador,Long>{
+public class AdministradorServicioImpl implements IServicio<Administrador, Long> {
 
 	@Autowired
 	private IAdministradorDao administradorDao;
@@ -39,5 +39,5 @@ public class AdministradorServicioImpl implements IServicio<Administrador,Long>{
 	public void delete(Administrador t) {
 		this.administradorDao.delete(t);
 	}
-	
+
 }

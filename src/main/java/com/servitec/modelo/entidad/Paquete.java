@@ -2,13 +2,18 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "paquete")
@@ -21,25 +26,27 @@ public class Paquete implements Serializable {
 	private String medida;
 	@Column(nullable = false)
 	private Long cantidadInicial;
-	@Column(nullable = false)
-	private Long producto_fk;
+	@ManyToOne
+	@JoinColumn(name = "producto_fk")
+	@JsonIgnoreProperties("paquete")
+	private Producto producto_fk;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "paquete_fk")
+	private PaqueteCliente paqueteCliente;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "paquete_fk")
+	private PaqueteProveedor paqueteProveedor;
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne(mappedBy = "paqueteCliente_fk")
-	private PaqueteCliente paqueteCliente;
-
-	@OneToOne(mappedBy = "paqueteProveedor_fk")
-	private PaqueteProveedor paqueteProveedor;
-
 	public Paquete() {
-
 	}
 
-	public Paquete(Long paquete_pk, String medida, Long cantidadInicial, Long producto_fk) {
-		this.paquete_pk = paquete_pk;
+	public Paquete(String medida, Long cantidadInicial, Producto producto_fk, PaqueteCliente paqueteCliente,
+			PaqueteProveedor paqueteProveedor) {
+		super();
 		this.medida = medida;
 		this.cantidadInicial = cantidadInicial;
 		this.producto_fk = producto_fk;
+		this.paqueteCliente = paqueteCliente;
+		this.paqueteProveedor = paqueteProveedor;
 	}
 
 	public Long getPaquete_pk() {
@@ -66,11 +73,11 @@ public class Paquete implements Serializable {
 		this.cantidadInicial = cantidadInicial;
 	}
 
-	public Long getProducto_fk() {
+	public Producto getProducto_fk() {
 		return producto_fk;
 	}
 
-	public void setProducto_fk(Long producto_fk) {
+	public void setProducto_fk(Producto producto_fk) {
 		this.producto_fk = producto_fk;
 	}
 

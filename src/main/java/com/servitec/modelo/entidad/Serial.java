@@ -15,49 +15,43 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "serial")
-public class Serial implements Serializable{
+public class Serial implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long serial_pk;
-	
-    @Column(name = "serial", length = 20, nullable = false, unique = true)
+	@Column(name = "serial", length = 20, nullable = false, unique = true)
 	private String serial;
-	
-    
-	private Long paqueteProveedor;
-	
 	@Column(name = "fecha_entrada", nullable = false)
 	private LocalDate fechaEntrada;
-	
 	@Column(name = "metodo_entrada", nullable = false)
 	private String metodoEntrada;
-	
 	@Column(name = "control_calidad")
 	private Boolean controlCalidad;
-	
 	@OneToOne(mappedBy = "serial_fk")
 	private Salida salida;
-	
 	@OneToMany(mappedBy = "serial_fk")
 	private List<Prestamo> prestamos;
-	
+	@OneToOne(mappedBy = "serial_fk")
+	private PaqueteClienteSerial paqueteClienteSerial;
+	@OneToOne(mappedBy = "serial_fk")
+	private PaqueteClienteSerial paqueteProveedorSerial;
+	private static final long serialVersionUID = 1L;
+
 	public Serial() {
-		super();
 	}
 
-	public Serial(Long serial_pk, String serial, Long paqueteProveedor, LocalDate fechaEntrada, String metodoEntrada,
-			Boolean controlCalidad) {
-		this.serial_pk = serial_pk;
+	public Serial(String serial, LocalDate fechaEntrada, String metodoEntrada, Boolean controlCalidad, Salida salida,
+			List<Prestamo> prestamos, PaqueteClienteSerial paqueteClienteSerial,
+			PaqueteClienteSerial paqueteProveedorSerial) {
 		this.serial = serial;
-		this.paqueteProveedor = paqueteProveedor;
 		this.fechaEntrada = fechaEntrada;
 		this.metodoEntrada = metodoEntrada;
 		this.controlCalidad = controlCalidad;
+		this.salida = salida;
+		this.prestamos = prestamos;
+		this.paqueteClienteSerial = paqueteClienteSerial;
+		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
 
 	public Long getSerial_pk() {
@@ -74,14 +68,6 @@ public class Serial implements Serializable{
 
 	public void setSerial(String serial) {
 		this.serial = serial;
-	}
-
-	public Long getPaqueteProveedor() {
-		return paqueteProveedor;
-	}
-
-	public void setPaqueteProveedor(Long paqueteProveedor) {
-		this.paqueteProveedor = paqueteProveedor;
 	}
 
 	public LocalDate getFechaEntrada() {
@@ -116,10 +102,6 @@ public class Serial implements Serializable{
 		this.salida = salida;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public List<Prestamo> getPrestamos() {
 		return prestamos;
 	}
@@ -127,6 +109,25 @@ public class Serial implements Serializable{
 	public void setPrestamos(List<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
-	
-	
+
+	public PaqueteClienteSerial getPaqueteClienteSerial() {
+		return paqueteClienteSerial;
+	}
+
+	public void setPaqueteClienteSerial(PaqueteClienteSerial paqueteClienteSerial) {
+		this.paqueteClienteSerial = paqueteClienteSerial;
+	}
+
+	public PaqueteClienteSerial getPaqueteProveedorSerial() {
+		return paqueteProveedorSerial;
+	}
+
+	public void setPaqueteProveedorSerial(PaqueteClienteSerial paqueteProveedorSerial) {
+		this.paqueteProveedorSerial = paqueteProveedorSerial;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

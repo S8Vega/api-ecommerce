@@ -48,7 +48,7 @@ public class TrabajaControlador {
 		this.trabajaServicio.save(trabajaActual);
 		return trabajaActual;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Trabaja eliminar(@PathVariable Long id) {
 		Trabaja trabaja = this.trabajaServicio.findById(id);

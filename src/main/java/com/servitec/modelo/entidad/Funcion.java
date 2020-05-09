@@ -14,20 +14,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "funcion")
-public class Funcion implements Serializable{
+public class Funcion implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long funcion_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
 	@ManyToMany(mappedBy = "funciones", fetch = FetchType.EAGER)
-    private List<Producto> productos;
-	
+	private List<Producto> productos;
+
 	private static final long serialVersionUID = 1L;
-	
+
 	public Funcion() {
 	}
-	
+
 	public Funcion(String nombre, List<Producto> productos) {
 		this.nombre = nombre;
 		this.productos = productos;
@@ -60,5 +61,5 @@ public class Funcion implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Aliado implements Serializable {
 	@JoinColumn(name = "tipoDoc_fk")
 	@JsonIgnoreProperties("aliado")
 	private TipoDoc tipoDoc_fk;
+	@Column(length = 20)
 	private String documento;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
 	private List<PedidoCliente> pedidoCliente;

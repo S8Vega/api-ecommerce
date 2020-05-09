@@ -12,50 +12,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "prestamo")
-public class Prestamo implements Serializable{
+public class Prestamo implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long prestamo_pk;
-	
 	@ManyToOne
 	@JoinColumn(name = "empleado_fk")
 	private Empleado empleado_fk;
-	
 	@ManyToOne()
 	@JoinColumn(name = "serial_fk")
 	private Serial serial_fk;
-	
-	@Column(name = "motivo", length = 200, nullable = false)
+	@Column(length = 200, nullable = false)
 	private String motivo;
-	
 	@Column(name = "observacion_inicio", length = 200)
 	private String observacionInicio;
-	
 	@Column(name = "observacion_fin", length = 200)
 	private String observacionFin;
-	
 	@Column(name = "fecha_inicio", nullable = false)
 	private LocalDate fechaInicio;
-	
 	@Column(name = "fecha_fin")
 	private LocalDate fechaFin;
-	
+	private static final long serialVersionUID = 1L;
+
 	public Prestamo() {
-		super();
 	}
 
-	public Prestamo(Long prestamo_pk, Empleado empleado_fk, Serial serial_fk, String motivo, String observacionInicio,
+	public Prestamo(Empleado empleado_fk, Serial serial_fk, String motivo, String observacionInicio,
 			String observacionFin, LocalDate fechaInicio, LocalDate fechaFin) {
-		this.prestamo_pk = prestamo_pk;
 		this.empleado_fk = empleado_fk;
 		this.serial_fk = serial_fk;
 		this.motivo = motivo;
@@ -132,7 +118,5 @@ public class Prestamo implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 
 }

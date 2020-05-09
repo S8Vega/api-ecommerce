@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,22 +33,50 @@ public class Usuario implements Serializable {
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario_fk")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
 	private Aliado aliado;
-	@OneToOne(mappedBy = "administrador_fk")
-	private Administrador administrador_fk;
-	@OneToOne(mappedBy = "empleado_fk")
-	private Empleado empleado_fk;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	private Administrador administrador;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	private Empleado empleado;
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
 	}
 
-	public Usuario(String nombre, Ubicacion ubicacion_fk, String telefono, String correo) {
+	public Usuario(String nombre, Ubicacion ubicacion_fk, String telefono, String correo, Aliado aliado,
+			Administrador administrador, Empleado empleado) {
 		this.nombre = nombre;
 		this.ubicacion_fk = ubicacion_fk;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.aliado = aliado;
+		this.administrador = administrador;
+		this.empleado = empleado;
+	}
+
+	public Aliado getAliado() {
+		return aliado;
+	}
+
+	public void setAliado(Aliado aliado) {
+		this.aliado = aliado;
+	}
+
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Administrador administrador) {
+		this.administrador = administrador;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 	public Long getUsuario_pk() {
@@ -92,24 +119,8 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 	}
 
-	public Administrador getAdministrador_fk() {
-		return administrador_fk;
-	}
-
-	public void setAdministrador_fk(Administrador administrador_fk) {
-		this.administrador_fk = administrador_fk;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public Empleado getEmpleado_fk() {
-		return empleado_fk;
-	}
-
-	public void setEmpleado_fk(Empleado empleado_fk) {
-		this.empleado_fk = empleado_fk;
 	}
 
 }

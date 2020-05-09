@@ -20,24 +20,24 @@ public class ProductoControlador {
 	@Autowired
 	@Qualifier("ProductoServicioImpl")
 	private IServicio<Producto, Long> productoServicio;
-	
+
 	@RequestMapping
 	public List<Producto> listar() {
 		return this.productoServicio.findAll();
 	}
-	
+
 	@RequestMapping("/{id}")
 	public Producto buscar(@PathVariable Long id) {
 		return this.productoServicio.findById(id);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Producto crear(@RequestBody Producto producto) {
 		this.productoServicio.save(producto);
 		return producto;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto) {
@@ -51,10 +51,10 @@ public class ProductoControlador {
 		this.productoServicio.save(productoActual);
 		return productoActual;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Producto eliminar(@PathVariable Long id) {
-		Producto producto  = this.productoServicio.findById(id);
+		Producto producto = this.productoServicio.findById(id);
 		this.productoServicio.delete(producto);
 		return producto;
 	}

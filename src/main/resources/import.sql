@@ -20,11 +20,10 @@ INSERT INTO `tipo_doc` (`nombre`) VALUES ('Cedula');
 INSERT INTO `tipo_doc` (`nombre`) VALUES ('RUT');
 INSERT INTO `tipo_doc` (`nombre`) VALUES ('NIT');
 --aliado
-INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '1', '1');
-INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '2', '2');
-INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '1', '3');
-INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '3', '4');
-INSERT INTO `aliado` (`documento`, `tipo_doc`, `usuario`) VALUES ('10235421346', '2', '5');
+INSERT INTO `aliado` (`documento`, `tipo_doc_fk`, `usuario`) VALUES ('10235421346', '1', '1');
+INSERT INTO `aliado` (`documento`, `tipo_doc_fk`, `usuario`) VALUES ('10235421346', '2', '2');
+INSERT INTO `aliado` (`documento`, `tipo_doc_fk`, `usuario`) VALUES ('10235421346', '1', '3');
+INSERT INTO `aliado` (`documento`, `tipo_doc_fk`, `usuario`) VALUES ('10235421346', '3', '4');
 --producto
 INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`) VALUES ('10', 'Apple', 'TG4', 'UDP', 'estanteria3');
 INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`) VALUES ('20', 'Microsoft', 'TG4', 'Cable TX', 'estanteria2');
@@ -33,13 +32,17 @@ INSERT INTO `producto` (`cantidad_minima`,`marca`,`modelo`,`nombre`,`ubicacion`)
 INSERT INTO `funcion` (`nombre`) VALUES ('Herramienta');
 INSERT INTO `funcion` (`nombre`) VALUES ('Cable');
 INSERT INTO `funcion` (`nombre`) VALUES ('Maquina');
-
 --cargo
 INSERT INTO `cargo`(`nombre`) VALUES ('tecnico')
 INSERT INTO `cargo`(`nombre`) VALUES ('secretaria')
 INSERT INTO `cargo`(`nombre`) VALUES ('portero')
-
 --empleado
-INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`empleado_fk`) VALUES ('veg8','vega','1','1');
-INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`empleado_fk`) VALUES ('amondrag','dis','1','2');
+INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`usuario_fk`) VALUES ('veg8','vega','1','1');
+INSERT INTO `empleado`(`alias`,`contrasena`,`cargo_fk`,`usuario_fk`) VALUES ('amondrag','dis','1','2');
+--pedido
+INSERT INTO `pedido` (`codigo`, `fecha_creacion`) VALUES ('1', '2020-05-07');
+INSERT INTO `pedido` (`codigo`, `fecha_creacion`) VALUES ('2', '2020-05-10');
+INSERT INTO `pedido` (`codigo`, `fecha_creacion`) VALUES ('3', '2020-05-25');
+INSERT INTO `pedido` (`codigo`, `fecha_creacion`) VALUES ('4', '2020-05-2');
+
 

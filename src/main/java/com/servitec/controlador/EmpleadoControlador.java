@@ -14,35 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Empleado;
 
-
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadoControlador {
-     
+
 	@Autowired
 	@Qualifier("EmpleadoServicioImpl")
 	private IServicio<Empleado, Long> empleadoServicio;
-	
+
 	@RequestMapping
-	public List<Empleado> listar(){
+	public List<Empleado> listar() {
 		return this.empleadoServicio.findAll();
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Empleado crear(@RequestBody Empleado empleado) {
 		this.empleadoServicio.save(empleado);
 		return empleado;
 	}
-	
-	
+
 	@RequestMapping("/{id}")
 	public Empleado buscar(@PathVariable Long id) {
 		return this.empleadoServicio.findById(id);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Empleado actualizar(@PathVariable Long id, @RequestBody Empleado empleado) {
@@ -52,13 +50,12 @@ public class EmpleadoControlador {
 		this.empleadoServicio.save(empleadoActual);
 		return empleadoActual;
 	}
-	
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Empleado eliminar(@PathVariable Long id) {
 		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);
 		this.empleadoServicio.delete(empleadoActual);
 		return empleadoActual;
 	}
-	
-	
+
 }

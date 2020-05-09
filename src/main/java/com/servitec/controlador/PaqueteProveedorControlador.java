@@ -43,12 +43,11 @@ public class PaqueteProveedorControlador {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public PaqueteProveedor actualizar(@PathVariable Long id, @RequestBody PaqueteProveedor paqueteProveedor) {
-		PaqueteProveedor paqueteActual = this.paqueteProveedorServico.findById(id);
-		paqueteActual.setPaqueteProveedor_fk(paqueteProveedor.getPaqueteProveedor_fk());
-		paqueteActual.setPaqueteProveedor(paqueteProveedor.getPaqueteProveedor());
-		paqueteActual.setPedidoProveedor_fk(paqueteProveedor.getPedidoProveedor_fk());
-		this.paqueteProveedorServico.save(paqueteActual);
-		return paqueteActual;
+		PaqueteProveedor paqueteProveedorActual = this.paqueteProveedorServico.findById(id);
+		paqueteProveedorActual.setPaquete_fk(paqueteProveedor.getPaquete_fk());
+		paqueteProveedorActual.setPedidoProveedor_fk(paqueteProveedor.getPedidoProveedor_fk());
+		this.paqueteProveedorServico.save(paqueteProveedorActual);
+		return paqueteProveedorActual;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
