@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario")
+
 public class Usuario implements Serializable {
 
 	@Id
@@ -35,6 +36,10 @@ public class Usuario implements Serializable {
 	private String correo;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "usuario_fk")
 	private Aliado aliado;
+	@OneToOne(mappedBy = "administrador_fk")
+	private Administrador administrador_fk;
+	@OneToOne(mappedBy = "empleado_fk")
+	private Empleado empleado_fk;
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
@@ -86,8 +91,28 @@ public class Usuario implements Serializable {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+	
+	
+
+	public Administrador getAdministrador_fk() {
+		return administrador_fk;
+	}
+
+	public void setAdministrador_fk(Administrador administrador_fk) {
+		this.administrador_fk = administrador_fk;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Empleado getEmpleado_fk() {
+		return empleado_fk;
+	}
+
+	public void setEmpleado_fk(Empleado empleado_fk) {
+		this.empleado_fk = empleado_fk;
+	}
+	
+	
 }
