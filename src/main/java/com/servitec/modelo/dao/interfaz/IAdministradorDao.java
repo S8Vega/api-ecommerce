@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.servitec.modelo.entidad.Administrador;
 
-public interface AdministradorDao extends CrudRepository<Administrador, Long>{
+public interface IAdministradorDao extends CrudRepository<Administrador, Long>{
 
 }

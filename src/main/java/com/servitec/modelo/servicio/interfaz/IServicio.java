@@ -2,7 +2,7 @@ package com.servitec.modelo.servicio.interfaz;
 
 import java.util.List;
 
-public interface ServicioInterfaz<T,Id> {
+public interface IServicio<T,Id> {
 
 	public List<T> findAll();
 	

@@ -3,6 +3,7 @@ package com.servitec.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,14 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Empleado;
 
-import com.servitec.modelo.servicio.interfaz.IEmpleadoServicio;
+
+import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadoControlador {
      
 	@Autowired
-	private IEmpleadoServicio empleadoServicio;
+	@Qualifier("EmpleadoServicioImpl")
+	private IServicio<Empleado, Long> empleadoServicio;
 	
 	@RequestMapping
 	public List<Empleado> listar(){
@@ -29,9 +32,11 @@ public class EmpleadoControlador {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void crear(Empleado empleado) {
+	public Empleado crear(@RequestBody Empleado empleado) {
 		this.empleadoServicio.save(empleado);
+		return empleado;
 	}
+	
 	
 	@RequestMapping("/{id}")
 	public Empleado buscar(@PathVariable Long id) {
@@ -41,7 +46,7 @@ public class EmpleadoControlador {
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Empleado actualizar(@PathVariable Long id, @RequestBody Empleado empleado) {
-		Empleado empleadoActual = this.empleadoServicio.findById(id);
+		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);
 		empleadoActual.setAlias(empleado.getAlias());
 		empleadoActual.setContrasena(empleado.getContrasena());
 		this.empleadoServicio.save(empleadoActual);
@@ -50,7 +55,7 @@ public class EmpleadoControlador {
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	public Empleado eliminar(@PathVariable Long id) {
-		Empleado empleadoActual = this.empleadoServicio.findById(id);
+		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);
 		this.empleadoServicio.delete(empleadoActual);
 		return empleadoActual;
 	}

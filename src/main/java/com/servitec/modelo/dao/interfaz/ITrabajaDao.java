@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.servitec.modelo.entidad.Trabaja;
 
-public interface TrabajaDao extends CrudRepository<Trabaja, Long> {
+public interface ITrabajaDao extends CrudRepository<Trabaja, Long> {
 
 }

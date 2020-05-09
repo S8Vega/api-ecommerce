@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.servitec.modelo.entidad.Obra;
 
-public interface ObraDao extends CrudRepository<Obra, Long> {
+public interface IObraDao extends CrudRepository<Obra, Long> {
 
 }
