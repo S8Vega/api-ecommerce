@@ -22,7 +22,7 @@ public class Paquete implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paquete_pk;
-	@Column(length = 10)
+	@Column(length = 40)
 	private String medida;
 	@Column(nullable = false)
 	private Long cantidadInicial;
