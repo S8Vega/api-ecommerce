@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "ubicacion_fk")
 	@JsonIgnoreProperties("usuario")
 	private Ubicacion ubicacion_fk;
-	@Column(length = 10)
+	@Column(length = 20)
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;

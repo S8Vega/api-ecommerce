@@ -22,7 +22,7 @@ public class Paquete implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paquete_pk;
-	@Column(length = 40)
+	@Column(length = 80)
 	private String medida;
 	@Column(nullable = false)
 	private Long cantidadInicial;
@@ -41,7 +41,6 @@ public class Paquete implements Serializable {
 
 	public Paquete(String medida, Long cantidadInicial, Producto producto_fk, PaqueteCliente paqueteCliente,
 			PaqueteProveedor paqueteProveedor) {
-		super();
 		this.medida = medida;
 		this.cantidadInicial = cantidadInicial;
 		this.producto_fk = producto_fk;
