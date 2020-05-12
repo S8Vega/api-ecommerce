@@ -23,11 +23,12 @@ public class PaqueteClienteSerial implements Serializable {
 	private Long PaqueteClienteSerial_pk;
 	@OneToOne
 	@JoinColumn(name = "serial_fk")
-	@JsonIgnoreProperties("paqueteClienteSerial")
+	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
+			"paqueteClienteSerial", "paqueteProveedorSerial" })
 	private Serial serial_fk;
 	@OneToOne
 	@JoinColumn(name = "paqueteCliente_fk")
-	@JsonIgnoreProperties("paqueteClienteSerial")
+	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
 	private PaqueteCliente paqueteCliente_fk;
 	private static final long serialVersionUID = 1L;
 

@@ -22,13 +22,14 @@ public class PaqueteProveedor implements Serializable {
 	private Long paqueteProveedor_pk;
 	@ManyToOne
 	@JoinColumn(name = "pedidoProveedor_fk")
-	@JsonIgnoreProperties("paqueteProveedor")
+	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
 	private PedidoProveedor pedidoProveedor_fk;
 	@OneToOne
 	@JoinColumn(name = "paquete_fk")
-	@JsonIgnoreProperties("paqueteProveedor")
+	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
 	private Paquete paquete_fk;
 	@OneToOne(mappedBy = "paqueteProveedor_fk")
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" })
 	private PaqueteProveedorSerial paqueteProveedorSerial;
 	private static final long serialVersionUID = 1L;
 

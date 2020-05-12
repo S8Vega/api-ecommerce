@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "obra")
 public class Obra implements Serializable {
@@ -21,6 +23,7 @@ public class Obra implements Serializable {
 	@Column(name = "nombre", length = 100, nullable = false)
 	private String nombre;
 	@OneToMany(mappedBy = "obra_fk")
+	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
 	private List<Trabaja> trabaja;
 	private static final long serialVersionUID = 1L;
 

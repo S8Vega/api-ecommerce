@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 11-05-2020 a las 13:41:44
+-- Tiempo de generación: 11-05-2020 a las 23:18:34
 -- Versión del servidor: 5.7.30-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.4
 
@@ -511,117 +511,117 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `administrador_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `administrador_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `aliado`
 --
 ALTER TABLE `aliado`
-  MODIFY `aliado_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+  MODIFY `aliado_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `cargo_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cargo_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `ciudad_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ciudad_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `empleado_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `empleado_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `funcion`
 --
 ALTER TABLE `funcion`
-  MODIFY `funcion_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `funcion_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `obra_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `obra_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --
 ALTER TABLE `paquete`
-  MODIFY `paquete_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `paquete_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paquete_cliente`
 --
 ALTER TABLE `paquete_cliente`
-  MODIFY `paquete_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=751;
+  MODIFY `paquete_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paquete_cliente_serial`
 --
 ALTER TABLE `paquete_cliente_serial`
-  MODIFY `paquete_cliente_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `paquete_cliente_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paquete_proveedor`
 --
 ALTER TABLE `paquete_proveedor`
-  MODIFY `paquete_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `paquete_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paquete_proveedor_serial`
 --
 ALTER TABLE `paquete_proveedor_serial`
-  MODIFY `paquete_proveedor_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `paquete_proveedor_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `pedido_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `pedido_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedido_cliente`
 --
 ALTER TABLE `pedido_cliente`
-  MODIFY `pedido_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `pedido_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedido_proveedor`
 --
 ALTER TABLE `pedido_proveedor`
-  MODIFY `pedido_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `pedido_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `prestamo_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `prestamo_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `producto_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `producto_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `salida`
 --
 ALTER TABLE `salida`
-  MODIFY `salida_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `salida_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `serial`
 --
 ALTER TABLE `serial`
-  MODIFY `serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tipo_doc`
 --
 ALTER TABLE `tipo_doc`
-  MODIFY `tipo_doc_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tipo_doc_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `trabaja`
 --
 ALTER TABLE `trabaja`
-  MODIFY `trabaja_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `trabaja_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `ubicacion_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+  MODIFY `ubicacion_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `usuario_pk` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --

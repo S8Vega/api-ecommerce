@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "ciudad")
 public class Ciudad implements Serializable {
@@ -22,6 +24,7 @@ public class Ciudad implements Serializable {
 	@Column(length = 80, nullable = false)
 	private String nombre;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad_fk")
+	@JsonIgnoreProperties(value = { "ciudad_fk", "direccion", "usuario" })
 	private List<Ubicacion> ubicacion;
 	private static final long serialVersionUID = 1L;
 

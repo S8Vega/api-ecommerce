@@ -23,7 +23,8 @@ public class Salida implements Serializable {
 	private Long salida_pk;
 	@OneToOne
 	@JoinColumn(name = "serial_fk")
-	@JsonIgnoreProperties("salida")
+	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
+			"paqueteClienteSerial", "paqueteProveedorSerial" })
 	private Serial serial_fk;
 	@Column(name = "fecha_salida", nullable = false)
 	private LocalDate fechaSalida;

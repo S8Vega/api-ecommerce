@@ -25,22 +25,23 @@ public class PedidoProveedor implements Serializable {
 	private Long pedidoProveedor_pk;
 	@ManyToOne
 	@JoinColumn(name = "aliado_fk")
-	@JsonIgnoreProperties("pedidoProveedor")
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado_fk;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "pedidoProveedor_fk")
-	private List<PaqueteProveedor> paqueteProveedores;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoProveedor_fk")
+	@JsonIgnoreProperties(value = { "pedidoProveedor_fk", "paquete_fk", "paqueteProveedorSerial" })
+	private List<PaqueteProveedor> paqueteProveedor;
 	@OneToOne
 	@JoinColumn(name = "pedido_fk")
-	@JsonIgnoreProperties("pedidoProveedor")
+	@JsonIgnoreProperties(value = { "fechaCreacion", "fechaEntrega", "codigo", "pedidoCliente", "pedidoProveedor" })
 	private Pedido pedido_fk;
 	private static final long serialVersionUID = 1L;
 
 	public PedidoProveedor() {
 	}
 
-	public PedidoProveedor(Aliado aliado_fk, List<PaqueteProveedor> paqueteProveedores, Pedido pedido_fk) {
+	public PedidoProveedor(Aliado aliado_fk, List<PaqueteProveedor> paqueteProveedor, Pedido pedido_fk) {
 		this.aliado_fk = aliado_fk;
-		this.paqueteProveedores = paqueteProveedores;
+		this.paqueteProveedor = paqueteProveedor;
 		this.pedido_fk = pedido_fk;
 	}
 
@@ -68,12 +69,12 @@ public class PedidoProveedor implements Serializable {
 		this.aliado_fk = aliado_fk;
 	}
 
-	public List<PaqueteProveedor> getPaqueteProveedores() {
-		return paqueteProveedores;
+	public List<PaqueteProveedor> getPaqueteProveedor() {
+		return paqueteProveedor;
 	}
 
-	public void setPaqueteProveedores(List<PaqueteProveedor> paqueteProveedores) {
-		this.paqueteProveedores = paqueteProveedores;
+	public void setPaqueteProveedor(List<PaqueteProveedor> paqueteProveedor) {
+		this.paqueteProveedor = paqueteProveedor;
 	}
 
 	public static long getSerialversionuid() {

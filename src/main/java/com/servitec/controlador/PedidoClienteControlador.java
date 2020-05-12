@@ -45,7 +45,7 @@ public class PedidoClienteControlador {
 	public PedidoCliente actualizar(@PathVariable Long id, @RequestBody PedidoCliente pedidoCliente) {
 		PedidoCliente pedidoClienteActual = this.pedidoServicio.findById(id);
 		pedidoClienteActual.setAliado_fk(pedidoCliente.getAliado_fk());
-		pedidoClienteActual.setPaqueteClientes(pedidoCliente.getPaqueteClientes());
+		pedidoClienteActual.setPaqueteCliente(pedidoCliente.getPaqueteCliente());
 		pedidoClienteActual.setPedido_fk(pedidoCliente.getPedido_fk());
 		this.pedidoServicio.save(pedidoClienteActual);
 		return pedidoClienteActual;

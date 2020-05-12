@@ -35,8 +35,8 @@ public class AdministradorServicioImpl implements IServicio<Administrador, Long>
 	}
 
 	@Override
+	@Transactional
 	public void delete(Administrador t) {
 		this.administradorDao.delete(t);
 	}
-
 }

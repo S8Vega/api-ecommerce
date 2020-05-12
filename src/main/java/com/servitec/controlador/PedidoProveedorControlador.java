@@ -45,7 +45,7 @@ public class PedidoProveedorControlador {
 	public PedidoProveedor actualizar(@PathVariable Long id, @RequestBody PedidoProveedor pedidoProveedor) {
 		PedidoProveedor pedidoProveedorActual = this.pedServicio.findById(id);
 		pedidoProveedorActual.setAliado_fk(pedidoProveedor.getAliado_fk());
-		pedidoProveedorActual.setPaqueteProveedores(pedidoProveedor.getPaqueteProveedores());
+		pedidoProveedorActual.setPaqueteProveedor(pedidoProveedor.getPaqueteProveedor());
 		pedidoProveedorActual.setPedido_fk(pedidoProveedor.getPedido_fk());
 		this.pedServicio.save(pedidoProveedorActual);
 		return pedidoProveedorActual;

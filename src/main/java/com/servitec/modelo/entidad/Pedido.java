@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "pedido")
 public class Pedido implements Serializable {
@@ -19,15 +21,17 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedido_pk;
-	@Column(name = "fecha_creacion",nullable = false)
+	@Column(name = "fecha_creacion", nullable = false)
 	private LocalDate fechaCreacion;
 	@Column(name = "fecha_entrega")
 	private LocalDate fechaEntrega;
 	@Column(length = 15)
 	private String codigo;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido_fk")
+	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
 	private PedidoCliente pedidoCliente;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido_fk")
+	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
 	private PedidoProveedor pedidoProveedor;
 	private static final long serialVersionUID = 1L;
 

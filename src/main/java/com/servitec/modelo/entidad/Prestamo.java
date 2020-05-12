@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "prestamo")
 public class Prestamo implements Serializable {
@@ -21,9 +23,12 @@ public class Prestamo implements Serializable {
 	private Long prestamo_pk;
 	@ManyToOne
 	@JoinColumn(name = "empleado_fk")
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
 	private Empleado empleado_fk;
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "serial_fk")
+	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
+			"paqueteClienteSerial", "paqueteProveedorSerial" })
 	private Serial serial_fk;
 	@Column(length = 200, nullable = false)
 	private String motivo;

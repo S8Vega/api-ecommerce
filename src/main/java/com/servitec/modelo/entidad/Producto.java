@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -34,8 +37,10 @@ public class Producto implements Serializable {
 	private Long cantidadMinima;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
-	private List<Funcion> funciones;
+	@JsonIgnoreProperties(value = { "nombre", "producto" })
+	private List<Funcion> funcion;
 	@OneToMany(mappedBy = "producto_fk")
+	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
 	private List<Paquete> paquete;
 	private static final long serialVersionUID = 1L;
 
@@ -43,13 +48,13 @@ public class Producto implements Serializable {
 	}
 
 	public Producto(String nombre, String marca, String modelo, String ubicacion, Long cantidadMinima,
-			List<Funcion> funciones, List<Paquete> paquete) {
+			List<Funcion> funcion, List<Paquete> paquete) {
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ubicacion = ubicacion;
 		this.cantidadMinima = cantidadMinima;
-		this.funciones = funciones;
+		this.funcion = funcion;
 		this.paquete = paquete;
 	}
 
@@ -109,12 +114,12 @@ public class Producto implements Serializable {
 		this.cantidadMinima = cantidadMinima;
 	}
 
-	public List<Funcion> getFunciones() {
-		return funciones;
+	public List<Funcion> getFuncion() {
+		return funcion;
 	}
 
-	public void setFunciones(List<Funcion> funciones) {
-		this.funciones = funciones;
+	public void setFuncion(List<Funcion> funcion) {
+		this.funcion = funcion;
 	}
 
 	public static long getSerialversionuid() {

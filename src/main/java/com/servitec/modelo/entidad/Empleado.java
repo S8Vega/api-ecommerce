@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,8 @@ public class Empleado implements Serializable {
 	private Long empleado_pk;
 	@OneToOne
 	@JoinColumn(name = "usuario_fk")
-	@JsonIgnoreProperties("empleado")
+	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
+			"empleado" })
 	private Usuario usuario_fk;
 	@Column(name = "alias", length = 50, nullable = false, unique = true)
 	private String alias;
@@ -33,25 +34,37 @@ public class Empleado implements Serializable {
 	private String contrasena;
 	@ManyToOne
 	@JoinColumn(name = "cargo_fk")
-	@JsonIgnoreProperties("empleado")
+	@JsonIgnoreProperties(value = { "nombre", "empleado" })
 	private Cargo cargo_fk;
 	@OneToMany(mappedBy = "empleado_fk")
-	private List<Trabaja> trabaja;
+	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
+	private Set<Trabaja> trabaja;
 	@OneToMany(mappedBy = "empleado_fk")
-	private List<Prestamo> prestamo;
+	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
+			"fechaInicio", "fechaFin" })
+	private Set<Prestamo> prestamo;
 	private static final long serialVersionUID = 1L;
 
 	public Empleado() {
 	}
 
-	public Empleado(Usuario usuario_fk, String alias, String contrasena, Cargo cargo_fk, List<Trabaja> trabaja,
-			List<Prestamo> prestamo) {
+	public Empleado(Usuario usuario_fk, String alias, String contrasena, Cargo cargo_fk, Set<Trabaja> trabaja,
+			Set<Prestamo> prestamo) {
+		super();
 		this.usuario_fk = usuario_fk;
 		this.alias = alias;
 		this.contrasena = contrasena;
 		this.cargo_fk = cargo_fk;
 		this.trabaja = trabaja;
 		this.prestamo = prestamo;
+	}
+
+	public Long getEmpleado_pk() {
+		return empleado_pk;
+	}
+
+	public void setEmpleado_pk(Long empleado_pk) {
+		this.empleado_pk = empleado_pk;
 	}
 
 	public Usuario getUsuario_fk() {
@@ -86,19 +99,19 @@ public class Empleado implements Serializable {
 		this.cargo_fk = cargo_fk;
 	}
 
-	public List<Trabaja> getTrabaja() {
+	public Set<Trabaja> getTrabaja() {
 		return trabaja;
 	}
 
-	public void setTrabaja(List<Trabaja> trabaja) {
+	public void setTrabaja(Set<Trabaja> trabaja) {
 		this.trabaja = trabaja;
 	}
 
-	public List<Prestamo> getPrestamo() {
+	public Set<Prestamo> getPrestamo() {
 		return prestamo;
 	}
 
-	public void setPrestamo(List<Prestamo> prestamo) {
+	public void setPrestamo(Set<Prestamo> prestamo) {
 		this.prestamo = prestamo;
 	}
 

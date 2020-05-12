@@ -25,11 +25,13 @@ public class Ubicacion implements Serializable {
 	private Long ubicacion_pk;
 	@ManyToOne
 	@JoinColumn(name = "ciudad_fk")
-	@JsonIgnoreProperties("ubicacion")
+	@JsonIgnoreProperties(value = { "nombre", "ubicacion" })
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion_fk")
+	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
+			"empleado" })
 	private List<Usuario> usuario;
 	private static final long serialVersionUID = 1L;
 

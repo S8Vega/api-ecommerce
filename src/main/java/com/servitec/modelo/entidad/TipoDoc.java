@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tipo_doc")
 public class TipoDoc implements Serializable {
@@ -22,6 +24,7 @@ public class TipoDoc implements Serializable {
 	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoDoc_fk")
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private List<Aliado> aliado;
 	private static final long serialVersionUID = 1L;
 

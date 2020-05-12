@@ -26,17 +26,20 @@ public class Aliado implements Serializable {
 	private Long aliado_pk;
 	@OneToOne
 	@JoinColumn(name = "usuario_fk")
-	@JsonIgnoreProperties("aliado")
+	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
+			"empleado" })
 	private Usuario usuario_fk;
 	@ManyToOne
 	@JoinColumn(name = "tipoDoc_fk")
-	@JsonIgnoreProperties("aliado")
+	@JsonIgnoreProperties(value = { "nombre", "aliado" })
 	private TipoDoc tipoDoc_fk;
 	@Column(length = 20)
 	private String documento;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
+	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
 	private List<PedidoCliente> pedidoCliente;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
+	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
 	private List<PedidoProveedor> pedidoProveedor;
 	private static final long serialVersionUID = 1L;
 

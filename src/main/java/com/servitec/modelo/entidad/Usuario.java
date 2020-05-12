@@ -27,17 +27,20 @@ public class Usuario implements Serializable {
 	private String nombre;
 	@ManyToOne
 	@JoinColumn(name = "ubicacion_fk")
-	@JsonIgnoreProperties("usuario")
+	@JsonIgnoreProperties(value = { "ciudad_fk", "direccion", "usuario" })
 	private Ubicacion ubicacion_fk;
 	@Column(length = 20)
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	@OneToOne(mappedBy = "usuario_fk")
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	@OneToOne(mappedBy = "usuario_fk")
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena" })
 	private Administrador administrador;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
 	private Empleado empleado;
 	private static final long serialVersionUID = 1L;
 

@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "serial")
 public class Serial implements Serializable {
@@ -29,27 +31,33 @@ public class Serial implements Serializable {
 	@Column(name = "control_calidad")
 	private Boolean controlCalidad;
 	@OneToOne(mappedBy = "serial_fk")
+	@JsonIgnoreProperties(value = { "serial_fk", "fechaSalida", "motivoSalida" })
 	private Salida salida;
 	@OneToMany(mappedBy = "serial_fk")
-	private List<Prestamo> prestamos;
+	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
+			"fechaInicio", "fechaFin" })
+	private List<Prestamo> prestamo;
 	@OneToOne(mappedBy = "serial_fk")
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
 	private PaqueteClienteSerial paqueteClienteSerial;
 	@OneToOne(mappedBy = "serial_fk")
-	private PaqueteClienteSerial paqueteProveedorSerial;
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" })
+	private PaqueteProveedorSerial paqueteProveedorSerial;
 	private static final long serialVersionUID = 1L;
 
 	public Serial() {
 	}
 
 	public Serial(String serial, LocalDate fechaEntrada, String metodoEntrada, Boolean controlCalidad, Salida salida,
-			List<Prestamo> prestamos, PaqueteClienteSerial paqueteClienteSerial,
-			PaqueteClienteSerial paqueteProveedorSerial) {
+			List<Prestamo> prestamo, PaqueteClienteSerial paqueteClienteSerial,
+			PaqueteProveedorSerial paqueteProveedorSerial) {
+		super();
 		this.serial = serial;
 		this.fechaEntrada = fechaEntrada;
 		this.metodoEntrada = metodoEntrada;
 		this.controlCalidad = controlCalidad;
 		this.salida = salida;
-		this.prestamos = prestamos;
+		this.prestamo = prestamo;
 		this.paqueteClienteSerial = paqueteClienteSerial;
 		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
@@ -102,12 +110,12 @@ public class Serial implements Serializable {
 		this.salida = salida;
 	}
 
-	public List<Prestamo> getPrestamos() {
-		return prestamos;
+	public List<Prestamo> getPrestamo() {
+		return prestamo;
 	}
 
-	public void setPrestamos(List<Prestamo> prestamos) {
-		this.prestamos = prestamos;
+	public void setPrestamo(List<Prestamo> prestamo) {
+		this.prestamo = prestamo;
 	}
 
 	public PaqueteClienteSerial getPaqueteClienteSerial() {
@@ -118,11 +126,11 @@ public class Serial implements Serializable {
 		this.paqueteClienteSerial = paqueteClienteSerial;
 	}
 
-	public PaqueteClienteSerial getPaqueteProveedorSerial() {
+	public PaqueteProveedorSerial getPaqueteProveedorSerial() {
 		return paqueteProveedorSerial;
 	}
 
-	public void setPaqueteProveedorSerial(PaqueteClienteSerial paqueteProveedorSerial) {
+	public void setPaqueteProveedorSerial(PaqueteProveedorSerial paqueteProveedorSerial) {
 		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
 

@@ -23,22 +23,24 @@ public class PedidoCliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedidoCliente_pk;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCliente_fk")
-	private List<PaqueteCliente> paqueteClientes;
+	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
+	private List<PaqueteCliente> paqueteCliente;
 	@ManyToOne
 	@JoinColumn(name = "aliado_fk")
-	@JsonIgnoreProperties("pedidoCliente")
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado_fk;
 	@OneToOne
 	@JoinColumn(name = "pedido_fk")
-	@JsonIgnoreProperties("pedidoCliente")
+	@JsonIgnoreProperties(value = { "fechaCreacion", "fechaEntrega", "codigo", "pedidoCliente", "pedidoProveedor" })
 	private Pedido pedido_fk;
 	private static final long serialVersionUID = 1L;
 
 	public PedidoCliente() {
 	}
 
-	public PedidoCliente(List<PaqueteCliente> paqueteClientes, Aliado aliado_fk, Pedido pedido_fk) {
-		this.paqueteClientes = paqueteClientes;
+	public PedidoCliente(List<PaqueteCliente> paqueteClientes, Aliado aliado_fk, Pedido pedido_fk,
+			List<PaqueteCliente> paqueteCliente) {
+		this.paqueteCliente = paqueteCliente;
 		this.aliado_fk = aliado_fk;
 		this.pedido_fk = pedido_fk;
 	}
@@ -63,12 +65,12 @@ public class PedidoCliente implements Serializable {
 		return pedidoCliente_pk;
 	}
 
-	public List<PaqueteCliente> getPaqueteClientes() {
-		return paqueteClientes;
+	public List<PaqueteCliente> getPaqueteCliente() {
+		return paqueteCliente;
 	}
 
-	public void setPaqueteClientes(List<PaqueteCliente> paqueteClientes) {
-		this.paqueteClientes = paqueteClientes;
+	public void setPaqueteCliente(List<PaqueteCliente> paqueteCliente) {
+		this.paqueteCliente = paqueteCliente;
 	}
 
 	public void setPedidoCliente_pk(Long pedidoCliente_pk) {

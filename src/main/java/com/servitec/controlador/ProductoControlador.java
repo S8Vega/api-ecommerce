@@ -43,7 +43,7 @@ public class ProductoControlador {
 	public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto) {
 		Producto productoActual = this.productoServicio.findById(id);
 		productoActual.setCantidadMinima(producto.getCantidadMinima());
-		productoActual.setFunciones(producto.getFunciones());
+		productoActual.setFuncion(producto.getFuncion());
 		productoActual.setMarca(producto.getMarca());
 		productoActual.setModelo(producto.getModelo());
 		productoActual.setNombre(producto.getNombre());
