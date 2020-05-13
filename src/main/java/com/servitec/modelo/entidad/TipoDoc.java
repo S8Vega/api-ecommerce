@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +25,13 @@ public class TipoDoc implements Serializable {
 	private String nombre;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoDoc_fk")
 	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
-	private List<Aliado> aliado;
+	private Set<Aliado> aliado;
 	private static final long serialVersionUID = 1L;
 
 	public TipoDoc() {
 	}
 
-	public TipoDoc(String nombre, List<Aliado> aliado) {
+	public TipoDoc(String nombre, Set<Aliado> aliado) {
 		this.nombre = nombre;
 		this.aliado = aliado;
 	}
@@ -44,11 +44,11 @@ public class TipoDoc implements Serializable {
 		this.tipoDoc_pk = tipoDoc_pk;
 	}
 
-	public List<Aliado> getAliado() {
+	public Set<Aliado> getAliado() {
 		return aliado;
 	}
 
-	public void setAliado(List<Aliado> aliado) {
+	public void setAliado(Set<Aliado> aliado) {
 		this.aliado = aliado;
 	}
 

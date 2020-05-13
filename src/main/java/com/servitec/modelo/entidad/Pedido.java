@@ -25,7 +25,7 @@ public class Pedido implements Serializable {
 	private LocalDate fechaCreacion;
 	@Column(name = "fecha_entrega")
 	private LocalDate fechaEntrega;
-	@Column(length = 15)
+	@Column(length = 30)
 	private String codigo;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido_fk")
 	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })

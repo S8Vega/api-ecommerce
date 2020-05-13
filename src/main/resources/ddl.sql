@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 11-05-2020 a las 23:18:34
+-- Tiempo de generación: 12-05-2020 a las 23:07:46
 -- Versión del servidor: 5.7.30-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.4
 
@@ -173,7 +173,7 @@ CREATE TABLE `paquete_proveedor_serial` (
 
 CREATE TABLE `pedido` (
   `pedido_pk` bigint(20) NOT NULL,
-  `codigo` varchar(15) DEFAULT NULL,
+  `codigo` varchar(30) DEFAULT NULL,
   `fecha_creacion` date NOT NULL,
   `fecha_entrega` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -254,7 +254,7 @@ CREATE TABLE `producto_funcion` (
 CREATE TABLE `salida` (
   `salida_pk` bigint(20) NOT NULL,
   `fecha_salida` date NOT NULL,
-  `motivo_salida` varchar(20) DEFAULT NULL,
+  `motivo_salida` varchar(50) DEFAULT NULL,
   `serial_fk` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -333,15 +333,15 @@ CREATE TABLE `usuario` (
 ALTER TABLE `administrador`
   ADD PRIMARY KEY (`administrador_pk`),
   ADD UNIQUE KEY `UK_sw4naqp7hvrooa50c7i3jcj58` (`alias`),
-  ADD KEY `FKgxl2wwr2kkrvyl10jyb06vcig` (`usuario_fk`);
+  ADD UNIQUE KEY `UK_m1x3qunv7rdoc03mt0hw0bguj` (`usuario_fk`);
 
 --
 -- Indices de la tabla `aliado`
 --
 ALTER TABLE `aliado`
   ADD PRIMARY KEY (`aliado_pk`),
-  ADD KEY `FK2fpop2m9bfyyb0cyeuw2tj37` (`tipo_doc_fk`),
-  ADD KEY `FK9cdjbav0iq734tgelrhowvlox` (`usuario_fk`);
+  ADD UNIQUE KEY `UK_o614wmrthfmffxw328hrfy1fq` (`usuario_fk`),
+  ADD KEY `FK2fpop2m9bfyyb0cyeuw2tj37` (`tipo_doc_fk`);
 
 --
 -- Indices de la tabla `cargo`
@@ -362,8 +362,8 @@ ALTER TABLE `ciudad`
 ALTER TABLE `empleado`
   ADD PRIMARY KEY (`empleado_pk`),
   ADD UNIQUE KEY `UK_pobop336mxk61ghipxhiu1gkg` (`alias`),
-  ADD KEY `FKf6jbp58hff11w3j7lwk8lf7il` (`cargo_fk`),
-  ADD KEY `FKdxsa6ln9t6t3q7b6gafdynln0` (`usuario_fk`);
+  ADD UNIQUE KEY `UK_n1t5e48jnjn4nvcv8jg009iin` (`usuario_fk`),
+  ADD KEY `FKf6jbp58hff11w3j7lwk8lf7il` (`cargo_fk`);
 
 --
 -- Indices de la tabla `funcion`
@@ -389,7 +389,7 @@ ALTER TABLE `paquete`
 --
 ALTER TABLE `paquete_cliente`
   ADD PRIMARY KEY (`paquete_cliente_pk`),
-  ADD KEY `FKox3hpaqfpj63wra2ssaa95y2b` (`paquete_fk`),
+  ADD UNIQUE KEY `UK_4ysxne8dyub1vpebpw5keqtsi` (`paquete_fk`),
   ADD KEY `FKay0m1mtn62vfi1wjb4wjqo7v9` (`pedido_cliente_fk`);
 
 --
@@ -397,15 +397,15 @@ ALTER TABLE `paquete_cliente`
 --
 ALTER TABLE `paquete_cliente_serial`
   ADD PRIMARY KEY (`paquete_cliente_serial_pk`),
-  ADD KEY `FKog49l0ydat2ecyr46pae5f73x` (`paquete_cliente_fk`),
-  ADD KEY `FKllppvurdgop3vw7eq4umcnl64` (`serial_fk`);
+  ADD UNIQUE KEY `UK_8ak7opl62idiv0nahl3orqyb7` (`serial_fk`),
+  ADD KEY `FKog49l0ydat2ecyr46pae5f73x` (`paquete_cliente_fk`);
 
 --
 -- Indices de la tabla `paquete_proveedor`
 --
 ALTER TABLE `paquete_proveedor`
   ADD PRIMARY KEY (`paquete_proveedor_pk`),
-  ADD KEY `FKdp8jtyfwkmf2b5xkjgkpwmi1x` (`paquete_fk`),
+  ADD UNIQUE KEY `UK_axa86feiggy1boq1hmya9mpxa` (`paquete_fk`),
   ADD KEY `FKth0oy6vt0hsnn8vnlnuhmvilb` (`pedido_proveedor_fk`);
 
 --
@@ -413,8 +413,8 @@ ALTER TABLE `paquete_proveedor`
 --
 ALTER TABLE `paquete_proveedor_serial`
   ADD PRIMARY KEY (`paquete_proveedor_serial_pk`),
-  ADD KEY `FKg2va05ishp0vl9lm87okupldt` (`paquete_proveedor_fk`),
-  ADD KEY `FK2xs7fi5cbgo5rb7ki135h9m6e` (`serial_fk`);
+  ADD UNIQUE KEY `UK_oegrjlvhwvslnp3jaldnbieqf` (`serial_fk`),
+  ADD KEY `FKg2va05ishp0vl9lm87okupldt` (`paquete_proveedor_fk`);
 
 --
 -- Indices de la tabla `pedido`
@@ -427,16 +427,16 @@ ALTER TABLE `pedido`
 --
 ALTER TABLE `pedido_cliente`
   ADD PRIMARY KEY (`pedido_cliente_pk`),
-  ADD KEY `FKpu748gx64h2rxj5lkym5wi2gb` (`aliado_fk`),
-  ADD KEY `FKhv9nkb972upip1vgirfq9jy6m` (`pedido_fk`);
+  ADD UNIQUE KEY `UK_80ox4v3y0jhfpjytnmbqh0qf7` (`pedido_fk`),
+  ADD KEY `FKpu748gx64h2rxj5lkym5wi2gb` (`aliado_fk`);
 
 --
 -- Indices de la tabla `pedido_proveedor`
 --
 ALTER TABLE `pedido_proveedor`
   ADD PRIMARY KEY (`pedido_proveedor_pk`),
-  ADD KEY `FKpwr08mo137plugfft4tf8pfuk` (`aliado_fk`),
-  ADD KEY `FKad41d0n2w9927bahqf3nxhbml` (`pedido_fk`);
+  ADD UNIQUE KEY `UK_jd7lbcg3521m3607wcl5mf6hu` (`pedido_fk`),
+  ADD KEY `FKpwr08mo137plugfft4tf8pfuk` (`aliado_fk`);
 
 --
 -- Indices de la tabla `prestamo`
@@ -456,15 +456,15 @@ ALTER TABLE `producto`
 -- Indices de la tabla `producto_funcion`
 --
 ALTER TABLE `producto_funcion`
-  ADD KEY `FKl8glrrosdruab93c7e3t1trua` (`funcion_pfk`),
-  ADD KEY `FKkmem47vyv3pqjawqclin2fg00` (`producto_pfk`);
+  ADD PRIMARY KEY (`producto_pfk`,`funcion_pfk`),
+  ADD KEY `FKl8glrrosdruab93c7e3t1trua` (`funcion_pfk`);
 
 --
 -- Indices de la tabla `salida`
 --
 ALTER TABLE `salida`
   ADD PRIMARY KEY (`salida_pk`),
-  ADD KEY `FKsk80vqas7wm8bslxk9kuwr4nr` (`serial_fk`);
+  ADD UNIQUE KEY `UK_csyortoc03d0xk8hyi3ljoyfv` (`serial_fk`);
 
 --
 -- Indices de la tabla `serial`
@@ -511,117 +511,117 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `administrador_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `administrador_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `aliado`
 --
 ALTER TABLE `aliado`
-  MODIFY `aliado_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `aliado_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 --
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `cargo_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `cargo_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `ciudad_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `ciudad_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `empleado_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `empleado_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `funcion`
 --
 ALTER TABLE `funcion`
-  MODIFY `funcion_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `funcion_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `obra_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `obra_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --
 ALTER TABLE `paquete`
-  MODIFY `paquete_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `paquete_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 --
 -- AUTO_INCREMENT de la tabla `paquete_cliente`
 --
 ALTER TABLE `paquete_cliente`
-  MODIFY `paquete_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `paquete_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 --
 -- AUTO_INCREMENT de la tabla `paquete_cliente_serial`
 --
 ALTER TABLE `paquete_cliente_serial`
-  MODIFY `paquete_cliente_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `paquete_cliente_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 --
 -- AUTO_INCREMENT de la tabla `paquete_proveedor`
 --
 ALTER TABLE `paquete_proveedor`
-  MODIFY `paquete_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `paquete_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `paquete_proveedor_serial`
 --
 ALTER TABLE `paquete_proveedor_serial`
-  MODIFY `paquete_proveedor_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `paquete_proveedor_serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `pedido_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `pedido_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 --
 -- AUTO_INCREMENT de la tabla `pedido_cliente`
 --
 ALTER TABLE `pedido_cliente`
-  MODIFY `pedido_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `pedido_cliente_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 --
 -- AUTO_INCREMENT de la tabla `pedido_proveedor`
 --
 ALTER TABLE `pedido_proveedor`
-  MODIFY `pedido_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `pedido_proveedor_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `prestamo_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `prestamo_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `producto_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `producto_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `salida`
 --
 ALTER TABLE `salida`
-  MODIFY `salida_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `salida_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 --
 -- AUTO_INCREMENT de la tabla `serial`
 --
 ALTER TABLE `serial`
-  MODIFY `serial_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `serial_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 --
 -- AUTO_INCREMENT de la tabla `tipo_doc`
 --
 ALTER TABLE `tipo_doc`
-  MODIFY `tipo_doc_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipo_doc_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `trabaja`
 --
 ALTER TABLE `trabaja`
-  MODIFY `trabaja_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `trabaja_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `ubicacion_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `ubicacion_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_pk` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `usuario_pk` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 --
 -- Restricciones para tablas volcadas
 --

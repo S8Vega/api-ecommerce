@@ -2,7 +2,7 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +36,7 @@ public class Serial implements Serializable {
 	@OneToMany(mappedBy = "serial_fk")
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
 			"fechaInicio", "fechaFin" })
-	private List<Prestamo> prestamo;
+	private Set<Prestamo> prestamo;
 	@OneToOne(mappedBy = "serial_fk")
 	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
 	private PaqueteClienteSerial paqueteClienteSerial;
@@ -49,7 +49,7 @@ public class Serial implements Serializable {
 	}
 
 	public Serial(String serial, LocalDate fechaEntrada, String metodoEntrada, Boolean controlCalidad, Salida salida,
-			List<Prestamo> prestamo, PaqueteClienteSerial paqueteClienteSerial,
+			Set<Prestamo> prestamo, PaqueteClienteSerial paqueteClienteSerial,
 			PaqueteProveedorSerial paqueteProveedorSerial) {
 		super();
 		this.serial = serial;
@@ -110,11 +110,11 @@ public class Serial implements Serializable {
 		this.salida = salida;
 	}
 
-	public List<Prestamo> getPrestamo() {
+	public Set<Prestamo> getPrestamo() {
 		return prestamo;
 	}
 
-	public void setPrestamo(List<Prestamo> prestamo) {
+	public void setPrestamo(Set<Prestamo> prestamo) {
 		this.prestamo = prestamo;
 	}
 

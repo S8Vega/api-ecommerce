@@ -1,10 +1,9 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,13 +32,13 @@ public class Usuario implements Serializable {
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
-	@OneToOne(mappedBy = "usuario_fk")
+	@OneToOne(mappedBy = "usuario_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado;
-	@OneToOne(mappedBy = "usuario_fk")
+	@OneToOne(mappedBy = "usuario_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena" })
 	private Administrador administrador;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario_fk")
+	@OneToOne(mappedBy = "usuario_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
 	private Empleado empleado;
 	private static final long serialVersionUID = 1L;

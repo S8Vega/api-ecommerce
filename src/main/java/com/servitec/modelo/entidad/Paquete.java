@@ -28,7 +28,7 @@ public class Paquete implements Serializable {
 	private Long cantidadInicial;
 	@ManyToOne
 	@JoinColumn(name = "producto_fk")
-	@JsonIgnoreProperties("paquete")
+	@JsonIgnoreProperties(value = { "nombre", "marca", "modelo", "ubicacion", "cantidadMinima", "funcion", "paquete" })
 	private Producto producto_fk;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "paquete_fk")
 	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })

@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,17 +38,17 @@ public class Producto implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
 	@JsonIgnoreProperties(value = { "nombre", "producto" })
-	private List<Funcion> funcion;
+	private Set<Funcion> funcion;
 	@OneToMany(mappedBy = "producto_fk")
 	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
-	private List<Paquete> paquete;
+	private Set<Paquete> paquete;
 	private static final long serialVersionUID = 1L;
 
 	public Producto() {
 	}
 
 	public Producto(String nombre, String marca, String modelo, String ubicacion, Long cantidadMinima,
-			List<Funcion> funcion, List<Paquete> paquete) {
+			Set<Funcion> funcion, Set<Paquete> paquete) {
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -58,11 +58,11 @@ public class Producto implements Serializable {
 		this.paquete = paquete;
 	}
 
-	public List<Paquete> getPaquete() {
+	public Set<Paquete> getPaquete() {
 		return paquete;
 	}
 
-	public void setPaquete(List<Paquete> paquete) {
+	public void setPaquete(Set<Paquete> paquete) {
 		this.paquete = paquete;
 	}
 
@@ -114,11 +114,11 @@ public class Producto implements Serializable {
 		this.cantidadMinima = cantidadMinima;
 	}
 
-	public List<Funcion> getFuncion() {
+	public Set<Funcion> getFuncion() {
 		return funcion;
 	}
 
-	public void setFuncion(List<Funcion> funcion) {
+	public void setFuncion(Set<Funcion> funcion) {
 		this.funcion = funcion;
 	}
 

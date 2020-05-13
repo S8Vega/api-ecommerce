@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,13 +24,13 @@ public class PedidoCliente implements Serializable {
 	private Long pedidoCliente_pk;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCliente_fk")
 	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
-	private List<PaqueteCliente> paqueteCliente;
+	private Set<PaqueteCliente> paqueteCliente;
 	@ManyToOne
 	@JoinColumn(name = "aliado_fk")
 	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado_fk;
 	@OneToOne
-	@JoinColumn(name = "pedido_fk")
+	@JoinColumn(name = "pedido_fk", unique = true)
 	@JsonIgnoreProperties(value = { "fechaCreacion", "fechaEntrega", "codigo", "pedidoCliente", "pedidoProveedor" })
 	private Pedido pedido_fk;
 	private static final long serialVersionUID = 1L;
@@ -38,8 +38,8 @@ public class PedidoCliente implements Serializable {
 	public PedidoCliente() {
 	}
 
-	public PedidoCliente(List<PaqueteCliente> paqueteClientes, Aliado aliado_fk, Pedido pedido_fk,
-			List<PaqueteCliente> paqueteCliente) {
+	public PedidoCliente(Set<PaqueteCliente> paqueteClientes, Aliado aliado_fk, Pedido pedido_fk,
+			Set<PaqueteCliente> paqueteCliente) {
 		this.paqueteCliente = paqueteCliente;
 		this.aliado_fk = aliado_fk;
 		this.pedido_fk = pedido_fk;
@@ -65,11 +65,11 @@ public class PedidoCliente implements Serializable {
 		return pedidoCliente_pk;
 	}
 
-	public List<PaqueteCliente> getPaqueteCliente() {
+	public Set<PaqueteCliente> getPaqueteCliente() {
 		return paqueteCliente;
 	}
 
-	public void setPaqueteCliente(List<PaqueteCliente> paqueteCliente) {
+	public void setPaqueteCliente(Set<PaqueteCliente> paqueteCliente) {
 		this.paqueteCliente = paqueteCliente;
 	}
 

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Empleado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long empleado_pk;
 	@OneToOne
-	@JoinColumn(name = "usuario_fk")
+	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
 			"empleado" })
 	private Usuario usuario_fk;
@@ -36,10 +37,10 @@ public class Empleado implements Serializable {
 	@JoinColumn(name = "cargo_fk")
 	@JsonIgnoreProperties(value = { "nombre", "empleado" })
 	private Cargo cargo_fk;
-	@OneToMany(mappedBy = "empleado_fk")
+	@OneToMany(mappedBy = "empleado_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
 	private Set<Trabaja> trabaja;
-	@OneToMany(mappedBy = "empleado_fk")
+	@OneToMany(mappedBy = "empleado_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
 			"fechaInicio", "fechaFin" })
 	private Set<Prestamo> prestamo;
@@ -50,7 +51,6 @@ public class Empleado implements Serializable {
 
 	public Empleado(Usuario usuario_fk, String alias, String contrasena, Cargo cargo_fk, Set<Trabaja> trabaja,
 			Set<Prestamo> prestamo) {
-		super();
 		this.usuario_fk = usuario_fk;
 		this.alias = alias;
 		this.contrasena = contrasena;

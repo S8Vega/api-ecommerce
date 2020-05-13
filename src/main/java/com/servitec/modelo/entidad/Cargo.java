@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +25,13 @@ public class Cargo implements Serializable {
 	private String nombre;
 	@OneToMany(mappedBy = "cargo_fk", fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
-	private List<Empleado> empleado;
+	private Set<Empleado> empleado;
 	private static final long serialVersionUID = 1L;
 
 	public Cargo() {
 	}
 
-	public Cargo(String nombre, List<Empleado> empleado) {
+	public Cargo(String nombre, Set<Empleado> empleado) {
 		this.nombre = nombre;
 		this.empleado = empleado;
 	}
@@ -56,11 +56,11 @@ public class Cargo implements Serializable {
 		return serialVersionUID;
 	}
 
-	public List<Empleado> getEmpleado() {
+	public Set<Empleado> getEmpleado() {
 		return empleado;
 	}
 
-	public void setEmpleado(List<Empleado> empleado) {
+	public void setEmpleado(Set<Empleado> empleado) {
 		this.empleado = empleado;
 	}
 

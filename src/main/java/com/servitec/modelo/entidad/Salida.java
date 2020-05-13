@@ -22,13 +22,13 @@ public class Salida implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long salida_pk;
 	@OneToOne
-	@JoinColumn(name = "serial_fk")
+	@JoinColumn(name = "serial_fk", unique = true)
 	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
 			"paqueteClienteSerial", "paqueteProveedorSerial" })
 	private Serial serial_fk;
 	@Column(name = "fecha_salida", nullable = false)
 	private LocalDate fechaSalida;
-	@Column(name = "motivo_salida", length = 20)
+	@Column(name = "motivo_salida", length = 50)
 	private String motivoSalida;
 	private static final long serialVersionUID = 1L;
 

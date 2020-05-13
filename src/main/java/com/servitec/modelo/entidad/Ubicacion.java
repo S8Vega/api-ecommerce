@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,13 +32,13 @@ public class Ubicacion implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion_fk")
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
 			"empleado" })
-	private List<Usuario> usuario;
+	private Set<Usuario> usuario;
 	private static final long serialVersionUID = 1L;
 
 	public Ubicacion() {
 	}
 
-	public Ubicacion(Ciudad ciudad_fk, String direccion, List<Usuario> usuario) {
+	public Ubicacion(Ciudad ciudad_fk, String direccion, Set<Usuario> usuario) {
 		this.ciudad_fk = ciudad_fk;
 		this.direccion = direccion;
 		this.usuario = usuario;
@@ -68,11 +68,11 @@ public class Ubicacion implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public List<Usuario> getUsuario() {
+	public Set<Usuario> getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(List<Usuario> usuario) {
+	public void setUsuario(Set<Usuario> usuario) {
 		this.usuario = usuario;
 	}
 

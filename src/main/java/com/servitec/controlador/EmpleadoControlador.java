@@ -41,7 +41,7 @@ public class EmpleadoControlador {
 		return this.empleadoServicio.findById(id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Empleado actualizar(@PathVariable Long id, @RequestBody Empleado empleado) {
 		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);

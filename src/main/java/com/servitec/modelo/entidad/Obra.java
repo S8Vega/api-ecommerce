@@ -1,10 +1,11 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +21,11 @@ public class Obra implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long obra_pk;
-	@Column(name = "nombre", length = 100, nullable = false)
+	@Column(name = "nombre", length = 100)
 	private String nombre;
-	@OneToMany(mappedBy = "obra_fk")
+	@OneToMany(mappedBy = "obra_fk",fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
-	private List<Trabaja> trabaja;
+	private Set<Trabaja> trabaja;
 	private static final long serialVersionUID = 1L;
 
 	public Obra() {
@@ -51,11 +52,11 @@ public class Obra implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Trabaja> getTrabaja() {
+	public Set<Trabaja> getTrabaja() {
 		return trabaja;
 	}
 
-	public void setTrabaja(List<Trabaja> trabaja) {
+	public void setTrabaja(Set<Trabaja> trabaja) {
 		this.trabaja = trabaja;
 	}
 

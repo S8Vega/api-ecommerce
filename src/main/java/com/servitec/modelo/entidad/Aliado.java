@@ -1,7 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ public class Aliado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long aliado_pk;
 	@OneToOne
-	@JoinColumn(name = "usuario_fk")
+	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
 			"empleado" })
 	private Usuario usuario_fk;
@@ -37,17 +37,17 @@ public class Aliado implements Serializable {
 	private String documento;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
 	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
-	private List<PedidoCliente> pedidoCliente;
+	private Set<PedidoCliente> pedidoCliente;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
 	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
-	private List<PedidoProveedor> pedidoProveedor;
+	private Set<PedidoProveedor> pedidoProveedor;
 	private static final long serialVersionUID = 1L;
 
 	public Aliado() {
 	}
 
-	public Aliado(Usuario usuario_fk, TipoDoc tipoDoc_fk, String documento, List<PedidoCliente> pedidoCliente,
-			List<PedidoProveedor> pedidoProveedor) {
+	public Aliado(Usuario usuario_fk, TipoDoc tipoDoc_fk, String documento, Set<PedidoCliente> pedidoCliente,
+			Set<PedidoProveedor> pedidoProveedor) {
 		this.usuario_fk = usuario_fk;
 		this.tipoDoc_fk = tipoDoc_fk;
 		this.documento = documento;
@@ -79,19 +79,19 @@ public class Aliado implements Serializable {
 		this.tipoDoc_fk = tipoDoc_fk;
 	}
 
-	public List<PedidoCliente> getPedidoCliente() {
+	public Set<PedidoCliente> getPedidoCliente() {
 		return pedidoCliente;
 	}
 
-	public void setPedidoCliente(List<PedidoCliente> pedidoCliente) {
+	public void setPedidoCliente(Set<PedidoCliente> pedidoCliente) {
 		this.pedidoCliente = pedidoCliente;
 	}
 
-	public List<PedidoProveedor> getPedidoProveedor() {
+	public Set<PedidoProveedor> getPedidoProveedor() {
 		return pedidoProveedor;
 	}
 
-	public void setPedidoProveedor(List<PedidoProveedor> pedidoProveedor) {
+	public void setPedidoProveedor(Set<PedidoProveedor> pedidoProveedor) {
 		this.pedidoProveedor = pedidoProveedor;
 	}
 

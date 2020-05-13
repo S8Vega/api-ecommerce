@@ -21,7 +21,7 @@ public class Administrador implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long administrador_pk;
 	@OneToOne
-	@JoinColumn(name = "usuario_fk")
+	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
 			"empleado" })
 	private Usuario usuario_fk;

@@ -34,12 +34,12 @@ public class ObraControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Obra crear(Obra obra) {
+	public Obra crear(@RequestBody Obra obra) {
 		this.obraServicio.save(obra);
 		return obra;
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Obra actualizar(@PathVariable Long id, @RequestBody Obra obra) {
 		Obra actual = this.obraServicio.findById(id);

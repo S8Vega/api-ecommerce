@@ -1,6 +1,7 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,29 +27,29 @@ public class PaqueteProveedor implements Serializable {
 	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
 	private PedidoProveedor pedidoProveedor_fk;
 	@OneToOne
-	@JoinColumn(name = "paquete_fk")
+	@JoinColumn(name = "paquete_fk", unique = true)
 	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
 	private Paquete paquete_fk;
-	@OneToOne(mappedBy = "paqueteProveedor_fk")
+	@OneToMany(mappedBy = "paqueteProveedor_fk")
 	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" })
-	private PaqueteProveedorSerial paqueteProveedorSerial;
+	private Set<PaqueteProveedorSerial> paqueteProveedorSerial;
 	private static final long serialVersionUID = 1L;
 
 	public PaqueteProveedor() {
 	}
 
 	public PaqueteProveedor(PedidoProveedor pedidoProveedor_fk, Paquete paquete_fk,
-			PaqueteProveedorSerial paqueteProveedorSerial) {
+			Set<PaqueteProveedorSerial> paqueteProveedorSerial) {
 		this.pedidoProveedor_fk = pedidoProveedor_fk;
 		this.paquete_fk = paquete_fk;
 		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
 
-	public PaqueteProveedorSerial getPaqueteProveedorSerial() {
+	public Set<PaqueteProveedorSerial> getPaqueteProveedorSerial() {
 		return paqueteProveedorSerial;
 	}
 
-	public void setPaqueteProveedorSerial(PaqueteProveedorSerial paqueteProveedorSerial) {
+	public void setPaqueteProveedorSerial(Set<PaqueteProveedorSerial> paqueteProveedorSerial) {
 		this.paqueteProveedorSerial = paqueteProveedorSerial;
 	}
 

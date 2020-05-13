@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,11 +23,11 @@ public class PaqueteClienteSerial implements Serializable {
 	@Column(name = "paquete_cliente_serial_pk")
 	private Long PaqueteClienteSerial_pk;
 	@OneToOne
-	@JoinColumn(name = "serial_fk")
+	@JoinColumn(name = "serial_fk", unique = true)
 	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
 			"paqueteClienteSerial", "paqueteProveedorSerial" })
 	private Serial serial_fk;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "paqueteCliente_fk")
 	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
 	private PaqueteCliente paqueteCliente_fk;

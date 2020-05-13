@@ -1,10 +1,11 @@
 package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,16 +23,16 @@ public class Funcion implements Serializable {
 	private Long funcion_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
-	@ManyToMany(mappedBy = "funcion")
+	@ManyToMany(mappedBy = "funcion",fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value = { "nombre", "marca", "modelo", "ubicacion", "cantidadMinima", "funcion", "paquete" })
-	private List<Producto> producto;
+	private Set<Producto> producto;
 
 	private static final long serialVersionUID = 1L;
 
 	public Funcion() {
 	}
 
-	public Funcion(String nombre, List<Producto> producto) {
+	public Funcion(String nombre, Set<Producto> producto) {
 		this.nombre = nombre;
 		this.producto = producto;
 	}
@@ -52,11 +53,11 @@ public class Funcion implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Producto> getProducto() {
+	public Set<Producto> getProducto() {
 		return producto;
 	}
 
-	public void setProducto(List<Producto> producto) {
+	public void setProducto(Set<Producto> producto) {
 		this.producto = producto;
 	}
 
