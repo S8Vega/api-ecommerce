@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,17 +31,17 @@ public class Serial implements Serializable {
 	private String metodoEntrada;
 	@Column(name = "control_calidad")
 	private Boolean controlCalidad;
-	@OneToOne(mappedBy = "serial_fk")
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "serial_fk", "fechaSalida", "motivoSalida" })
 	private Salida salida;
-	@OneToMany(mappedBy = "serial_fk")
+	@OneToMany(mappedBy = "serial_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
 			"fechaInicio", "fechaFin" })
 	private Set<Prestamo> prestamo;
-	@OneToOne(mappedBy = "serial_fk")
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
 	private PaqueteClienteSerial paqueteClienteSerial;
-	@OneToOne(mappedBy = "serial_fk")
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" })
 	private PaqueteProveedorSerial paqueteProveedorSerial;
 	private static final long serialVersionUID = 1L;

@@ -30,10 +30,10 @@ public class Paquete implements Serializable {
 	@JoinColumn(name = "producto_fk")
 	@JsonIgnoreProperties(value = { "nombre", "marca", "modelo", "ubicacion", "cantidadMinima", "funcion", "paquete" })
 	private Producto producto_fk;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "paquete_fk")
+	@OneToOne(mappedBy = "paquete_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
 	private PaqueteCliente paqueteCliente;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "paquete_fk")
+	@OneToOne(mappedBy = "paquete_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "pedidoProveedor_fk", "paquete_fk", "paqueteProveedorSerial" })
 	private PaqueteProveedor paqueteProveedor;
 	private static final long serialVersionUID = 1L;

@@ -24,8 +24,8 @@ public class UbicacionServicioImpl implements IServicio<Ubicacion, Long> {
 
 	@Override
 	@Transactional
-	public void save(Ubicacion Ubicacion) {
-		this.ubicacionDao.save(Ubicacion);
+	public void save(Ubicacion ubicacion) {
+		this.ubicacionDao.save(ubicacion);
 	}
 
 	@Override
@@ -35,8 +35,9 @@ public class UbicacionServicioImpl implements IServicio<Ubicacion, Long> {
 	}
 
 	@Override
-	public void delete(Ubicacion Ubicacion) {
-		this.ubicacionDao.delete(Ubicacion);
+	@Transactional
+	public void delete(Ubicacion ubicacion) {
+		this.ubicacionDao.delete(ubicacion);
 
 	}
 

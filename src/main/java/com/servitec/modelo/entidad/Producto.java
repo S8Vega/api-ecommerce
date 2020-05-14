@@ -3,9 +3,9 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,11 +35,11 @@ public class Producto implements Serializable {
 	private String ubicacion;
 	@Column(name = "cantidad_minima", nullable = false)
 	private Long cantidadMinima;
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
 	@JsonIgnoreProperties(value = { "nombre", "producto" })
 	private Set<Funcion> funcion;
-	@OneToMany(mappedBy = "producto_fk")
+	@OneToMany(mappedBy = "producto_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
 	private Set<Paquete> paquete;
 	private static final long serialVersionUID = 1L;

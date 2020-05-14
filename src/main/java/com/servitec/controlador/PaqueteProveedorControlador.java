@@ -53,6 +53,7 @@ public class PaqueteProveedorControlador {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public PaqueteProveedor eliminar(@PathVariable Long id) {
 		PaqueteProveedor paquete = this.paqueteProveedorServico.findById(id);
+		this.paqueteProveedorServico.delete(paquete);
 		return paquete;
 	}
 

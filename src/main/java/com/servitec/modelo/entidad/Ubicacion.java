@@ -29,7 +29,7 @@ public class Ubicacion implements Serializable {
 	private Ciudad ciudad_fk;
 	@Column(length = 250, nullable = false)
 	private String direccion;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion_fk")
+	@OneToMany(mappedBy = "ubicacion_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
 			"empleado" })
 	private Set<Usuario> usuario;

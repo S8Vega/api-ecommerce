@@ -27,7 +27,7 @@ public class PedidoProveedor implements Serializable {
 	@JoinColumn(name = "aliado_fk")
 	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Aliado aliado_fk;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoProveedor_fk")
+	@OneToMany(mappedBy = "pedidoProveedor_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "pedidoProveedor_fk", "paquete_fk", "paqueteProveedorSerial" })
 	private Set<PaqueteProveedor> paqueteProveedor;
 	@OneToOne

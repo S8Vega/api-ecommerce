@@ -35,6 +35,7 @@ public class PedidoClienteServicioImpl implements IServicio<PedidoCliente, Long>
 	}
 
 	@Override
+	@Transactional
 	public void delete(PedidoCliente pedidoCliente) {
 		this.pedDao.delete(pedidoCliente);
 	}

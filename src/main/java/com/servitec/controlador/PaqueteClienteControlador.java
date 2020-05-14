@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.PaqueteCliente;
+
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
@@ -28,24 +29,34 @@ public class PaqueteClienteControlador {
 		return this.paqueteClienteServicio.findAll();
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.CREATED)
+	public PaqueteCliente crear(@RequestBody PaqueteCliente paqueteCliente) {
+		this.paqueteClienteServicio.save(paqueteCliente);
+		return paqueteCliente;
+	}
+
 	@RequestMapping("/{id}")
 	public PaqueteCliente buscar(@PathVariable Long id) {
 		return this.paqueteClienteServicio.findById(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public PaqueteCliente actualizar(@PathVariable Long id, @RequestBody PaqueteCliente paqueteCliente) {
-		PaqueteCliente paqueteActual = this.paqueteClienteServicio.findById(id);
-		paqueteActual.setPaquete_fk(paqueteCliente.getPaquete_fk());
-		paqueteActual.setPaqueteCliente_pk(paqueteCliente.getPaqueteCliente_pk());
-		return paqueteActual;
+		PaqueteCliente paqueteClienteActual = (PaqueteCliente) this.paqueteClienteServicio.findById(id);
+		paqueteClienteActual.setPaquete_fk(paqueteCliente.getPaquete_fk());
+		paqueteClienteActual.setPaqueteClienteSerial(paqueteCliente.getPaqueteClienteSerial());
+		paqueteClienteActual.setPedidoCliente_fk(paqueteCliente.getPedidoCliente_fk());
+		this.paqueteClienteServicio.save(paqueteClienteActual);
+		return paqueteClienteActual;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public PaqueteCliente eliminar(@PathVariable Long id) {
-		PaqueteCliente paquete = this.paqueteClienteServicio.findById(id);
-		return paquete;
+		PaqueteCliente paqueteClienteActual = (PaqueteCliente) this.paqueteClienteServicio.findById(id);
+		this.paqueteClienteServicio.delete(paqueteClienteActual);
+		return paqueteClienteActual;
 	}
 
 }

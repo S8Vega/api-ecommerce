@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +22,7 @@ public class TipoDoc implements Serializable {
 	private Long tipoDoc_pk;
 	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoDoc_fk")
+	@OneToMany(mappedBy = "tipoDoc_fk")
 	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
 	private Set<Aliado> aliado;
 	private static final long serialVersionUID = 1L;

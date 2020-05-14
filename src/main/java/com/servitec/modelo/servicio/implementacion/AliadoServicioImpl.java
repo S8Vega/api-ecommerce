@@ -35,6 +35,7 @@ public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Aliado aliado) {
 		this.aliadoDao.delete(aliado);
 	}

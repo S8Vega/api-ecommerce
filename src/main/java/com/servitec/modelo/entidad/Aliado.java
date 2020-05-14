@@ -35,10 +35,10 @@ public class Aliado implements Serializable {
 	private TipoDoc tipoDoc_fk;
 	@Column(length = 20)
 	private String documento;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
+	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
 	private Set<PedidoCliente> pedidoCliente;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "aliado_fk")
+	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
 	private Set<PedidoProveedor> pedidoProveedor;
 	private static final long serialVersionUID = 1L;

@@ -35,6 +35,7 @@ public class CargoServicioImpl implements IServicio<Cargo, Long> {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Cargo cargo) {
 		this.cargoDao.delete(cargo);
 

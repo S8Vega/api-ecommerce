@@ -28,7 +28,7 @@ public class PedidoProveedorControlador {
 		return this.pedServicio.findAll();
 	}
 
-	@RequestMapping("*{id}")
+	@RequestMapping("/{id}")
 	public PedidoProveedor buscar(@PathVariable Long id) {
 		return this.pedServicio.findById(id);
 	}

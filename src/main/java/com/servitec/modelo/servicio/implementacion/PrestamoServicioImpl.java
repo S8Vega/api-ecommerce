@@ -34,6 +34,7 @@ public class PrestamoServicioImpl implements IServicio<Prestamo, Long> {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Prestamo t) {
 		this.prestamoDao.delete(t);
 	}

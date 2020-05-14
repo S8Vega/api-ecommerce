@@ -35,6 +35,7 @@ public class PaqueteClienteServicioImpl implements IServicio<PaqueteCliente, Lon
 	}
 
 	@Override
+	@Transactional
 	public void delete(PaqueteCliente paqueteCliente) {
 		this.paqueteClienteDao.delete(paqueteCliente);
 	}

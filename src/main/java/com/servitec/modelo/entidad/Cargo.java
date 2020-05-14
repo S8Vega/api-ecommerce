@@ -3,9 +3,9 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +23,7 @@ public class Cargo implements Serializable {
 	private Long cargo_pk;
 	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
-	@OneToMany(mappedBy = "cargo_fk", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "cargo_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
 	private Set<Empleado> empleado;
 	private static final long serialVersionUID = 1L;

@@ -23,7 +23,7 @@ public class Ciudad implements Serializable {
 	private Long ciudad_pk;
 	@Column(length = 80, nullable = false)
 	private String nombre;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad_fk")
+	@OneToMany(mappedBy = "ciudad_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "ciudad_fk", "direccion", "usuario" })
 	private Set<Ubicacion> ubicacion;
 	private static final long serialVersionUID = 1L;

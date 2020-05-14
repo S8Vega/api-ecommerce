@@ -3,6 +3,7 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public class PaqueteCliente implements Serializable {
 	@JoinColumn(name = "paquete_fk", unique = true)
 	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
 	private Paquete paquete_fk;
-	@OneToMany(mappedBy = "paqueteCliente_fk")
+	@OneToMany(mappedBy = "paqueteCliente_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
 	private Set<PaqueteClienteSerial> paqueteClienteSerial;
 	private static final long serialVersionUID = 1L;
@@ -45,16 +46,12 @@ public class PaqueteCliente implements Serializable {
 		this.paqueteClienteSerial = paqueteClienteSerial;
 	}
 
-	public Set<PaqueteClienteSerial> getPaqueteClienteSerial() {
-		return paqueteClienteSerial;
-	}
-
-	public void setPaqueteClienteSerial(Set<PaqueteClienteSerial> paqueteClienteSerial) {
-		this.paqueteClienteSerial = paqueteClienteSerial;
-	}
-
 	public Long getPaqueteCliente_pk() {
 		return paqueteCliente_pk;
+	}
+
+	public void setPaqueteCliente_pk(Long paqueteCliente_pk) {
+		this.paqueteCliente_pk = paqueteCliente_pk;
 	}
 
 	public PedidoCliente getPedidoCliente_fk() {
@@ -65,20 +62,20 @@ public class PaqueteCliente implements Serializable {
 		this.pedidoCliente_fk = pedidoCliente_fk;
 	}
 
-	public void setPaqueteCliente_pk(Long paqueteCliente_pk) {
-		this.paqueteCliente_pk = paqueteCliente_pk;
-	}
-
-	public PedidoCliente getPedidoCliente() {
-		return pedidoCliente_fk;
-	}
-
 	public Paquete getPaquete_fk() {
 		return paquete_fk;
 	}
 
 	public void setPaquete_fk(Paquete paquete_fk) {
 		this.paquete_fk = paquete_fk;
+	}
+
+	public Set<PaqueteClienteSerial> getPaqueteClienteSerial() {
+		return paqueteClienteSerial;
+	}
+
+	public void setPaqueteClienteSerial(Set<PaqueteClienteSerial> paqueteClienteSerial) {
+		this.paqueteClienteSerial = paqueteClienteSerial;
 	}
 
 	public static long getSerialversionuid() {

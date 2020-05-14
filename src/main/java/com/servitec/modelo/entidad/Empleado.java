@@ -3,9 +3,9 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,10 +37,10 @@ public class Empleado implements Serializable {
 	@JoinColumn(name = "cargo_fk")
 	@JsonIgnoreProperties(value = { "nombre", "empleado" })
 	private Cargo cargo_fk;
-	@OneToMany(mappedBy = "empleado_fk", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
 	private Set<Trabaja> trabaja;
-	@OneToMany(mappedBy = "empleado_fk", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
 			"fechaInicio", "fechaFin" })
 	private Set<Prestamo> prestamo;

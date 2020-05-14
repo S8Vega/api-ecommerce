@@ -46,7 +46,6 @@ public class PaqueteControlador {
 		Paquete paqueteActual = this.paqueteServicio.findById(id);
 		paqueteActual.setCantidadInicial(paquete.getCantidadInicial());
 		paqueteActual.setMedida(paquete.getMedida());
-		paqueteActual.setPaquete_pk(paquete.getPaquete_pk());
 		paqueteActual.setProducto_fk(paquete.getProducto_fk());
 		this.paqueteServicio.save(paqueteActual);
 		return paqueteActual;

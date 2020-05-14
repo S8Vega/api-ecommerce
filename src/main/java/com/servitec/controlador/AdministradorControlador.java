@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,12 +45,12 @@ public class AdministradorControlador {
 		Administrador admin = this.administradorServicio.findById(id);
 		admin.setAlias(administrador.getAlias());
 		admin.setContrasena(administrador.getContrasena());
+		admin.setUsuario_fk(administrador.getUsuario_fk());
 		this.administradorServicio.save(admin);
 		return admin;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	@Transactional
 	public Administrador eliminar(@PathVariable Long id) {
 		Administrador administrador = this.administradorServicio.findById(id);
 		this.administradorServicio.delete(administrador);

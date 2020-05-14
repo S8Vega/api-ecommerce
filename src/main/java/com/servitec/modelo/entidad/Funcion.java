@@ -3,9 +3,9 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +23,7 @@ public class Funcion implements Serializable {
 	private Long funcion_pk;
 	@Column(length = 100, nullable = false)
 	private String nombre;
-	@ManyToMany(mappedBy = "funcion",fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "funcion", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "nombre", "marca", "modelo", "ubicacion", "cantidadMinima", "funcion", "paquete" })
 	private Set<Producto> producto;
 

@@ -22,7 +22,7 @@ public class PedidoCliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedidoCliente_pk;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCliente_fk")
+	@OneToMany(mappedBy = "pedidoCliente_fk", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
 	private Set<PaqueteCliente> paqueteCliente;
 	@ManyToOne
@@ -38,31 +38,18 @@ public class PedidoCliente implements Serializable {
 	public PedidoCliente() {
 	}
 
-	public PedidoCliente(Set<PaqueteCliente> paqueteClientes, Aliado aliado_fk, Pedido pedido_fk,
-			Set<PaqueteCliente> paqueteCliente) {
+	public PedidoCliente(Set<PaqueteCliente> paqueteCliente, Aliado aliado_fk, Pedido pedido_fk) {
 		this.paqueteCliente = paqueteCliente;
 		this.aliado_fk = aliado_fk;
 		this.pedido_fk = pedido_fk;
 	}
 
-	public Pedido getPedido_fk() {
-		return pedido_fk;
-	}
-
-	public void setPedido_fk(Pedido pedido_fk) {
-		this.pedido_fk = pedido_fk;
-	}
-
-	public Aliado getAliado_fk() {
-		return aliado_fk;
-	}
-
-	public void setAliado_fk(Aliado aliado_fk) {
-		this.aliado_fk = aliado_fk;
-	}
-
 	public Long getPedidoCliente_pk() {
 		return pedidoCliente_pk;
+	}
+
+	public void setPedidoCliente_pk(Long pedidoCliente_pk) {
+		this.pedidoCliente_pk = pedidoCliente_pk;
 	}
 
 	public Set<PaqueteCliente> getPaqueteCliente() {
@@ -73,8 +60,20 @@ public class PedidoCliente implements Serializable {
 		this.paqueteCliente = paqueteCliente;
 	}
 
-	public void setPedidoCliente_pk(Long pedidoCliente_pk) {
-		this.pedidoCliente_pk = pedidoCliente_pk;
+	public Aliado getAliado_fk() {
+		return aliado_fk;
+	}
+
+	public void setAliado_fk(Aliado aliado_fk) {
+		this.aliado_fk = aliado_fk;
+	}
+
+	public Pedido getPedido_fk() {
+		return pedido_fk;
+	}
+
+	public void setPedido_fk(Pedido pedido_fk) {
+		this.pedido_fk = pedido_fk;
 	}
 
 	public static long getSerialversionuid() {
