@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -22,16 +23,18 @@ public class PedidoCliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedidoCliente_pk;
-	@OneToMany(mappedBy = "pedidoCliente_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" })
+	@OneToMany(mappedBy = "pedidoCliente_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "pedidoCliente_fk", "paquete_fk", "paqueteClienteSerial" }, allowSetters = true)
 	private Set<PaqueteCliente> paqueteCliente;
 	@ManyToOne
 	@JoinColumn(name = "aliado_fk")
-	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente",
+			"pedidoProveedor" }, allowSetters = true)
 	private Aliado aliado_fk;
 	@OneToOne
 	@JoinColumn(name = "pedido_fk", unique = true)
-	@JsonIgnoreProperties(value = { "fechaCreacion", "fechaEntrega", "codigo", "pedidoCliente", "pedidoProveedor" })
+	@JsonIgnoreProperties(value = { "fechaCreacion", "fechaEntrega", "codigo", "pedidoCliente",
+			"pedidoProveedor" }, allowSetters = true)
 	private Pedido pedido_fk;
 	private static final long serialVersionUID = 1L;
 

@@ -35,26 +35,20 @@ public class FuncionControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Funcion crear(@RequestBody Funcion funcion) {
+	public void crear(@RequestBody Funcion funcion) {
 		this.funcionServicio.save(funcion);
-		return funcion;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Funcion actualizar(@PathVariable Long id, @RequestBody Funcion funcion) {
-		Funcion funcionActual = this.funcionServicio.findById(id);
-		funcionActual.setNombre(funcion.getNombre());
-		funcionActual.setProducto(funcion.getProducto());
-		this.funcionServicio.save(funcionActual);
-		return funcionActual;
+	public void actualizar(@PathVariable Long id, @RequestBody Funcion funcion) {
+		funcion.setFuncion_pk(id);
+		this.funcionServicio.save(funcion);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Funcion eliminar(@PathVariable Long id) {
-		Funcion funcion = this.funcionServicio.findById(id);
-		this.funcionServicio.delete(funcion);
-		return funcion;
+	public void eliminar(@PathVariable Long id) {
+		this.funcionServicio.deleteById(id);
 	}
 
 }

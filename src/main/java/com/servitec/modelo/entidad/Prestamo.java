@@ -23,12 +23,13 @@ public class Prestamo implements Serializable {
 	private Long prestamo_pk;
 	@ManyToOne
 	@JoinColumn(name = "empleado_fk")
-	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja",
+			"prestamo" }, allowSetters = true)
 	private Empleado empleado_fk;
 	@ManyToOne
 	@JoinColumn(name = "serial_fk")
 	@JsonIgnoreProperties(value = { "serial", "fechaEntrada", "metodoEntrada", "controlCalidad", "salida", "prestamo",
-			"paqueteClienteSerial", "paqueteProveedorSerial" })
+			"paqueteClienteSerial", "paqueteProveedorSerial" }, allowSetters = true)
 	private Serial serial_fk;
 	@Column(length = 200, nullable = false)
 	private String motivo;

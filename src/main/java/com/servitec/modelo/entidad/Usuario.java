@@ -26,20 +26,22 @@ public class Usuario implements Serializable {
 	private String nombre;
 	@ManyToOne
 	@JoinColumn(name = "ubicacion_fk")
-	@JsonIgnoreProperties(value = { "ciudad_fk", "direccion", "usuario" })
+	@JsonIgnoreProperties(value = { "ciudad_fk", "direccion", "usuario" }, allowSetters = true)
 	private Ubicacion ubicacion_fk;
 	@Column(length = 20)
 	private String telefono;
 	@Column(length = 120, unique = true, nullable = false)
 	private String correo;
-	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
+	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente",
+			"pedidoProveedor" }, allowSetters = true)
 	private Aliado aliado;
-	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena" })
+	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena" }, allowSetters = true)
 	private Administrador administrador;
-	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
+	@OneToOne(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja",
+			"prestamo" }, allowSetters = true)
 	private Empleado empleado;
 	private static final long serialVersionUID = 1L;
 

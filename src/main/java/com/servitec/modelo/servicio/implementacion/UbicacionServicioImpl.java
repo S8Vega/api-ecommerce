@@ -36,9 +36,8 @@ public class UbicacionServicioImpl implements IServicio<Ubicacion, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Ubicacion ubicacion) {
-		this.ubicacionDao.delete(ubicacion);
-
+	public void deleteById(Long id) {
+		this.ubicacionDao.deleteById(id);
 	}
 
 }

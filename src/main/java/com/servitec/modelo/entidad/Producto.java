@@ -2,21 +2,18 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "producto")
@@ -35,12 +32,13 @@ public class Producto implements Serializable {
 	private String ubicacion;
 	@Column(name = "cantidad_minima", nullable = false)
 	private Long cantidadMinima;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
-	@JsonIgnoreProperties(value = { "nombre", "producto" })
+	@JsonIgnoreProperties(value = { "nombre", "producto" }, allowSetters = true)
 	private Set<Funcion> funcion;
-	@OneToMany(mappedBy = "producto_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
+	@OneToMany(mappedBy = "producto_fk")
+	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente",
+			"paqueteProveedor" }, allowSetters = true)
 	private Set<Paquete> paquete;
 	private static final long serialVersionUID = 1L;
 

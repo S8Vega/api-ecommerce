@@ -36,7 +36,7 @@ public class PaqueteServicioImpl implements IServicio<Paquete, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Paquete paquete) {
-		this.paqueteDao.delete(paquete);
+	public void deleteById(Long id) {
+		this.paqueteDao.deleteById(id);
 	}
 }

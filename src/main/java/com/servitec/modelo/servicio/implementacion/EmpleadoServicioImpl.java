@@ -36,8 +36,8 @@ public class EmpleadoServicioImpl implements IServicio<Empleado, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Empleado t) {
-		this.empleadoDao.delete(t);
+	public void deleteById(Long id) {
+		this.empleadoDao.deleteById(id);
 	}
 
 }

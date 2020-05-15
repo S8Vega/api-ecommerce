@@ -35,29 +35,20 @@ public class PedidoControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Pedido crear(Pedido pedido) {
+	public void crear(Pedido pedido) {
 		this.pedidoServicio.save(pedido);
-		return pedido;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Pedido actualizar(@PathVariable Long id, @RequestBody Pedido pedido) {
-		Pedido actual = this.pedidoServicio.findById(id);
-		actual.setCodigo(pedido.getCodigo());
-		actual.setFechaCreacion(pedido.getFechaCreacion());
-		actual.setFechaEntrega(pedido.getFechaEntrega());
-		actual.setPedidoCliente(pedido.getPedidoCliente());
-		actual.setPedidoProveedor(pedido.getPedidoProveedor());
-		this.pedidoServicio.save(actual);
-		return actual;
+	public void actualizar(@PathVariable Long id, @RequestBody Pedido pedido) {
+		pedido.setPedido_pk(id);
+		this.pedidoServicio.save(pedido);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Pedido eliminar(@PathVariable Long id) {
-		Pedido pedido = this.pedidoServicio.findById(id);
-		this.pedidoServicio.delete(pedido);
-		return pedido;
+	public void eliminar(@PathVariable Long id) {
+		this.pedidoServicio.deleteById(id);
 	}
 
 }

@@ -33,10 +33,10 @@ public class AdministradorServicioImpl implements IServicio<Administrador, Long>
 	public Administrador findById(Long id) {
 		return this.administradorDao.findById(id).orElse(null);
 	}
-
+	
 	@Override
 	@Transactional
-	public void delete(Administrador t) {
-		this.administradorDao.delete(t);
+	public void deleteById(Long id) {
+		this.administradorDao.deleteById(id);
 	}
 }

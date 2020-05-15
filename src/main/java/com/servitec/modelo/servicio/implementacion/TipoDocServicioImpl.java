@@ -36,9 +36,8 @@ public class TipoDocServicioImpl implements IServicio<TipoDoc, Long> {
 
 	@Override
 	@Transactional
-	public void delete(TipoDoc tipoDoc) {
-		this.tipoDocDao.delete(tipoDoc);
-
+	public void deleteById(Long id) {
+		this.tipoDocDao.deleteById(id);
 	}
 
 }

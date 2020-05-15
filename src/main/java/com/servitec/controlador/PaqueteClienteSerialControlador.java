@@ -1,6 +1,7 @@
 package com.servitec.controlador;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.servitec.modelo.entidad.PaqueteClienteSerial;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
@@ -33,27 +35,21 @@ public class PaqueteClienteSerialControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteClienteSerial crear(@RequestBody PaqueteClienteSerial paqueteClienteSerial) {
+	public void crear(@RequestBody PaqueteClienteSerial paqueteClienteSerial) {
 		this.paqueteClienteSerialServicio.save(paqueteClienteSerial);
-		return paqueteClienteSerial;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteClienteSerial actualizar(@PathVariable Long id,
+	public void actualizar(@PathVariable Long id,
 			@RequestBody PaqueteClienteSerial paqueteClienteSerial) {
-		PaqueteClienteSerial paqueteClienteSerialActual = this.paqueteClienteSerialServicio.findById(id);
-		paqueteClienteSerialActual.setPaqueteCliente_fk(paqueteClienteSerial.getPaqueteCliente_fk());
-		paqueteClienteSerialActual.setSerial_fk(paqueteClienteSerial.getSerial_fk());
-		this.paqueteClienteSerialServicio.save(paqueteClienteSerialActual);
-		return paqueteClienteSerialActual;
+		paqueteClienteSerial.setPaqueteClienteSerial_pk(id);
+		this.paqueteClienteSerialServicio.save(paqueteClienteSerial);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public PaqueteClienteSerial eliminar(@PathVariable Long id) {
-		PaqueteClienteSerial paqueteClienteSerial = this.paqueteClienteSerialServicio.findById(id);
-		this.paqueteClienteSerialServicio.delete(paqueteClienteSerial);
-		return paqueteClienteSerial;
+	public void eliminar(@PathVariable Long id) {
+		this.paqueteClienteSerialServicio.deleteById(id);
 	}
 
 }

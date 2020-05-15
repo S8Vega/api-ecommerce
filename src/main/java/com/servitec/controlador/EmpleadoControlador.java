@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Empleado;
-
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
@@ -31,9 +30,8 @@ public class EmpleadoControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Empleado crear(@RequestBody Empleado empleado) {
+	public void crear(@RequestBody Empleado empleado) {
 		this.empleadoServicio.save(empleado);
-		return empleado;
 	}
 
 	@RequestMapping("/{id}")
@@ -43,19 +41,14 @@ public class EmpleadoControlador {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Empleado actualizar(@PathVariable Long id, @RequestBody Empleado empleado) {
-		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);
-		empleadoActual.setAlias(empleado.getAlias());
-		empleadoActual.setContrasena(empleado.getContrasena());
-		this.empleadoServicio.save(empleadoActual);
-		return empleadoActual;
+	public void actualizar(@PathVariable Long id, @RequestBody Empleado empleado) {
+		empleado.setEmpleado_pk(id);
+		this.empleadoServicio.save(empleado);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Empleado eliminar(@PathVariable Long id) {
-		Empleado empleadoActual = (Empleado) this.empleadoServicio.findById(id);
-		this.empleadoServicio.delete(empleadoActual);
-		return empleadoActual;
+	public void eliminar(@PathVariable Long id) {
+		this.empleadoServicio.deleteById(id);
 	}
 
 }

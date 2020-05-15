@@ -23,7 +23,7 @@ public class Administrador implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
-			"empleado" })
+			"empleado" }, allowSetters = true)
 	private Usuario usuario_fk;
 	@Column(name = "alias", length = 50, nullable = false, unique = true)
 	private String alias;

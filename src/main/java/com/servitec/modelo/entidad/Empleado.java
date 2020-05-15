@@ -27,7 +27,7 @@ public class Empleado implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
-			"empleado" })
+			"empleado" }, allowSetters = true)
 	private Usuario usuario_fk;
 	@Column(name = "alias", length = 50, nullable = false, unique = true)
 	private String alias;
@@ -35,14 +35,14 @@ public class Empleado implements Serializable {
 	private String contrasena;
 	@ManyToOne
 	@JoinColumn(name = "cargo_fk")
-	@JsonIgnoreProperties(value = { "nombre", "empleado" })
+	@JsonIgnoreProperties(value = { "nombre", "empleado" }, allowSetters = true)
 	private Cargo cargo_fk;
-	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
+	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" }, allowSetters = true)
 	private Set<Trabaja> trabaja;
-	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "empleado_fk", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
-			"fechaInicio", "fechaFin" })
+			"fechaInicio", "fechaFin" }, allowSetters = true)
 	private Set<Prestamo> prestamo;
 	private static final long serialVersionUID = 1L;
 

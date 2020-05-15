@@ -35,26 +35,20 @@ public class PaqueteProveedorControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteProveedor crear(@RequestBody PaqueteProveedor paqueteProveedor) {
+	public void crear(@RequestBody PaqueteProveedor paqueteProveedor) {
 		this.paqueteProveedorServico.save(paqueteProveedor);
-		return paqueteProveedor;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteProveedor actualizar(@PathVariable Long id, @RequestBody PaqueteProveedor paqueteProveedor) {
-		PaqueteProveedor paqueteProveedorActual = this.paqueteProveedorServico.findById(id);
-		paqueteProveedorActual.setPaquete_fk(paqueteProveedor.getPaquete_fk());
-		paqueteProveedorActual.setPedidoProveedor_fk(paqueteProveedor.getPedidoProveedor_fk());
-		this.paqueteProveedorServico.save(paqueteProveedorActual);
-		return paqueteProveedorActual;
+	public void actualizar(@PathVariable Long id, @RequestBody PaqueteProveedor paqueteProveedor) {
+		paqueteProveedor.setPaqueteProveedor_pk(id);
+		this.paqueteProveedorServico.save(paqueteProveedor);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public PaqueteProveedor eliminar(@PathVariable Long id) {
-		PaqueteProveedor paquete = this.paqueteProveedorServico.findById(id);
-		this.paqueteProveedorServico.delete(paquete);
-		return paquete;
+	public void eliminar(@PathVariable Long id) {
+		this.paqueteProveedorServico.deleteById(id);
 	}
 
 }

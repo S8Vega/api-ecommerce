@@ -31,18 +31,18 @@ public class Serial implements Serializable {
 	private String metodoEntrada;
 	@Column(name = "control_calidad")
 	private Boolean controlCalidad;
-	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "serial_fk", "fechaSalida", "motivoSalida" })
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "serial_fk", "fechaSalida", "motivoSalida" }, allowSetters = true)
 	private Salida salida;
-	@OneToMany(mappedBy = "serial_fk", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "serial_fk", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value = { "empleado_fk", "serial_fk", "motivo", "observacionInicio", "observacionFin",
-			"fechaInicio", "fechaFin" })
+			"fechaInicio", "fechaFin" }, allowSetters = true)
 	private Set<Prestamo> prestamo;
-	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" }, allowSetters = true)
 	private PaqueteClienteSerial paqueteClienteSerial;
-	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" })
+	@OneToOne(mappedBy = "serial_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteProveedor_fk" }, allowSetters = true)
 	private PaqueteProveedorSerial paqueteProveedorSerial;
 	private static final long serialVersionUID = 1L;
 

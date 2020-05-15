@@ -35,25 +35,20 @@ public class SerialControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Serial crear(Serial serial) {
+	public void crear(Serial serial) {
 		this.serialServicio.save(serial);
-		return serial;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Serial actualizar(@PathVariable Long id, @RequestBody Serial serial) {
-		Serial actual = this.serialServicio.findById(id);
-		actual.setControlCalidad(serial.getControlCalidad());
-		actual.setMetodoEntrada(serial.getMetodoEntrada());
-		return actual;
+	public void actualizar(@PathVariable Long id, @RequestBody Serial serial) {
+		serial.setSerial_pk(id);
+		this.serialServicio.save(serial);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Serial eliminar(@PathVariable Long id) {
-		Serial serial = this.serialServicio.findById(id);
-		this.serialServicio.delete(serial);
-		return serial;
+	public void eliminar(@PathVariable Long id) {
+		this.serialServicio.deleteById(id);
 	}
 
 }

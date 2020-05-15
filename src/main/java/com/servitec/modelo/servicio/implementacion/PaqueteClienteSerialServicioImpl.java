@@ -36,8 +36,8 @@ public class PaqueteClienteSerialServicioImpl implements IServicio<PaqueteClient
 
 	@Override
 	@Transactional
-	public void delete(PaqueteClienteSerial paqueteClienteSerial) {
-		this.paqueteClienteSerialDao.delete(paqueteClienteSerial);
+	public void deleteById(Long id) {
+		this.paqueteClienteSerialDao.deleteById(id);
 	}
 
 }

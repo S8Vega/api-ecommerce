@@ -27,19 +27,19 @@ public class Aliado implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "usuario_fk", unique = true)
 	@JsonIgnoreProperties(value = { "nombre", "ubicacion_fk", "telefono", "correo", "aliado", "administrador",
-			"empleado" })
+			"empleado" }, allowSetters = true)
 	private Usuario usuario_fk;
 	@ManyToOne
 	@JoinColumn(name = "tipoDoc_fk")
-	@JsonIgnoreProperties(value = { "nombre", "aliado" })
+	@JsonIgnoreProperties(value = { "nombre", "aliado" }, allowSetters = true)
 	private TipoDoc tipoDoc_fk;
 	@Column(length = 20)
 	private String documento;
-	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
+	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" }, allowSetters = true)
 	private Set<PedidoCliente> pedidoCliente;
-	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
+	@OneToMany(mappedBy = "aliado_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" }, allowSetters = true)
 	private Set<PedidoProveedor> pedidoProveedor;
 	private static final long serialVersionUID = 1L;
 

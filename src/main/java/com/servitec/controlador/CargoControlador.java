@@ -1,6 +1,7 @@
 package com.servitec.controlador;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -30,9 +31,8 @@ public class CargoControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Cargo crear(@RequestBody Cargo cargo) {
+	public void crear(@RequestBody Cargo cargo) {
 		this.cargoServicio.save(cargo);
-		return cargo;
 	}
 
 	@RequestMapping("/{id}")
@@ -42,20 +42,15 @@ public class CargoControlador {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Cargo actualizar(@PathVariable Long id, @RequestBody Cargo cargo) {
-		Cargo cargoActual = this.cargoServicio.findById(id);
-		cargoActual.setEmpleado(cargo.getEmpleado());
-		cargoActual.setNombre(cargo.getNombre());
-		this.cargoServicio.save(cargoActual);
-		return cargoActual;
+	public void actualizar(@PathVariable Long id, @RequestBody Cargo cargo) {
+		cargo.setCargo_pk(id);
+		this.cargoServicio.save(cargo);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional
-	public Cargo eliminar(@PathVariable Long id) {
-		Cargo cargo = this.cargoServicio.findById(id);
-		this.cargoServicio.delete(cargo);
-		return cargo;
+	public void eliminar(@PathVariable Long id) {
+		this.cargoServicio.deleteById(id);
 	}
 
 }

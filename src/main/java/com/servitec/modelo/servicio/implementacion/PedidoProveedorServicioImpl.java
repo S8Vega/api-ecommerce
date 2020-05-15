@@ -36,7 +36,7 @@ public class PedidoProveedorServicioImpl implements IServicio<PedidoProveedor, L
 
 	@Override
 	@Transactional
-	public void delete(PedidoProveedor pedidoProveedor) {
-		this.pedDao.delete(pedidoProveedor);
+	public void deleteById(Long id) {
+		this.pedDao.deleteById(id);
 	}
 }

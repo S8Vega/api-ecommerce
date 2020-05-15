@@ -1,6 +1,7 @@
 package com.servitec.controlador;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.servitec.modelo.entidad.Ubicacion;
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
@@ -33,27 +35,20 @@ public class UbicacionControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Ubicacion crear(@RequestBody Ubicacion ubicacion) {
+	public void crear(@RequestBody Ubicacion ubicacion) {
 		this.ubicacionServicio.save(ubicacion);
-		return ubicacion;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Ubicacion actualizar(@PathVariable Long id, @RequestBody Ubicacion ubicacion) {
-		Ubicacion ubicacionActual = this.ubicacionServicio.findById(id);
-		ubicacionActual.setCiudad_fk(ubicacion.getCiudad_fk());
-		ubicacionActual.setDireccion(ubicacion.getDireccion());
-		ubicacionActual.setUsuario(ubicacion.getUsuario());
-		this.ubicacionServicio.save(ubicacionActual);
-		return ubicacionActual;
+	public void actualizar(@PathVariable Long id, @RequestBody Ubicacion ubicacion) {
+		ubicacion.setUbicacion_pk(id);
+		this.ubicacionServicio.save(ubicacion);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Ubicacion eliminar(@PathVariable Long id) {
-		Ubicacion ubicacion = this.ubicacionServicio.findById(id);
-		this.ubicacionServicio.delete(ubicacion);
-		return ubicacion;
+	public void eliminar(@PathVariable Long id) {
+		this.ubicacionServicio.deleteById(id);
 	}
 
 }

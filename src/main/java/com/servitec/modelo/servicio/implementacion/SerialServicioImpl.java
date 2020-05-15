@@ -36,7 +36,7 @@ public class SerialServicioImpl implements IServicio<Serial, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Serial t) {
-		this.serialDao.delete(t);
+	public void deleteById(Long id) {
+		this.serialDao.deleteById(id);
 	}
 }

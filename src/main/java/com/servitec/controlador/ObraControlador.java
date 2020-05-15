@@ -18,6 +18,7 @@ import com.servitec.modelo.servicio.interfaz.IServicio;
 @RestController
 @RequestMapping("obra")
 public class ObraControlador {
+
 	@Autowired
 	@Qualifier("ObraServicioImpl")
 	private IServicio<Obra, Long> obraServicio;
@@ -34,23 +35,19 @@ public class ObraControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Obra crear(@RequestBody Obra obra) {
+	public void crear(@RequestBody Obra obra) {
 		this.obraServicio.save(obra);
-		return obra;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Obra actualizar(@PathVariable Long id, @RequestBody Obra obra) {
-		Obra actual = this.obraServicio.findById(id);
-		actual.setNombre(obra.getNombre());
-		return actual;
+	public void actualizar(@PathVariable Long id, @RequestBody Obra obra) {
+		obra.setObra_pk(id);
+		this.obraServicio.save(obra);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Obra eliminar(@PathVariable Long id) {
-		Obra obra = this.obraServicio.findById(id);
-		this.obraServicio.delete(obra);
-		return obra;
+	public void eliminar(@PathVariable Long id) {
+		this.obraServicio.deleteById(id);
 	}
 }

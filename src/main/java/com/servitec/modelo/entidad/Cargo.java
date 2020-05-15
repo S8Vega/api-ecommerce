@@ -23,8 +23,9 @@ public class Cargo implements Serializable {
 	private Long cargo_pk;
 	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
-	@OneToMany(mappedBy = "cargo_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
+	@OneToMany(mappedBy = "cargo_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja",
+			"prestamo" }, allowSetters = true)
 	private Set<Empleado> empleado;
 	private static final long serialVersionUID = 1L;
 

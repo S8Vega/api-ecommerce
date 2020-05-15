@@ -35,26 +35,20 @@ public class PedidoClienteControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PedidoCliente crear(@RequestBody PedidoCliente pedidoCliente) {
+	public void crear(@RequestBody PedidoCliente pedidoCliente) {
 		this.pedidoServicio.save(pedidoCliente);
-		return pedidoCliente;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PedidoCliente actualizar(@PathVariable Long id, @RequestBody PedidoCliente pedidoCliente) {
-		PedidoCliente pedidoClienteActual = this.pedidoServicio.findById(id);
-		pedidoClienteActual.setAliado_fk(pedidoCliente.getAliado_fk());
-		pedidoClienteActual.setPaqueteCliente(pedidoCliente.getPaqueteCliente());
-		pedidoClienteActual.setPedido_fk(pedidoCliente.getPedido_fk());
-		this.pedidoServicio.save(pedidoClienteActual);
-		return pedidoClienteActual;
+	public void actualizar(@PathVariable Long id, @RequestBody PedidoCliente pedidoCliente) {
+		pedidoCliente.setPedidoCliente_pk(id);
+		this.pedidoServicio.save(pedidoCliente);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public PedidoCliente eliminar(@PathVariable Long id) {
-		PedidoCliente pedidoCliente = this.pedidoServicio.findById(id);
-		return pedidoCliente;
+	public void eliminar(@PathVariable Long id) {
+		this.pedidoServicio.deleteById(id);
 	}
 
 }

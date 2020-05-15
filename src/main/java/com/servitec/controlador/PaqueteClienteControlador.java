@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.PaqueteCliente;
-
 import com.servitec.modelo.servicio.interfaz.IServicio;
 
 @RestController
@@ -31,9 +30,8 @@ public class PaqueteClienteControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteCliente crear(@RequestBody PaqueteCliente paqueteCliente) {
+	public void crear(@RequestBody PaqueteCliente paqueteCliente) {
 		this.paqueteClienteServicio.save(paqueteCliente);
-		return paqueteCliente;
 	}
 
 	@RequestMapping("/{id}")
@@ -43,20 +41,14 @@ public class PaqueteClienteControlador {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PaqueteCliente actualizar(@PathVariable Long id, @RequestBody PaqueteCliente paqueteCliente) {
-		PaqueteCliente paqueteClienteActual = (PaqueteCliente) this.paqueteClienteServicio.findById(id);
-		paqueteClienteActual.setPaquete_fk(paqueteCliente.getPaquete_fk());
-		paqueteClienteActual.setPaqueteClienteSerial(paqueteCliente.getPaqueteClienteSerial());
-		paqueteClienteActual.setPedidoCliente_fk(paqueteCliente.getPedidoCliente_fk());
-		this.paqueteClienteServicio.save(paqueteClienteActual);
-		return paqueteClienteActual;
+	public void actualizar(@PathVariable Long id, @RequestBody PaqueteCliente paqueteCliente) {
+		paqueteCliente.setPaqueteCliente_pk(id);
+		this.paqueteClienteServicio.save(paqueteCliente);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public PaqueteCliente eliminar(@PathVariable Long id) {
-		PaqueteCliente paqueteClienteActual = (PaqueteCliente) this.paqueteClienteServicio.findById(id);
-		this.paqueteClienteServicio.delete(paqueteClienteActual);
-		return paqueteClienteActual;
+	public void eliminar(@PathVariable Long id) {
+		this.paqueteClienteServicio.deleteById(id);
 	}
 
 }

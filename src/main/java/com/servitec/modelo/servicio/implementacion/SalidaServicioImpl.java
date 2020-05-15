@@ -36,8 +36,8 @@ public class SalidaServicioImpl implements IServicio<Salida, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Salida t) {
-		this.salidaDao.delete(t);
+	public void deleteById(Long id) {
+		this.salidaDao.deleteById(id);
 	}
 
 }

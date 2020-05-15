@@ -36,8 +36,8 @@ public class ObraServicioImpl implements IServicio<Obra, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Obra t) {
-		this.obraDao.delete(t);
+	public void deleteById(Long id) {
+		this.obraDao.deleteById(id);
 	}
 
 }

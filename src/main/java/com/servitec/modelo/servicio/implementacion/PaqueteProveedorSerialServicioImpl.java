@@ -36,8 +36,8 @@ public class PaqueteProveedorSerialServicioImpl implements IServicio<PaqueteProv
 
 	@Override
 	@Transactional
-	public void delete(PaqueteProveedorSerial paqueteProveedorSerial) {
-		this.paqueteProveedorSerialDao.delete(paqueteProveedorSerial);
+	public void deleteById(Long id) {
+		this.paqueteProveedorSerialDao.deleteById(id);
 	}
 
 }

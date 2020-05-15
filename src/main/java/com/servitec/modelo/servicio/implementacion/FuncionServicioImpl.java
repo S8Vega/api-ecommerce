@@ -36,8 +36,8 @@ public class FuncionServicioImpl implements IServicio<Funcion, Long> {
 
 	@Override
 	@Transactional
-	public void delete(Funcion funcion) {
-		this.funcionDao.delete(funcion);
+	public void deleteById(Long id) {
+		this.funcionDao.deleteById(id);
 	}
 
 }

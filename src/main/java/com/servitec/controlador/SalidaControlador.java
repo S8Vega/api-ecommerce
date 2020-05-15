@@ -35,24 +35,20 @@ public class SalidaControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Salida crear(Salida salida) {
+	public void crear(Salida salida) {
 		this.salidaServicio.save(salida);
-		return salida;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Salida actualizar(@PathVariable Long id, @RequestBody Salida salida) {
-		Salida actual = this.salidaServicio.findById(id);
-		actual.setMotivoSalida(salida.getMotivoSalida());
-		return actual;
+	public void actualizar(@PathVariable Long id, @RequestBody Salida salida) {
+		salida.setSalida_pk(id);
+		this.salidaServicio.save(salida);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Salida eliminar(@PathVariable Long id) {
-		Salida salida = this.salidaServicio.findById(id);
-		this.salidaServicio.delete(salida);
-		return salida;
+	public void eliminar(@PathVariable Long id) {
+		this.salidaServicio.deleteById(id);
 	}
 
 }

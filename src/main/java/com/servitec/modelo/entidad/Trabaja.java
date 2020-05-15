@@ -23,11 +23,12 @@ public class Trabaja implements Serializable {
 	private Long trabaja_pk;
 	@ManyToOne
 	@JoinColumn(name = "obra_fk")
-	@JsonIgnoreProperties(value = { "nombre", "trabaja" })
+	@JsonIgnoreProperties(value = { "nombre", "trabaja" }, allowSetters = true)
 	private Obra obra_fk;
 	@ManyToOne
 	@JoinColumn(name = "empleado_fk")
-	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja", "prestamo" })
+	@JsonIgnoreProperties(value = { "usuario_fk", "alias", "contrasena", "cargo_fk", "trabaja",
+			"prestamo" }, allowSetters = true)
 	private Empleado empleado_fk;
 	@Column(name = "fecha_inicio", nullable = false)
 	private LocalDate fechaInicio;

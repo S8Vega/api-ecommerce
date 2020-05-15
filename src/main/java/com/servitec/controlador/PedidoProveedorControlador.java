@@ -35,26 +35,19 @@ public class PedidoProveedorControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PedidoProveedor crear(@RequestBody PedidoProveedor pedidoProveedor) {
+	public void crear(@RequestBody PedidoProveedor pedidoProveedor) {
 		this.pedServicio.save(pedidoProveedor);
-		return pedidoProveedor;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public PedidoProveedor actualizar(@PathVariable Long id, @RequestBody PedidoProveedor pedidoProveedor) {
-		PedidoProveedor pedidoProveedorActual = this.pedServicio.findById(id);
-		pedidoProveedorActual.setAliado_fk(pedidoProveedor.getAliado_fk());
-		pedidoProveedorActual.setPaqueteProveedor(pedidoProveedor.getPaqueteProveedor());
-		pedidoProveedorActual.setPedido_fk(pedidoProveedor.getPedido_fk());
-		this.pedServicio.save(pedidoProveedorActual);
-		return pedidoProveedorActual;
+	public void actualizar(@PathVariable Long id, @RequestBody PedidoProveedor pedidoProveedor) {
+		pedidoProveedor.setPedidoProveedor_pk(id);
+		this.pedServicio.save(pedidoProveedor);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public PedidoProveedor eliminar(@PathVariable Long id) {
-		PedidoProveedor pedidoProveedor = this.pedServicio.findById(id);
-		this.pedServicio.delete(pedidoProveedor);
-		return pedidoProveedor;
+	public void eliminar(@PathVariable Long id) {
+		this.pedServicio.deleteById(id);
 	}
 }

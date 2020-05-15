@@ -35,27 +35,20 @@ public class PaqueteControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Paquete crear(@RequestBody Paquete paquete) {
+	public void crear(@RequestBody Paquete paquete) {
 		this.paqueteServicio.save(paquete);
-		return paquete;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Paquete actualizar(@PathVariable Long id, @RequestBody Paquete paquete) {
-		Paquete paqueteActual = this.paqueteServicio.findById(id);
-		paqueteActual.setCantidadInicial(paquete.getCantidadInicial());
-		paqueteActual.setMedida(paquete.getMedida());
-		paqueteActual.setProducto_fk(paquete.getProducto_fk());
-		this.paqueteServicio.save(paqueteActual);
-		return paqueteActual;
+	public void actualizar(@PathVariable Long id, @RequestBody Paquete paquete) {
+		paquete.setPaquete_pk(id);
+		this.paqueteServicio.save(paquete);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Paquete eliminar(@PathVariable Long id) {
-		Paquete paquete = this.paqueteServicio.findById(id);
-		this.paqueteServicio.delete(paquete);
-		return paquete;
+	public void eliminar(@PathVariable Long id) {
+		this.paqueteServicio.deleteById(id);
 	}
 
 }

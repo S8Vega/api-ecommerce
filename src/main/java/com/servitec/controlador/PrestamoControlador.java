@@ -35,24 +35,19 @@ public class PrestamoControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Prestamo crear(Prestamo prestamo) {
+	public void crear(Prestamo prestamo) {
 		this.prestamoServicio.save(prestamo);
-		return prestamo;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Prestamo actualizar(@PathVariable Long id, @RequestBody Prestamo prestamo) {
-		Prestamo actual = this.prestamoServicio.findById(id);
-		actual.setObservacionFin(prestamo.getObservacionFin());
-		actual.setFechaFin(prestamo.getFechaFin());
-		return actual;
+	public void actualizar(@PathVariable Long id, @RequestBody Prestamo prestamo) {
+		prestamo.setPrestamo_pk(id);
+		this.prestamoServicio.save(prestamo);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Prestamo eliminar(@PathVariable Long id) {
-		Prestamo prestamo = this.prestamoServicio.findById(id);
-		this.prestamoServicio.delete(prestamo);
-		return prestamo;
+	public void eliminar(@PathVariable Long id) {
+		this.prestamoServicio.deleteById(id);
 	}
 }

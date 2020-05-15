@@ -35,25 +35,20 @@ public class TrabajaControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Trabaja crear(@RequestBody Trabaja trabaja) {
+	public void crear(@RequestBody Trabaja trabaja) {
 		this.trabajaServicio.save(trabaja);
-		return trabaja;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Trabaja atualizar(@PathVariable Long id, @RequestBody Trabaja trabaja) {
-		Trabaja trabajaActual = this.trabajaServicio.findById(id);
-		trabajaActual.setFechaFin(trabaja.getFechaFin());
-		this.trabajaServicio.save(trabajaActual);
-		return trabajaActual;
+	public void atualizar(@PathVariable Long id, @RequestBody Trabaja trabaja) {
+		trabaja.setTrabaja_pk(id);
+		this.trabajaServicio.save(trabaja);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Trabaja eliminar(@PathVariable Long id) {
-		Trabaja trabaja = this.trabajaServicio.findById(id);
-		this.trabajaServicio.delete(trabaja);
-		return trabaja;
+	public void eliminar(@PathVariable Long id) {
+		this.trabajaServicio.deleteById(id);
 	}
 
 }

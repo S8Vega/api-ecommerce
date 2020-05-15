@@ -25,14 +25,15 @@ public class PaqueteCliente implements Serializable {
 	private Long paqueteCliente_pk;
 	@ManyToOne
 	@JoinColumn(name = "pedidoCliente_fk")
-	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
+	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" }, allowSetters = true)
 	private PedidoCliente pedidoCliente_fk;
 	@OneToOne
 	@JoinColumn(name = "paquete_fk", unique = true)
-	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente", "paqueteProveedor" })
+	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente",
+			"paqueteProveedor" }, allowSetters = true)
 	private Paquete paquete_fk;
-	@OneToMany(mappedBy = "paqueteCliente_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" })
+	@OneToMany(mappedBy = "paqueteCliente_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "serial_fk", "paqueteCliente_fk" }, allowSetters = true)
 	private Set<PaqueteClienteSerial> paqueteClienteSerial;
 	private static final long serialVersionUID = 1L;
 

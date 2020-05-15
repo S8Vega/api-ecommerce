@@ -23,8 +23,8 @@ public class Obra implements Serializable {
 	private Long obra_pk;
 	@Column(name = "nombre", length = 100)
 	private String nombre;
-	@OneToMany(mappedBy = "obra_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" })
+	@OneToMany(mappedBy = "obra_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "obra_fk", "empleado_fk", "fechaInicio", "fechaFin" }, allowSetters = true)
 	private Set<Trabaja> trabaja;
 	private static final long serialVersionUID = 1L;
 

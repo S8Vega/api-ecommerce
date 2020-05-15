@@ -27,11 +27,11 @@ public class Pedido implements Serializable {
 	private LocalDate fechaEntrega;
 	@Column(length = 30)
 	private String codigo;
-	@OneToOne(mappedBy = "pedido_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" })
+	@OneToOne(mappedBy = "pedido_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "paqueteCliente", "aliado_fk", "pedido_fk" }, allowSetters = true)
 	private PedidoCliente pedidoCliente;
-	@OneToOne(mappedBy = "pedido_fk", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" })
+	@OneToOne(mappedBy = "pedido_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "paqueteProveedor", "aliado_fk", "pedido_fk" }, allowSetters = true)
 	private PedidoProveedor pedidoProveedor;
 	private static final long serialVersionUID = 1L;
 

@@ -3,6 +3,7 @@ package com.servitec.modelo.entidad;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +23,9 @@ public class TipoDoc implements Serializable {
 	private Long tipoDoc_pk;
 	@Column(length = 30, nullable = false, unique = true)
 	private String nombre;
-	@OneToMany(mappedBy = "tipoDoc_fk")
-	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente", "pedidoProveedor" })
+	@OneToMany(mappedBy = "tipoDoc_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = { "usuario_fk", "tipoDoc_fk", "documento", "pedidoCliente",
+			"pedidoProveedor" }, allowSetters = true)
 	private Set<Aliado> aliado;
 	private static final long serialVersionUID = 1L;
 
