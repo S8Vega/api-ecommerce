@@ -35,7 +35,7 @@ public class SalidaControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void crear(Salida salida) {
+	public void crear(@RequestBody Salida salida) {
 		this.salidaServicio.save(salida);
 	}
 

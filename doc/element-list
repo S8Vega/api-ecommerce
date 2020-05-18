@@ -1,0 +1,7 @@
+com.servitec
+com.servitec.controlador
+com.servitec.modelo.dao.implementacion
+com.servitec.modelo.dao.interfaz
+com.servitec.modelo.entidad
+com.servitec.modelo.servicio.implementacion
+com.servitec.modelo.servicio.interfaz

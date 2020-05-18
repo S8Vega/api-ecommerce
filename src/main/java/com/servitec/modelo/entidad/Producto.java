@@ -2,6 +2,8 @@ package com.servitec.modelo.entidad;
 
 import java.io.Serializable;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +38,7 @@ public class Producto implements Serializable {
 	@JoinTable(name = "producto_funcion", joinColumns = @JoinColumn(name = "producto_pfk"), inverseJoinColumns = @JoinColumn(name = "funcion_pfk"))
 	@JsonIgnoreProperties(value = { "nombre", "producto" }, allowSetters = true)
 	private Set<Funcion> funcion;
-	@OneToMany(mappedBy = "producto_fk")
+	@OneToMany(mappedBy = "producto_fk",cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value = { "medida", "cantidadInicial", "producto_fk", "paqueteCliente",
 			"paqueteProveedor" }, allowSetters = true)
 	private Set<Paquete> paquete;

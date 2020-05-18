@@ -35,7 +35,7 @@ public class PrestamoControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void crear(Prestamo prestamo) {
+	public void crear(@RequestBody Prestamo prestamo) {
 		this.prestamoServicio.save(prestamo);
 	}
 

@@ -1,8 +1,10 @@
 package com.servitec.modelo.servicio.implementacion;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,5 +40,10 @@ public class PaqueteServicioImpl implements IServicio<Paquete, Long> {
 	@Transactional
 	public void deleteById(Long id) {
 		this.paqueteDao.deleteById(id);
+	}
+
+	public ResponseEntity<Map<String, Object>> recibido(Long id) {
+
+		return null;
 	}
 }

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.servitec.modelo.entidad.Cargo" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Cargo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2963" y="1212"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.servitec.modelo.entidad.Serial" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Serial.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1498" y="1916"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.servitec.modelo.entidad.Obra" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Obra.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2664" y="1781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.servitec.modelo.entidad.Ubicacion" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Ubicacion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1917" y="1799"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.servitec.modelo.entidad.Trabaja" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Trabaja.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2702" y="1257"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.servitec.modelo.entidad.Producto" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Producto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="309" y="835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.servitec.modelo.entidad.PaqueteProveedor" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PaqueteProveedor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="877" y="652"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.servitec.modelo.entidad.Prestamo" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Prestamo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2361" y="1338"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.servitec.modelo.entidad.Usuario" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1964" y="1320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.servitec.modelo.entidad.Aliado" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Aliado.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1976" y="697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.servitec.modelo.entidad.PaqueteProveedorSerial" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PaqueteProveedorSerial.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1259" y="191"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.servitec.modelo.entidad.Empleado" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Empleado.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2532" y="724"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.servitec.modelo.entidad.TipoDoc" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/TipoDoc.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1867" y="200"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.servitec.modelo.entidad.Funcion" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Funcion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="366" y="200"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.servitec.modelo.entidad.PaqueteClienteSerial" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PaqueteClienteSerial.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1344" y="1203"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.servitec.modelo.entidad.PaqueteCliente" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PaqueteCliente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1289" y="652"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.servitec.modelo.entidad.PedidoCliente" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PedidoCliente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1569" y="209"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.servitec.modelo.entidad.Pedido" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Pedido.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1528" y="-189"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.servitec.modelo.entidad.PedidoProveedor" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/PedidoProveedor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1503" y="-587"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.servitec.modelo.entidad.Salida" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Salida.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1097" y="1239"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.servitec.modelo.entidad.Ciudad" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Ciudad.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1649" y="1212"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.servitec.modelo.entidad.Paquete" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Paquete.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="912" y="263"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.servitec.modelo.entidad.Administrador" project="api-ags" 
+    file="/api-ags/src/main/java/com/servitec/modelo/entidad/Administrador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1644" y="670"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="24">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="25" name="ubicacion_fk"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <bendpoint x="1755" y="62"/>    
+    <bendpoint x="1755" y="-399"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="28" name="pedidoProveedor"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="31" name="usuario_fk"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="34" name="trabaja"/>      
+      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="37" name="pedidoCliente"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="40" name="salida"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="43" name="trabaja"/>      
+      <multiplicity id="44" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="46" name="producto"/>      
+      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="49" name="paqueteProveedorSerial"/>      
+      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <bendpoint x="709" y="62"/>    
+    <bendpoint x="709" y="-399"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="52" name="pedidoProveedor_fk"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="55" name="prestamo"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="58" name="paqueteClienteSerial"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="61" name="pedido_fk"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <bendpoint x="1734" y="-399"/>    
+    <bendpoint x="1734" y="62"/>    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="64" name="aliado_fk"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="67" name="pedidoCliente_fk"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="69">    
+    <bendpoint x="1493" y="505"/>    
+    <bendpoint x="1493" y="1074"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="70" name="serial_fk"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="73" name="aliado"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="76" name="paquete"/>      
+      <multiplicity id="77" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="79" name="tipoDoc_fk"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="82" name="ciudad_fk"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="85" name="aliado_fk"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="88" name="paqueteClienteSerial"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="91" name="paqueteProveedor"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="94" name="usuario_fk"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="97" name="funcion"/>      
+      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="100" name="paqueteProveedor_fk"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="103" name="prestamo"/>      
+      <multiplicity id="104" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="105">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="106" name="usuario_fk"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="109" name="obra_fk"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <bendpoint x="1514" y="1074"/>    
+    <bendpoint x="1514" y="505"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="112" name="paqueteProveedorSerial"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="115" name="pedido_fk"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <bendpoint x="688" y="-399"/>    
+    <bendpoint x="688" y="62"/>    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="118" name="paqueteProveedor"/>      
+      <multiplicity id="119" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="121" name="producto_fk"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="124" name="empleado"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="127" name="serial_fk"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="130" name="paqueteCliente_fk"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="133" name="empleado_fk"/>      
+      <multiplicity id="134" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="136" name="paqueteCliente"/>      
+      <multiplicity id="137" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="139" name="paqueteCliente"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="142" name="serial_fk"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="145" name="pedidoProveedor"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="147">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="148" name="usuario"/>      
+      <multiplicity id="149" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="150">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="151" name="cargo_fk"/>      
+      <multiplicity id="152" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="154" name="empleado"/>      
+      <multiplicity id="155" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="157" name="empleado_fk"/>      
+      <multiplicity id="158" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="160" name="administrador"/>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="163" name="paquete_fk"/>      
+      <multiplicity id="164" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="166" name="ubicacion"/>      
+      <multiplicity id="167" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="168">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="169" name="pedidoCliente"/>      
+      <multiplicity id="170" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="172" name="paquete_fk"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="174">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="175" name="serial_fk"/>      
+      <multiplicity id="176" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="177">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="178" name="aliado"/>      
+      <multiplicity id="179" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

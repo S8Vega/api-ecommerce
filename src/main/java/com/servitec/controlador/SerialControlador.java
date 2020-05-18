@@ -35,7 +35,7 @@ public class SerialControlador {
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void crear(Serial serial) {
+	public void crear(@RequestBody Serial serial) {
 		this.serialServicio.save(serial);
 	}
 

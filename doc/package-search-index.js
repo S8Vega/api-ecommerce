@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.servitec"},{"l":"com.servitec.controlador"},{"l":"com.servitec.modelo.dao.implementacion"},{"l":"com.servitec.modelo.dao.interfaz"},{"l":"com.servitec.modelo.entidad"},{"l":"com.servitec.modelo.servicio.implementacion"},{"l":"com.servitec.modelo.servicio.interfaz"}]
