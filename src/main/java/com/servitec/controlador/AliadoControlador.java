@@ -1,9 +1,9 @@
 package com.servitec.controlador;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.servitec.modelo.entidad.Aliado;
-import com.servitec.modelo.servicio.interfaz.IServicio;
+import com.servitec.modelo.servicio.implementacion.AliadoServicioImpl;
 
 @RestController
 @RequestMapping("/aliado")
 public class AliadoControlador {
 
 	@Autowired
-	@Qualifier("AliadoServicioImpl")
-	private IServicio<Aliado, Long> aliadoServicio;
+	private AliadoServicioImpl aliadoServicio;
 
 	@RequestMapping
 	public List<Aliado> listar() {
@@ -51,4 +50,8 @@ public class AliadoControlador {
 		this.aliadoServicio.deleteById(id);
 	}
 
+	@RequestMapping("/devolucion/{id}")
+	public Map<String, Object> devolucion(@PathVariable Long id) {
+		return this.aliadoServicio.devolucion(id);
+	}
 }

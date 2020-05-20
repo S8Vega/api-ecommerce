@@ -39,4 +39,5 @@ public class PaqueteProveedorServicioImpl implements IServicio<PaqueteProveedor,
 	public void deleteById(Long id) {
 		this.paqueteProveedorDao.deleteById(id);
 	}
+
 }

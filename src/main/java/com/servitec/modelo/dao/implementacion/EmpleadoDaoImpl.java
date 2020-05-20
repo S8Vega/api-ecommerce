@@ -18,8 +18,8 @@ public class EmpleadoDaoImpl implements IEmpleadoDao {
 	private EntityManager em;
 
 	public Long inicioSesion(String alias, String contrasena) {
-		Empleado empleado = (Empleado) em.createQuery("from empleado where alias=" + alias + " and contrasena = " + contrasena)
-				.getResultList();
+		Empleado empleado = (Empleado) em
+				.createQuery("from empleado where alias=" + alias + " and contrasena = " + contrasena).getResultList();
 		return empleado.getEmpleado_pk();
 	}
 

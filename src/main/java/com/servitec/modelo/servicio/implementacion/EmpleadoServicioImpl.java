@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.servitec.modelo.dao.interfaz.IEmpleadoDao;
@@ -49,19 +47,16 @@ public class EmpleadoServicioImpl implements IServicio<Empleado, Long> {
 	}
 
 	@Transactional
-	public ResponseEntity<?> sesion(String alias, String contrasena) {
+	public Map<String, Object> sesion(String alias, String contrasena) {
 		Map<String, Object> respuesta = new HashMap<>();
-		String q = "FROM Empleado WHERE alias='" + alias + "' and contrasena='" + contrasena + "'";
-		List<Empleado> empleados = consulta(q);
-		respuesta.put("valor", empleados.size() > 0);
-		if (empleados.size() > 0)
-			respuesta.put("empleado_pk", empleados.get(0).getEmpleado_pk());
-		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+		List<Empleado> lista = findAll();
+		for (Empleado empleado : lista) {
+			if (empleado.getAlias().equals(alias) && empleado.getContrasena().equals(contrasena)) {
+				respuesta.put("empleado_pk", empleado.getEmpleado_pk());
+				break;
+			}
+		}
+		respuesta.put("valor", respuesta.size() == 1);
+		return respuesta;
 	}
-
-	@SuppressWarnings("unchecked")
-	public List<Empleado> consulta(String query) {
-		return (List<Empleado>) em.createQuery(query).getResultList();
-	}
-
 }

@@ -41,8 +41,7 @@ public class PaqueteClienteSerialControlador {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void actualizar(@PathVariable Long id,
-			@RequestBody PaqueteClienteSerial paqueteClienteSerial) {
+	public void actualizar(@PathVariable Long id, @RequestBody PaqueteClienteSerial paqueteClienteSerial) {
 		paqueteClienteSerial.setPaqueteClienteSerial_pk(id);
 		this.paqueteClienteSerialServicio.save(paqueteClienteSerial);
 	}

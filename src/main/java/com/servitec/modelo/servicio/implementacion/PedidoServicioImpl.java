@@ -1,5 +1,6 @@
 package com.servitec.modelo.servicio.implementacion;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,4 +92,30 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 		}
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
+
+	@Autowired
+	private PaqueteServicioImpl paqueteServicio;
+
+	@Transactional
+	public Map<String, Object> devolucion(Long id) {
+		Map<String, Object> objeto = new HashMap<>();
+		List<Object> lista = new ArrayList<>();
+		Pedido pedido = findById(id);
+		if (pedido.getPedidoCliente() != null) {
+			objeto.put("tipo", "cliente");
+			for (PaqueteCliente paqueteCliente : pedido.getPedidoCliente().getPaqueteCliente()) {
+				lista.add(paqueteServicio.devolucion(paqueteCliente.getPaquete_fk().getPaquete_pk()));
+			}
+		}
+		if (pedido.getPedidoProveedor() != null) {
+			objeto.put("tipo", "proveedor");
+			for (PaqueteProveedor paqueteProveedor : pedido.getPedidoProveedor().getPaqueteProveedor()) {
+				lista.add(paqueteServicio.devolucion(paqueteProveedor.getPaquete_fk().getPaquete_pk()));
+			}
+		}
+		objeto.put("pedido_pk", pedido.getPedido_pk());
+		objeto.put("listaPaquete", lista);
+		return objeto;
+	}
+
 }

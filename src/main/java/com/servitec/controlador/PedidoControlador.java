@@ -1,6 +1,7 @@
 package com.servitec.controlador;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,9 +52,14 @@ public class PedidoControlador {
 		this.pedidoServicio.deleteById(id);
 	}
 
-	@RequestMapping("/{id}/recibido")
+	@RequestMapping("/recibido/{id}")
 	public ResponseEntity<?> recibido(@PathVariable Long id) {
 		return this.pedidoServicio.recibido(id);
+	}
+
+	@RequestMapping("/devolucion/{id}")
+	public Map<String, Object> devolucion(@PathVariable Long id) {
+		return this.pedidoServicio.devolucion(id);
 	}
 
 }

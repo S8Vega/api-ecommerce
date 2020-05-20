@@ -1,6 +1,8 @@
 package com.servitec.modelo.servicio.implementacion;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,10 +35,24 @@ public class AdministradorServicioImpl implements IServicio<Administrador, Long>
 	public Administrador findById(Long id) {
 		return this.administradorDao.findById(id).orElse(null);
 	}
-	
+
 	@Override
 	@Transactional
 	public void deleteById(Long id) {
 		this.administradorDao.deleteById(id);
+	}
+	
+	@Transactional
+	public Map<String, Object> sesion(String alias, String contrasena) {
+		Map<String, Object> respuesta = new HashMap<>();
+		List<Administrador> lista = findAll();
+		for (Administrador administrador: lista) {
+			if (administrador.getAlias().equals(alias) && administrador.getContrasena().equals(contrasena)) {
+				respuesta.put("administrador_pk", administrador.getAdministrador_pk());
+				break;
+			}
+		}
+		respuesta.put("valor", respuesta.size() == 1);
+		return respuesta;
 	}
 }
