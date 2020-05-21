@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,9 +47,10 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 	}
 
 	@Transactional
-	public ResponseEntity<?> recibido(Long id) {
+	public Map<String, Object> recibido(Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
-		Pedido pedido = this.pedidoDao.findById(id).orElse(null);
+		Pedido pedido = findById(id);
+		respuesta.put("pedido_pk", pedido.getPedido_pk());
 		if (pedido.getPedidoProveedor() != null) {
 			respuesta.put("pedidoTipo", "Proveedor");
 			Set<PaqueteProveedor> paquete = pedido.getPedidoProveedor().getPaqueteProveedor();
@@ -90,7 +89,7 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 			respuesta.put("porductosPendientes", falta);
 			respuesta.put("recibido", cantidadInicial == cantidadActual);
 		}
-		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+		return respuesta;
 	}
 
 	@Autowired
