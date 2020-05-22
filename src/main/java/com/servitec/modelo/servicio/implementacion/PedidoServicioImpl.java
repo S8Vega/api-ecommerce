@@ -22,6 +22,9 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 	@Autowired
 	private IPedidoDao pedidoDao;
 
+	@Autowired
+	private PaqueteServicioImpl paqueteServicio;
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Pedido> findAll() {
@@ -44,6 +47,22 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 	@Transactional
 	public void deleteById(Long id) {
 		this.pedidoDao.deleteById(id);
+	}
+
+	@Transactional
+	public void controlCalidad(Long id) {
+		Pedido pedido = findById(id);
+		if (pedido.getPedidoCliente() != null) {
+			for (PaqueteCliente pc : pedido.getPedidoCliente().getPaqueteCliente()) {
+				paqueteServicio.controlCalidad(pc.getPaquete_fk().getPaquete_pk());
+			}
+		}
+		if (pedido.getPedidoProveedor() != null) {
+			for (PaqueteProveedor pp : pedido.getPedidoProveedor().getPaqueteProveedor()) {
+				paqueteServicio.controlCalidad(pp.getPaquete_fk().getPaquete_pk());
+			}
+		}
+
 	}
 
 	@Transactional
@@ -92,8 +111,27 @@ public class PedidoServicioImpl implements IServicio<Pedido, Long> {
 		return respuesta;
 	}
 
-	@Autowired
-	private PaqueteServicioImpl paqueteServicio;
+	@Transactional
+	public Map<String, Object> reporte(Long id) {
+		Map<String, Object> objeto = new HashMap<>();
+		Pedido pedido = findById(id);
+		List<Object> listaPaquete = new ArrayList<>();
+		objeto.put("pedido_pk", id);
+		if (pedido.getPedidoCliente() != null) {
+			objeto.put("tipoPedido", "cliente");
+			for (PaqueteCliente pc : pedido.getPedidoCliente().getPaqueteCliente()) {
+				listaPaquete.add(this.paqueteServicio.reporte(pc.getPaquete_fk().getPaquete_pk()));
+			}
+		}
+		if (pedido.getPedidoProveedor() != null) {
+			objeto.put("tipoPedido", "proveedor");
+			for (PaqueteProveedor pp : pedido.getPedidoProveedor().getPaqueteProveedor()) {
+				listaPaquete.add(this.paqueteServicio.reporte(pp.getPaquete_fk().getPaquete_pk()));
+			}
+		}
+		objeto.put("listaPaquete", listaPaquete);
+		return objeto;
+	}
 
 	@Transactional
 	public Map<String, Object> devolucion(Long id) {

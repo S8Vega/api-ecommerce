@@ -20,6 +20,8 @@ public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 
 	@Autowired
 	private IAliadoDao aliadoDao;
+	@Autowired
+	private PedidoServicioImpl pedidoServicio;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -45,9 +47,32 @@ public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 		this.aliadoDao.deleteById(id);
 	}
 
-	@Autowired
-	private PedidoServicioImpl pedidoServicio;
-	
+	@Transactional
+	public Map<String, Object> reporte(Long id) {
+		Map<String, Object> objeto = new HashMap<>();
+		objeto.put("aliado_pk", id);
+		List<Object> listaPedido = new ArrayList<>();
+		Aliado aliado = findById(id);
+		for (PedidoCliente pc : aliado.getPedidoCliente()) {
+			listaPedido.add(this.pedidoServicio.reporte(pc.getPedido_fk().getPedido_pk()));
+		}
+		for (PedidoProveedor pp : aliado.getPedidoProveedor()) {
+			listaPedido.add(this.pedidoServicio.reporte(pp.getPedido_fk().getPedido_pk()));
+		}
+		objeto.put("listaPedido", listaPedido);
+		return objeto;
+	}
+
+	@Transactional
+	public List<Object> reporteTodo() {
+		List<Aliado> listaAliado = findAll();
+		List<Object> lista = new ArrayList<>();
+		for (Aliado aliado : listaAliado) {
+			lista.add(reporte(aliado.getAliado_pk()));
+		}
+		return lista;
+	}
+
 	@Transactional
 	public Map<String, Object> devolucion(Long id) {
 		Map<String, Object> objeto = new HashMap<>();
@@ -61,7 +86,7 @@ public class AliadoServicioImpl implements IServicio<Aliado, Long> {
 		}
 		if (aliado.getPedidoProveedor() != null) {
 			objeto.put("tipo", "proveedor");
-			for (PedidoProveedor pedidoProveedor: aliado.getPedidoProveedor()) {
+			for (PedidoProveedor pedidoProveedor : aliado.getPedidoProveedor()) {
 				lista.add(pedidoServicio.devolucion(pedidoProveedor.getPedido_fk().getPedido_pk()));
 			}
 		}

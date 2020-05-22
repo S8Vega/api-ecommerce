@@ -61,4 +61,14 @@ public class PedidoControlador {
 		return this.pedidoServicio.devolucion(id);
 	}
 
+	@RequestMapping(value = "/controlCalidad/{id}", method = RequestMethod.POST)
+	public void controlCalidad(@PathVariable Long id) {
+		this.pedidoServicio.controlCalidad(id);
+	}
+
+	@RequestMapping("/reporte/{id}")
+	public Map<String, Object> reporte(@PathVariable Long id) {
+		return this.pedidoServicio.reporte(id);
+	}
+
 }

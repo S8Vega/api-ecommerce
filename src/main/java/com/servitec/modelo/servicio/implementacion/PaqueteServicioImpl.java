@@ -46,6 +46,44 @@ public class PaqueteServicioImpl implements IServicio<Paquete, Long> {
 	}
 
 	@Transactional
+	public void controlCalidad(Long id) {
+		Paquete paquete = findById(id);
+		if (paquete.getPaqueteCliente() != null) {
+			for (PaqueteClienteSerial pcs : paquete.getPaqueteCliente().getPaqueteClienteSerial()) {
+				pcs.getSerial_fk().setControlCalidad(true);
+			}
+		}
+		if (paquete.getPaqueteProveedor() != null) {
+			for (PaqueteProveedorSerial pps : paquete.getPaqueteProveedor().getPaqueteProveedorSerial()) {
+				pps.getSerial_fk().setControlCalidad(true);
+			}
+		}
+	}
+
+	@Transactional
+	public Map<String, Object> reporte(Long id) {
+		Map<String, Object> objeto = new HashMap<>();
+		List<Long> listaSerial = new ArrayList<>();
+		objeto.put("paquete_pk", id);
+		Paquete paquete = findById(id);
+		if (paquete.getPaqueteCliente() != null) {
+			objeto.put("tipoPaquete", "cliente");
+			for (PaqueteClienteSerial pcs : paquete.getPaqueteCliente().getPaqueteClienteSerial()) {
+				listaSerial.add(pcs.getSerial_fk().getSerial_pk());
+			}
+		}
+		if (paquete.getPaqueteProveedor() != null) {
+			objeto.put("tipoPaquete", "proveedor");
+			for (PaqueteProveedorSerial pps : paquete.getPaqueteProveedor().getPaqueteProveedorSerial()) {
+				listaSerial.add(pps.getSerial_fk().getSerial_pk());
+			}
+		}
+
+		objeto.put("listaSerial", listaSerial);
+		return objeto;
+	}
+
+	@Transactional
 	public Map<String, Object> devolucion(Long id) {
 		Map<String, Object> objeto = new HashMap<>();
 		List<Long> serial = new ArrayList<>();

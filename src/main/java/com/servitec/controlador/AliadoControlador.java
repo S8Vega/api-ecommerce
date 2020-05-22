@@ -50,6 +50,16 @@ public class AliadoControlador {
 		this.aliadoServicio.deleteById(id);
 	}
 
+	@RequestMapping("/reporte/{id}")
+	public Map<String, Object> reporte(@PathVariable Long id) {
+		return this.aliadoServicio.reporte(id);
+	}
+
+	@RequestMapping("/reporte")
+	public List<Object> reporte() {
+		return this.aliadoServicio.reporteTodo();
+	}
+
 	@RequestMapping("/devolucion/{id}")
 	public Map<String, Object> devolucion(@PathVariable Long id) {
 		return this.aliadoServicio.devolucion(id);
