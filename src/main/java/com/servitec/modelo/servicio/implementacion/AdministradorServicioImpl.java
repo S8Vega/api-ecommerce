@@ -41,12 +41,12 @@ public class AdministradorServicioImpl implements IServicio<Administrador, Long>
 	public void deleteById(Long id) {
 		this.administradorDao.deleteById(id);
 	}
-	
+
 	@Transactional
 	public Map<String, Object> sesion(String alias, String contrasena) {
 		Map<String, Object> respuesta = new HashMap<>();
 		List<Administrador> lista = findAll();
-		for (Administrador administrador: lista) {
+		for (Administrador administrador : lista) {
 			if (administrador.getAlias().equals(alias) && administrador.getContrasena().equals(contrasena)) {
 				respuesta.put("administrador_pk", administrador.getAdministrador_pk());
 				break;

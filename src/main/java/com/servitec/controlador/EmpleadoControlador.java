@@ -51,7 +51,7 @@ public class EmpleadoControlador {
 	}
 
 	@RequestMapping("/{alias}/{contrasena}")
-	public Map<String,Object> inicioSesion(@PathVariable String alias, @PathVariable String contrasena) {
+	public Map<String, Object> inicioSesion(@PathVariable String alias, @PathVariable String contrasena) {
 		return this.empleadoServicio.sesion(alias, contrasena);
 	}
 }

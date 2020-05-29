@@ -13,6 +13,7 @@
 	<artifactId>api-ags</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-ags</name>
+	<packaging>war</packaging>
 	<description>apirest inventario servitec</description>
 
 	<properties>
