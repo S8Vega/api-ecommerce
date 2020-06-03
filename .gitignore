@@ -1,5 +1,4 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -30,5 +29,4 @@ build/
 
 ### VS Code ###
 .vscode/
-src/main/java/com/servitec/modelo/entidad/Ciudad.java
 
